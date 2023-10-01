@@ -2,6 +2,7 @@
 SpendWise
 ## Contributors
 * Alex Gosselin
+* Oluwafemi Oyebayo
 ## Description
 
 ## Features
