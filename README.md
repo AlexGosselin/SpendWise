@@ -20,6 +20,6 @@ It is a financial expense monitoring program that keeps track of all your expens
 - [ ] Share/export expense or summary
 - [ ] Daily reminder/notification to enter expenses (user should be able to change frequency/time or turn it off in setting screen)
 - [ ] Onboarding
-- [ ] Settings (change theme, delete all user data, account settings)
-- [ ] Authentication (login, logout, sign up/set password)
+- [ ] Settings (change theme, change name)
+- [ ] Delete all user data
 - [ ] Set/edit budget
