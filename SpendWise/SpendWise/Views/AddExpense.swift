@@ -7,22 +7,30 @@
 
 import SwiftUI
 
+//var categories = ["cat1", "cat2", "fdhgshkasflgfdhsgfdsdfdfsafdh"]
+
+
 struct AddExpense: View {
+    
+    @State var expenseViewModel: ExpenseViewModel
+    @State var categoryViewModel: CategoryViewModel
     
     @State var title = ""
     @State var amount = 0.0
     @State var date = Date()
     @State var description = ""
-    @State var category = ""
+    @State var category: Category?
     
-    var categories = ["cat1", "cat2", "cat3hgdlhdjfsla"]
     
     var currencyFormatter = NumberFormatter()
     
-    init() {
-        self.currencyFormatter.numberStyle = NumberFormatter.Style.currency
-    }
-    
+//    init() {
+//        self.currencyFormatter.numberStyle = NumberFormatter.Style.currency
+//
+//        self.category = categoryViewModel.categories[0]
+//        print(categoryViewModel.categories.count)
+//    }
+
     
     var body: some View {
         Text("Add Expense")
@@ -49,10 +57,21 @@ struct AddExpense: View {
             HStack {
                 Text("Category")
                 Spacer()
-                Picker("", selection: $category) {
-                    ForEach(categories, id: \.self) { cat in
-                        Text(cat)
+                Picker("Category", selection: $category) {
+                    
+                    Text("None").tag(Category?.none)
+                    
+                    ForEach(categoryViewModel.categories) { cat in
+                        HStack {
+                            Text(cat.name)
+                                .foregroundStyle(.yellow)
+
+                            Spacer()
+                            cat.icon
+                        }.tag(Category?.some(cat))
+                        
                     }
+
                 }
                 .pickerStyle(.menu)
                 .cornerRadius(10.0)
@@ -70,13 +89,14 @@ struct AddExpense: View {
                     .cornerRadius(10.0)
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(.quaternary, lineWidth: 2))
             }
+            .frame(height: .infinity)
             .padding()
             
             Button("Save") {
                 //save expense here
             }
             
-            Spacer()
+//            Spacer()
         }
         .padding()
 
@@ -84,5 +104,6 @@ struct AddExpense: View {
 }
 
 #Preview {
-    AddExpense()
+    AddExpense(expenseViewModel: ExpenseViewModel(store: ExpenseStore.testExpenseStore),
+               categoryViewModel: CategoryViewModel(store: CategoryStore.testCategoryStore))
 }

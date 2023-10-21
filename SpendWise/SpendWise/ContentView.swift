@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var expenseViewModel: ExpenseViewModel
+    @State var categoryViewModel: CategoryViewModel
+    
     var body: some View {
         NavigationStack {
             List {
-                NavigationLink(destination: AddExpense()) {
+                NavigationLink(destination: AddExpense(expenseViewModel: expenseViewModel, categoryViewModel: categoryViewModel)) {
                     Text("Add Expense")
                 }
                 NavigationLink(destination: AddCategory()) {
@@ -24,5 +28,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView(expenseViewModel: ExpenseViewModel(store: ExpenseStore.testExpenseStore),
+                categoryViewModel: CategoryViewModel(store: CategoryStore.testCategoryStore))
 }
