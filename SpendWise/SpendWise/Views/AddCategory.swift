@@ -9,11 +9,15 @@ import SwiftUI
 
 struct AddCategory: View {
     
+    @Environment(\.dismiss) var dismiss
+    
     @State var viewModel: CategoryViewModel
     
     @State var name: String = ""
     @State var colour: Color = .red
     @State var iconName: String = "dollarsign.square"
+    
+    @State var animateName = false
     
     
     var body: some View {
@@ -28,6 +32,8 @@ struct AddCategory: View {
                 Spacer()
                 TextField("Category Name", text: $name)
                     .multilineTextAlignment(.trailing)
+                    .offset(x: animateName ? -1 : 1)
+                    .animation(.interpolatingSpring(stiffness: 3000, damping: 10, initialVelocity: 100), value: animateName)
             }
             .padding()
             
@@ -193,11 +199,11 @@ struct AddCategory: View {
             Button("Save") {
                 if(name != "") {
                     viewModel.addCategory(category: Category(name: name, colour: colour, iconName: iconName))
+                    dismiss()
                 } else {
-                    
+                    animateName.toggle()
                 }
             }
-            
             
             Spacer()
         }
