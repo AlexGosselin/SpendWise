@@ -94,8 +94,8 @@
 		465E904C2AC8F5C700D8FC00 /* SpendWise */ = {
 			isa = PBXGroup;
 			children = (
-				460F2C5A2AE45B1100D9778A /* ViewModel */,
 				46BAD52B2ADE061D00AF0169 /* Views */,
+				460F2C5A2AE45B1100D9778A /* ViewModel */,
 				46BAD52A2ADE060600AF0169 /* Model */,
 				465E904D2AC8F5C700D8FC00 /* SpendWiseApp.swift */,
 				465E904F2AC8F5C700D8FC00 /* ContentView.swift */,

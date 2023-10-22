@@ -7,34 +7,24 @@
 
 import SwiftUI
 
-//var categories = ["cat1", "cat2", "fdhgshkasflgfdhsgfdsdfdfsafdh"]
-
-
 struct AddExpense: View {
     
     @State var expenseViewModel: ExpenseViewModel
     @State var categoryViewModel: CategoryViewModel
     
     @State var title = ""
-    @State var amount = 0.0
+    @State var amount: String = ""
     @State var date = Date()
     @State var description = ""
     @State var category: Category?
-    
+        
     
     var currencyFormatter = NumberFormatter()
-    
-//    init() {
-//        self.currencyFormatter.numberStyle = NumberFormatter.Style.currency
-//
-//        self.category = categoryViewModel.categories[0]
-//        print(categoryViewModel.categories.count)
-//    }
-
     
     var body: some View {
         Text("Add Expense")
             .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+            .padding()
         
         VStack {
             HStack {
@@ -48,7 +38,7 @@ struct AddExpense: View {
             HStack {
                 Text("Amount")
                 Spacer()
-                TextField("Amount", value: $amount, formatter: currencyFormatter)
+                TextField("Amount", text: $amount)
                     .keyboardType(.decimalPad)
                     .multilineTextAlignment(.trailing)
             }
@@ -64,9 +54,6 @@ struct AddExpense: View {
                     ForEach(categoryViewModel.categories) { cat in
                         HStack {
                             Text(cat.name)
-                                .foregroundStyle(.yellow)
-
-                            Spacer()
                             cat.icon
                         }.tag(Category?.some(cat))
                         
@@ -89,14 +76,25 @@ struct AddExpense: View {
                     .cornerRadius(10.0)
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(.quaternary, lineWidth: 2))
             }
-            .frame(height: .infinity)
             .padding()
             
             Button("Save") {
-                //save expense here
+                guard let doubleAmount = Double(amount) else {
+                    print("could not convert amount to double")
+                    return
+                }
+                
+                guard let unwrappedCategory = category else {
+                    print("category is null")
+                    return
+                }
+                
+                let newExpense = Expense(title: title, amount: doubleAmount, category: unwrappedCategory, desc: description, date: date)
+                
+                expenseViewModel.addExpense(expense: newExpense)
+                print(expenseViewModel.expenses.count)
+//                description = String(expenseViewModel.expenses.count)
             }
-            
-//            Spacer()
         }
         .padding()
 

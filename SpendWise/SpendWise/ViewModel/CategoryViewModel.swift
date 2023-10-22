@@ -17,4 +17,8 @@ final class CategoryViewModel {
     init(store: CategoryStore) {
         self.store = store
     }
+    
+    func addCategory(category: Category) {
+        store.categories.append(category)
+    }
 }

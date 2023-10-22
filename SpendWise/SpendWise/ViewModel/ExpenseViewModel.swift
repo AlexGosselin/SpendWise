@@ -17,4 +17,8 @@ final class ExpenseViewModel {
     init(store: ExpenseStore) {
         self.store = store
     }
+    
+    func addExpense(expense: Expense) {
+        store.expenses.append(expense)
+    }
 }
