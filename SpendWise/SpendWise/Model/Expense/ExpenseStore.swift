@@ -19,9 +19,9 @@ final class ExpenseStore {
 
 extension ExpenseStore {
     static var testData = [
-        Expense(title: "rent payment", amount: 1500.0, category: CategoryStore.testData[2]),
-        Expense(title: "car payment", amount: 178.94, category: CategoryStore.testData[3]),
-        Expense(title: "groceries", amount: 54.12, category: CategoryStore.testData[1])
+        Expense(title: "rent payment", amount: 1500.0, category: CategoryStore.testData[2], interval: "None"),
+        Expense(title: "car payment", amount: 178.94, category: CategoryStore.testData[3], interval: "None"),
+        Expense(title: "groceries", amount: 54.12, category: CategoryStore.testData[1], interval: "None")
     ]
     
     static var testExpenseStore: ExpenseStore = ExpenseStore(expenses: testData)

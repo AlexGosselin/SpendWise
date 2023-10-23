@@ -15,14 +15,30 @@ struct Expense: Identifiable {
     var category: Category
     var desc: String?
     var date: Date
+    var interval: String
     
-    init(id: UUID = UUID(), title: String, amount: Double, category: Category, desc: String? = nil, date: Date = Date()) {
+    private var timer: Timer?
+    
+    mutating func setTimer(timer: Timer) {
+        self.timer = timer
+    }
+    
+    mutating func stopRepeating() {
+        self.interval = "None"
+        
+        if let timer = timer {
+            timer.invalidate()
+        }
+    }
+    
+    init(id: UUID = UUID(), title: String, amount: Double, category: Category, desc: String? = nil, date: Date = Date(), interval: String) {
         self.id = id
         self.title = title
         self.amount = amount
         self.category = category
         self.desc = desc
         self.date = date
+        self.interval = interval
     }
     
 }

@@ -19,21 +19,20 @@ struct AddExpense: View {
     @State var date = Date()
     @State var description = ""
     @State var category: Category?
-    @State var repeatFrequency: String = ""
+    @State var repeatFrequency: String = ExpenseViewModel.repeatFrequencies[0]
     
     @State var animateTitle = false
     @State var animateAmount = false
     @State var animateCategory = false
         
     var currencyFormatter = NumberFormatter()
-    let frequencies = ["Never", "Daily", "Weekly", "Monthly", "Yearly"]
     
     var body: some View {
         
         NavigationView {
             
             VStack {
-                Text("Add Expense")
+                Text("Create Expense")
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                     .padding()
                 
@@ -44,8 +43,6 @@ struct AddExpense: View {
                         .multilineTextAlignment(.trailing)
                         .offset(x: animateTitle ? -1 : 1)
                         .animation(.interpolatingSpring(stiffness: 3000, damping: 10, initialVelocity: 100), value: animateTitle)
-
-
                 }
                 .padding()
             
@@ -65,7 +62,7 @@ struct AddExpense: View {
                     Text("Category")
                     Spacer()
                     
-                    VStack {
+                    VStack(alignment: .trailing) {
                         Picker("Category", selection: $category) {
                             
                             Text("None").tag(Category?.none)
@@ -76,7 +73,6 @@ struct AddExpense: View {
                                     cat.icon
                                 }.tag(Category?.some(cat))
                             }
-
                         }
                         .pickerStyle(.menu)
                         .cornerRadius(80.0)
@@ -88,11 +84,9 @@ struct AddExpense: View {
                             Text("New Category")
                         }
                     }
-
                 }
                 .padding()
                 
-
                 DatePicker("Date", selection: $date, displayedComponents: [.date])
                     .padding()
                 
@@ -100,7 +94,7 @@ struct AddExpense: View {
                     Text("Repeat")
                     Spacer()
                     Picker("", selection: $repeatFrequency) {
-                        ForEach(frequencies, id: \.self) { f in
+                        ForEach(ExpenseViewModel.repeatFrequencies, id: \.self) { f in
                             Text(f)
                         }
                     }
@@ -128,10 +122,8 @@ struct AddExpense: View {
                     }
                                         
                     if(amount == "") {
-                        print("HERE")
                         animateAmount.toggle()
                         valid = false
-
                     }
                     
                     guard let unwrappedCategory = category else {
@@ -145,13 +137,11 @@ struct AddExpense: View {
                         return
                     }
                     
-
-                    
                     if(!valid) {
                         return
                     }
                     
-                    let newExpense = Expense(title: title, amount: doubleAmount, category: unwrappedCategory, desc: description, date: date)
+                    let newExpense = Expense(title: title, amount: doubleAmount, category: unwrappedCategory, desc: description, date: date, interval: repeatFrequency)
                     
                     expenseViewModel.addExpense(expense: newExpense)
                     print(expenseViewModel.expenses.count)
