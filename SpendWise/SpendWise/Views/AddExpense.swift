@@ -24,6 +24,9 @@ struct AddExpense: View {
     @State var animateTitle = false
     @State var animateAmount = false
     @State var animateCategory = false
+    
+    @FocusState private var titleFocused: Bool
+    @FocusState private var amountFocused: Bool
         
     var currencyFormatter = NumberFormatter()
     
@@ -40,6 +43,7 @@ struct AddExpense: View {
                     Text("Title")
                     Spacer()
                     TextField("My Expense", text: $title)
+                        .focused($titleFocused)
                         .multilineTextAlignment(.trailing)
                         .offset(x: animateTitle ? -1 : 1)
                         .animation(.interpolatingSpring(stiffness: 3000, damping: 10, initialVelocity: 100), value: animateTitle)
@@ -51,12 +55,14 @@ struct AddExpense: View {
                     Text("Amount")
                     Spacer()
                     TextField("Amount", text: $amount)
+                        .focused($amountFocused)
                         .keyboardType(.decimalPad)
                         .multilineTextAlignment(.trailing)
                         .offset(x: animateAmount ? -1 : 1)
                         .animation(.interpolatingSpring(stiffness: 3000, damping: 10, initialVelocity: 100), value: animateAmount)
                 }
                 .padding()
+
                 
                 HStack {
                     Text("Category")
@@ -121,30 +127,36 @@ struct AddExpense: View {
                         valid = false
                     }
                                         
-                    if(amount == "") {
-                        animateAmount.toggle()
+
+                    
+                    if category == nil {
+                        print("category is null")
+                        animateCategory.toggle()
                         valid = false
                     }
                     
-                    guard let unwrappedCategory = category else {
-                        print("category is null")
-                        animateCategory.toggle()
-                        return
-                    }
                     
-                    guard let doubleAmount = Double(amount) else {
-                        print("could not convert amount to double")
-                        return
+                    var doubleAmount = 0.0
+                    if(amount != "") {
+                        if let dAmount = Double(amount) {
+                            doubleAmount = dAmount
+                        } else {
+                            print("could not convert amount to double")
+                            animateAmount.toggle()
+                            valid = false
+                        }
+                    } else {
+                        animateAmount.toggle()
+                        valid = false
                     }
                     
                     if(!valid) {
                         return
                     }
                     
-                    let newExpense = Expense(title: title, amount: doubleAmount, category: unwrappedCategory, desc: description, date: date, interval: repeatFrequency)
+                    let newExpense = Expense(title: title, amount: doubleAmount, category: category!, desc: description, date: date, interval: repeatFrequency)
                     
                     expenseViewModel.addExpense(expense: newExpense)
-                    print(expenseViewModel.expenses.count)
                     dismiss()
                 }
                 
@@ -152,8 +164,15 @@ struct AddExpense: View {
             }
             .padding()
         }
-
-
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button("Done") {
+                    amountFocused = false
+                    titleFocused = false
+                }
+            }
+        }
     }
 }
 

@@ -19,6 +19,8 @@ struct AddCategory: View {
     
     @State var animateName = false
     
+    @FocusState var isFocused: Bool
+    
     
     var body: some View {
         Text("Create Category")
@@ -31,6 +33,7 @@ struct AddCategory: View {
                 Text("Name")
                 Spacer()
                 TextField("Category Name", text: $name)
+                    .focused($isFocused)
                     .multilineTextAlignment(.trailing)
                     .offset(x: animateName ? -1 : 1)
                     .animation(.interpolatingSpring(stiffness: 3000, damping: 10, initialVelocity: 100), value: animateName)
@@ -208,6 +211,14 @@ struct AddCategory: View {
             Spacer()
         }
         .padding()
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button("Done") {
+                    isFocused = false
+                }
+            }
+        }
     }
     
 }
