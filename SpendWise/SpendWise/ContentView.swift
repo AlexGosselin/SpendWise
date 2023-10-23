@@ -8,17 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var expenseViewModel: ExpenseViewModel
+    @State var categoryViewModel: CategoryViewModel
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            List {
+                NavigationLink(destination: AddExpense(expenseViewModel: expenseViewModel, categoryViewModel: categoryViewModel)) {
+                    Text("Add Expense")
+                }
+                NavigationLink(destination: AddCategory(viewModel: categoryViewModel)) {
+                    Text("Add Category")
+                }
+            }
+            .navigationTitle("Home")
         }
-        .padding()
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView(expenseViewModel: ExpenseViewModel(store: ExpenseStore.testExpenseStore),
+                categoryViewModel: CategoryViewModel(store: CategoryStore.testCategoryStore))
 }

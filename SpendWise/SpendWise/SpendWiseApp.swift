@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct SpendWiseApp: App {
+    
+    var expenseViewModel: ExpenseViewModel = ExpenseViewModel(store: ExpenseStore.testExpenseStore)
+    var categoryViewModel: CategoryViewModel = CategoryViewModel(store: CategoryStore.testCategoryStore)
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(expenseViewModel: expenseViewModel, categoryViewModel: categoryViewModel)
         }
     }
 }
