@@ -27,7 +27,7 @@ struct AddExpense: View {
     
     @FocusState private var titleFocused: Bool
     @FocusState private var amountFocused: Bool
-        
+    
     var currencyFormatter = NumberFormatter()
     
     var body: some View {
@@ -49,8 +49,7 @@ struct AddExpense: View {
                         .animation(.interpolatingSpring(stiffness: 3000, damping: 10, initialVelocity: 100), value: animateTitle)
                 }
                 .padding()
-            
-
+                
                 HStack {
                     Text("Amount")
                     Spacer()
@@ -62,7 +61,6 @@ struct AddExpense: View {
                         .animation(.interpolatingSpring(stiffness: 3000, damping: 10, initialVelocity: 100), value: animateAmount)
                 }
                 .padding()
-
                 
                 HStack {
                     Text("Category")
@@ -85,7 +83,7 @@ struct AddExpense: View {
                         .background(RoundedRectangle(cornerRadius: 8.0).fill(.quinary))
                         .offset(x: animateCategory ? -1 : 1)
                         .animation(.interpolatingSpring(stiffness: 3000, damping: 10, initialVelocity: 100), value: animateCategory)
- 
+                        
                         NavigationLink(destination: AddCategory(viewModel: categoryViewModel)){
                             Text("New Category")
                         }
@@ -126,8 +124,6 @@ struct AddExpense: View {
                         animateTitle.toggle()
                         valid = false
                     }
-                                        
-
                     
                     if category == nil {
                         print("category is null")

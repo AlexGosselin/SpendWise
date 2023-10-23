@@ -21,14 +21,13 @@ struct AddCategory: View {
     
     @FocusState var isFocused: Bool
     
-    
     var body: some View {
         Text("Create Category")
             .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
             .padding()
         
         VStack {
-
+            
             HStack {
                 Text("Name")
                 Spacer()
@@ -41,8 +40,7 @@ struct AddCategory: View {
             .padding()
             
             ColorPicker("Colour", selection: $colour, supportsOpacity: false)
-            .padding()
-            
+                .padding()
             
             VStack {
                 HStack {
@@ -194,7 +192,6 @@ struct AddCategory: View {
                             iconName = "tram"
                         }
                 }
-                
                 
             }
             .padding()
