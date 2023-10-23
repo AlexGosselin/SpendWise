@@ -19,6 +19,7 @@
 		465E90552AC8F5C800D8FC00 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 465E90542AC8F5C800D8FC00 /* Preview Assets.xcassets */; };
 		46BAD52D2ADE064400AF0169 /* AddExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BAD52C2ADE064400AF0169 /* AddExpense.swift */; };
 		46BAD52F2ADE065500AF0169 /* AddCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BAD52E2ADE065500AF0169 /* AddCategory.swift */; };
+		9436A4032AE6FC3900067DBD /* ExpenseDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9436A4022AE6FC3900067DBD /* ExpenseDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		465E90542AC8F5C800D8FC00 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		46BAD52C2ADE064400AF0169 /* AddExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpense.swift; sourceTree = "<group>"; };
 		46BAD52E2ADE065500AF0169 /* AddCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategory.swift; sourceTree = "<group>"; };
+		9436A4022AE6FC3900067DBD /* ExpenseDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 			children = (
 				46BAD52C2ADE064400AF0169 /* AddExpense.swift */,
 				46BAD52E2ADE065500AF0169 /* AddCategory.swift */,
+				9436A4022AE6FC3900067DBD /* ExpenseDetails.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				465E904E2AC8F5C700D8FC00 /* SpendWiseApp.swift in Sources */,
 				46BAD52F2ADE065500AF0169 /* AddCategory.swift in Sources */,
 				460F2C622AE45F6800D9778A /* ExpenseViewModel.swift in Sources */,
+				9436A4032AE6FC3900067DBD /* ExpenseDetails.swift in Sources */,
 				460F2C5C2AE45BC400D9778A /* Expense.swift in Sources */,
 				460F2C5E2AE45BD000D9778A /* Category.swift in Sources */,
 				460F2C642AE4600700D9778A /* ExpenseStore.swift in Sources */,
@@ -341,9 +345,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SpendWise/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -358,6 +364,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.Group20.SpendWise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -369,9 +376,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SpendWise/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -386,6 +395,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.Group20.SpendWise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
