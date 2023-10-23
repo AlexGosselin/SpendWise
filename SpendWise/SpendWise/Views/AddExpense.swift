@@ -45,7 +45,7 @@ struct AddExpense: View {
                 VStack {
                     
                     HStack {
-                        Text("Title")
+                        Text("Title*")
                         Spacer()
                         TextField("My Expense", text: $title)
                             .focused($titleFocused)
@@ -56,7 +56,7 @@ struct AddExpense: View {
                     .padding()
                     
                     HStack {
-                        Text("Amount")
+                        Text("Amount*")
                         Spacer()
                         TextField("Amount", text: $amount)
                             .focused($amountFocused)
@@ -68,13 +68,13 @@ struct AddExpense: View {
                     .padding()
                     
                     HStack {
-                        Text("Category")
+                        Text("Category*")
                         Spacer()
                         
                         VStack(alignment: .trailing) {
                             Picker("Category", selection: $category) {
                                 
-                                Text("None").tag(Category?.none)
+                                Text("Select Category").tag(Category?.none)
                                 
                                 ForEach(categoryViewModel.categories) { cat in
                                     HStack {
