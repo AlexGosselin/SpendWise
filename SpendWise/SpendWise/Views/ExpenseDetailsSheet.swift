@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ExpenseDetails: View {
+struct ExpenseDetailsSheet: View {
     @State var isShowDetails: Bool = false
     let expenses: Expense
     
@@ -69,7 +69,7 @@ struct ExpenseDetails: View {
 }
 
 #Preview {
-    ExpenseDetails(expenses: ExpenseStore.testExpenseStore.expenses[2])
+    ExpenseDetailsSheet(expenses: ExpenseStore.testExpenseStore.expenses[2])
 }
 
 struct DetailRows: View {

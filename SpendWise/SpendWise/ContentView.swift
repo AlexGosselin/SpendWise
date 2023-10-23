@@ -21,7 +21,7 @@ struct ContentView: View {
                 NavigationLink(destination: AddCategory(viewModel: categoryViewModel)) {
                     Text("Add Category")
                 }
-                NavigationLink(destination: ExpenseDetails(expenses:  ExpenseStore.testExpenseStore.expenses[1])) {
+                NavigationLink(destination: ExpenseDetailsSheet(expenses:  ExpenseStore.testExpenseStore.expenses[1])) {
                     Text("Expenses Details")
                 }
             }
