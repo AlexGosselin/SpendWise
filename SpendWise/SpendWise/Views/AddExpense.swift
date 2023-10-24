@@ -157,7 +157,7 @@ struct AddExpense: View {
                             return
                         }
                         
-                        let newExpense = Expense(title: title, amount: doubleAmount, category: category!, desc: description, date: date, interval: repeatFrequency)
+                        let newExpense = Expense(title: title, amount: doubleAmount, category: category!, desc: description, date: date.ISO8601Format(), interval: repeatFrequency, type: "debit", merchant: "Apple", instituition: "Scotia Bank", account: "Savings Account", isExpense: true, isTransfer: true)
                         
                         expenseViewModel.addExpense(expense: newExpense)
                         dismiss()
