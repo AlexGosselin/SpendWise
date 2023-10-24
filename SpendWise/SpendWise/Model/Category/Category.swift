@@ -18,7 +18,7 @@ struct Category: Identifiable, Hashable {
     
     var icon: Image { return iconName != "" ? Image(systemName: iconName) : Image(systemName: "x.square")}
     
-    init(id: UUID = UUID(), name: String, colour: Color = .black, iconName: String = "dollarsign.square") {
+    init(id: UUID = UUID(), name: String, colour: Color = .indigo, iconName: String = "dollarsign.square") {
         self.id = id
         self.name = name
         self.colour = colour

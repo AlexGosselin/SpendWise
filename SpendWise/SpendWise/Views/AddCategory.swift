@@ -14,7 +14,7 @@ struct AddCategory: View {
     @State var viewModel: CategoryViewModel
     
     @State var name: String = ""
-    @State var colour: Color = .red
+    @State var colour: Color = .indigo
     @State var iconName: String = "dollarsign.square"
     
     @State var animateName = false
