@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import SwiftUIFontIcon
 
 struct Expense: Identifiable, Decodable, Hashable {
     var id: UUID
-    
     var title: String
     var amount: Double
-    var category: Category
+    var categoryId: UUID
+    var category: String
     var desc: String?
     var date: String
     var interval: String
@@ -23,42 +24,65 @@ struct Expense: Identifiable, Decodable, Hashable {
     var isTransfer: Bool
     var isExpense: Bool
     
-    private var timer: Timer?
+//    private var timer: Timer?
     
-    mutating func setTimer(timer: Timer) {
-        self.timer = timer
-    }
+//    mutating func setTimer(timer: Timer) {
+//        self.timer = timer
+//    }
+//    
+//    mutating func stopRepeating() {
+//        self.interval = "None"
+//        
+//        if let timer = timer {
+//            timer.invalidate()
+//        }
+//    }
     
-    mutating func stopRepeating() {
-        self.interval = "None"
-        
-        if let timer = timer {
-            timer.invalidate()
+    var icon: FontAwesomeCode {
+        if let category = Category.all.first(where: { $0.id == categoryId }) {
+            return category.icon
         }
+        
+        return .question
     }
     
     var dateParsed: Date {
         date.dateParsed()
     }
-
     
-    init(id: UUID = UUID(), title: String, amount: Double, category: Category, desc: String? = nil, date: String, interval: String, type: TransactionType.RawValue, merchant: String, dateParsed: Date? = nil, instituition: String, account: String, isExpense: Bool, isTransfer: Bool) {
-        self.id = id
-        self.title = title
-        self.amount = amount
-        self.category = category
-        self.desc = desc
-        self.date = date
-        self.interval = interval
-        self.type = type
-        self.merchant = merchant
-        self.instituition = instituition
-        self.account = account
-        self.isExpense = isExpense
-        self.isTransfer = isTransfer
+    var signedAmount: Double {
+        return type == TransactionType.credit.rawValue ? amount : -amount
     }
     
+    var month: String {
+        dateParsed.formatted(.dateTime.year().month(.wide))
+    }
+    
+    var categoryItem: Category {
+        if let category = Category.all.first(where: { $0.id == categoryId }) {
+            return category
+        }
+        
+        return .shopping
+    }
 }
+
+    
+//    init(id: UUID = UUID(), title: String, amount: Double, category: Category, desc: String? = nil, date: String, interval: String, type: TransactionType.RawValue, merchant: String, dateParsed: Date? = nil, instituition: String, account: String, isExpense: Bool, isTransfer: Bool) {
+//        self.id = id
+//        self.title = title
+//        self.amount = amount
+//        self.category = category
+//        self.desc = desc
+//        self.date = date
+//        self.interval = interval
+//        self.type = type
+//        self.merchant = merchant
+//        self.instituition = instituition
+//        self.account = account
+//        self.isExpense = isExpense
+//        self.isTransfer = isTransfer
+//    }
 
 enum TransactionType: String {
     case debit = "debit"

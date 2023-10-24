@@ -56,7 +56,7 @@ struct RecentTransactionList: View {
 struct RecentTransactionList_Previews: PreviewProvider {
     static let transactionListVM: ExpenseViewModel = {
         let expenseListVM = ExpenseViewModel(store: <#ExpenseStore#>)
-        expenseListVM.expenses = expenseListPreviewData
+        expenseListVM.transactions = expenseListPreviewData
         return transactionListVM
     }()
     
