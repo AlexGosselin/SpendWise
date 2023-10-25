@@ -6,39 +6,68 @@
 //
 
 import Foundation
+import SwiftUIFontIcon
 
-struct Expense: Identifiable {
-    var id: UUID
-    
+struct Expense: Identifiable, Decodable, Hashable {
+    var id: Int
     var title: String
     var amount: Double
-    var category: Category
+    var categoryId: Int
+    var category: String
     var desc: String?
-    var date: Date
+    var date: String
     var interval: String
+    let type: TransactionType.RawValue
+    var merchant: String
+    var instituition: String
+    var account: String
+    var isTransfer: Bool
+    var isExpense: Bool
     
-    private var timer: Timer?
+//    private var timer: Timer?
     
-    mutating func setTimer(timer: Timer) {
-        self.timer = timer
-    }
+//    mutating func setTimer(timer: Timer) {
+//        self.timer = timer
+//    }
+//    
+//    mutating func stopRepeating() {
+//        self.interval = "None"
+//        
+//        if let timer = timer {
+//            timer.invalidate()
+//        }
+//    }
     
-    mutating func stopRepeating() {
-        self.interval = "None"
-        
-        if let timer = timer {
-            timer.invalidate()
+    var icon: FontAwesomeCode {
+        if let category = Category.all.first(where: { $0.id == categoryId }) {
+            return category.icon
         }
+        
+        return .question
     }
     
-    init(id: UUID = UUID(), title: String, amount: Double, category: Category, desc: String? = nil, date: Date = Date(), interval: String) {
-        self.id = id
-        self.title = title
-        self.amount = amount
-        self.category = category
-        self.desc = desc
-        self.date = date
-        self.interval = interval
+    var dateParsed: Date {
+        date.dateParsed()
     }
     
+    var signedAmount: Double {
+        return type == TransactionType.credit.rawValue ? amount : -amount
+    }
+    
+    var month: String {
+        dateParsed.formatted(.dateTime.year().month(.wide))
+    }
+    
+    var categoryItem: Category {
+        if let category = Category.all.first(where: { $0.id == categoryId }) {
+            return category
+        }
+        
+        return .shopping
+    }
+}
+
+enum TransactionType: String {
+    case debit = "debit"
+    case credit = "credit"
 }
