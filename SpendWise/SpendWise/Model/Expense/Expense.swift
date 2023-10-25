@@ -67,23 +67,6 @@ struct Expense: Identifiable, Decodable, Hashable {
     }
 }
 
-    
-//    init(id: UUID = UUID(), title: String, amount: Double, category: Category, desc: String? = nil, date: String, interval: String, type: TransactionType.RawValue, merchant: String, dateParsed: Date? = nil, instituition: String, account: String, isExpense: Bool, isTransfer: Bool) {
-//        self.id = id
-//        self.title = title
-//        self.amount = amount
-//        self.category = category
-//        self.desc = desc
-//        self.date = date
-//        self.interval = interval
-//        self.type = type
-//        self.merchant = merchant
-//        self.instituition = instituition
-//        self.account = account
-//        self.isExpense = isExpense
-//        self.isTransfer = isTransfer
-//    }
-
 enum TransactionType: String {
     case debit = "debit"
     case credit = "credit"

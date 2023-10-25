@@ -27,10 +27,10 @@ struct ExpenseDetailsSheet: View {
         .sheet(isPresented: $isShowDetails, content: {
             VStack {
                 Spacer()
-                Image(systemName: expenses.category.iconName)
-                    .font(.system(size: 60))
-                    .padding(.bottom, 30)
-                    .foregroundColor(expenses.category.colour)
+//                Image(systemName: expenses.categoryItem.icon)
+//                    .font(.system(size: 60))
+//                    .padding(.bottom, 30)
+//                    .foregroundColor(expenses.categoryItem.colour)
                 
                 
 //                Spacer()
@@ -41,8 +41,8 @@ struct ExpenseDetailsSheet: View {
                 Divider()
                 
                 DetailRows(title: "Amount", text: "$ \(expenses.amount)")
-                DetailRows(title: "Date & Time", text: "\(expenses.date.formatted())")
-                DetailRows(title: "Category", text: expenses.category.name)
+                DetailRows(title: "Date & Time", text: "\(expenses.dateParsed)")
+                DetailRows(title: "Category", text: expenses.categoryItem.name)
                 DetailRows(title: "Description", text: "\(expenses.desc ?? "-")")
                 
                 Spacer()
@@ -52,7 +52,7 @@ struct ExpenseDetailsSheet: View {
                 }, label: {
                     Text("Close")
                 })
-                .foregroundColor(expenses.category.colour)
+                .foregroundColor(expenses.categoryItem.colour)
                 .padding()
                 
                 Spacer()
