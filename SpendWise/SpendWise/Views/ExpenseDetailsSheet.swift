@@ -8,31 +8,18 @@
 import SwiftUI
 
 struct ExpenseDetailsSheet: View {
-    @State var isShowDetails: Bool = false
+   @Binding var isShowDetails: Bool
     let expenses: Expense
     
     var body: some View {
-        Text("Show Details")
-            .font(.title)
-            
-        
-        Button(action: {
-            isShowDetails = true
-        }, label: {
-            Text("Show details")
-        })
-        .buttonStyle(.borderedProminent)
-        .padding()
-        
-        .sheet(isPresented: $isShowDetails, content: {
             VStack {
                 Spacer()
 //                Image(systemName: expenses.categoryItem.icon)
 //                    .font(.system(size: 60))
 //                    .padding(.bottom, 30)
 //                    .foregroundColor(expenses.categoryItem.colour)
-                
-                
+//                
+//                
 //                Spacer()
                 
                 Text("Expenses Details")
@@ -57,19 +44,12 @@ struct ExpenseDetailsSheet: View {
                 
                 Spacer()
             }
-            .foregroundStyle(.black)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.white)
-            .presentationDetents([ .fraction(0.6), .fraction(0.75)])
-            .presentationDragIndicator(.visible)
-            .padding()
             
-        })
     }
 }
 
 #Preview {
-    ExpenseDetailsSheet(expenses: ExpenseStore.testExpenseStore.expenses[2])
+    ExpenseDetailsSheet(isShowDetails: .constant(false), expenses: ExpenseStore.testExpenseStore.expenses[2])
 }
 
 struct DetailRows: View {

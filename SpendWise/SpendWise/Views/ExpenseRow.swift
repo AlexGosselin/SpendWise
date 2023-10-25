@@ -10,6 +10,7 @@ import SwiftUIFontIcon
 
 struct ExpenseRow: View {
     var expense: Expense
+    @State private var isShowDetails: Bool = false
     
     var body: some View {
         HStack(spacing: 20) {
@@ -48,6 +49,18 @@ struct ExpenseRow: View {
                 .foregroundColor(expense.type == TransactionType.credit.rawValue ? Color.text : .primary)
         }
         .padding([.top, .bottom], 8)
+        .onTapGesture {
+            isShowDetails.toggle()
+        }
+        .sheet(isPresented: $isShowDetails, content: {
+            ExpenseDetailsSheet(isShowDetails: $isShowDetails, expenses: expense)
+                .foregroundStyle(.black)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(.white)
+                .presentationDetents([ .fraction(0.6), .fraction(0.75)])
+                .presentationDragIndicator(.visible)
+                .padding()
+        })
     }
 }
 
