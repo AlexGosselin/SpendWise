@@ -9,10 +9,10 @@ import Foundation
 import SwiftUIFontIcon
 
 struct Expense: Identifiable, Decodable, Hashable {
-    var id: UUID
+    var id: Int
     var title: String
     var amount: Double
-    var categoryId: UUID
+    var categoryId: Int
     var category: String
     var desc: String?
     var date: String

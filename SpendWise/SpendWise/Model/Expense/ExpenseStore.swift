@@ -19,9 +19,9 @@ final class ExpenseStore {
 
 extension ExpenseStore {
     static var testData = [
-        Expense(title: "rent payment", amount: 1500.0, category: CategoryStore.testData[2], desc: "Visa Desjardins", date: "01/24/2022", interval: "yearly", type: "debit", merchant: "Apple", instituition: "Scotia Bank", account: "Savings Account", isExpense: true, isTransfer: true),
-        Expense(title: "car payment", amount: 178.94, category: CategoryStore.testData[3], desc: "Visa Desjardins", date: "01/24/2022", interval: "None", type: "credit", merchant: "Apple", instituition: "Scotia Bank", account: "Savings Account", isExpense: true, isTransfer: true),
-        Expense(title: "groceries", amount: 54.12, category: CategoryStore.testData[1], desc: "Visa Desjardins", date: "01/24/2022", interval: "None", type: "debit", merchant: "Apple", instituition: "Scotia Bank", account: "Savings Account", isExpense: true, isTransfer: true)
+        Expense(id: 10, title: "rent payment", amount: 1500.0, categoryId: 401, category: CategoryStore.testData[2].name, desc: "Visa Desjardins", date: "01/24/2022", interval: "yearly", type: "debit", merchant: "Apple", instituition: "Scotia Bank", account: "Savings Account", isTransfer: true, isExpense: true),
+        Expense(id: 11, title: "car payment", amount: 178.94, categoryId: 401, category: CategoryStore.testData[3].name, desc: "Visa Desjardins", date: "01/24/2022", interval: "None", type: "credit", merchant: "Apple", instituition: "Scotia Bank", account: "Savings Account", isTransfer: true, isExpense: true),
+        Expense(id: 12, title: "groceries", amount: 54.12, categoryId: 401, category: CategoryStore.testData[1].name, desc: "Visa Desjardins", date: "01/24/2022", interval: "None", type: "debit", merchant: "Apple", instituition: "Scotia Bank", account: "Savings Account", isTransfer: true, isExpense: true)
     ]
     
     static var testExpenseStore: ExpenseStore = ExpenseStore(expenses: testData)

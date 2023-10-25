@@ -24,14 +24,15 @@ final class ExpenseViewModel: ObservableObject {
     
     init(store: ExpenseStore) {
         self.store = store
+        populateExpense()
     }
     
     // MARK: I strongly advice we dont use a timer in Expense model as swift will throw errors when you try using it in a decodable JSon
     // will comment this out for now
     func addExpense(expense: Expense) {
-        var newExpense = expense
-        var repeatingExpense = expense
-        var timer: Timer?
+//        var newExpense = expense
+//        var repeatingExpense = expense
+//        var timer: Timer?
         
 //        switch expense.interval {
 //        case "Daily":
@@ -69,7 +70,12 @@ final class ExpenseViewModel: ObservableObject {
 //        if let timer = timer {
 //            newExpense.setTimer(timer: timer)
 //        }
-        store.expenses.append(newExpense)
+//        store.expenses.append(newExpense)
+    }
+    
+    func populateExpense() {
+        self.transactions = expenseListPreviewData
+        print(expenseListPreviewData)
     }
     
     func accumulateTransactions() -> ExpensePrefixSum {

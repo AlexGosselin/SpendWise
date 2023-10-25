@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIFontIcon
 
 struct AddExpense: View {
     
@@ -79,7 +80,7 @@ struct AddExpense: View {
                                 ForEach(categoryViewModel.categories) { cat in
                                     HStack {
                                         Text(cat.name)
-                                        cat.icon
+                                        FontIcon.text(.awesome5Solid(code: cat.icon), fontsize: 24, color: Color.icon)
                                     }.tag(Category?.some(cat))
                                 }
                             }
@@ -157,7 +158,7 @@ struct AddExpense: View {
                             return
                         }
                         
-                        let newExpense = Expense(title: title, amount: doubleAmount, category: category!, desc: description, date: date.ISO8601Format(), interval: repeatFrequency, type: "debit", merchant: "Apple", instituition: "Scotia Bank", account: "Savings Account", isExpense: true, isTransfer: true)
+                        let newExpense = Expense(id: 15, title: title, amount: doubleAmount, categoryId: 401, category: category!.name, desc: description, date: date.ISO8601Format(), interval: repeatFrequency, type: "debit", merchant: "Apple", instituition: "Scotia Bank", account: "Savings Account", isTransfer: true, isExpense: true)
                         
                         expenseViewModel.addExpense(expense: newExpense)
                         dismiss()

@@ -9,31 +9,12 @@ import Foundation
 import SwiftUI
 import SwiftUIFontIcon
 
-//struct Category: Identifiable, Decodable, Hashable {
-//    var id: UUID
-//    
-//    var name: String
-//    var colour: Color
-//    var iconName: String
-//    let icon: FontAwesomeCode
-//    var mainCategoryId: Int?
-    
-//    var icon: Image { return iconName != "" ? Image(systemName: iconName) : Image(systemName: "x.square")}
-    
-//    init(id: UUID = UUID(), name: String, colour: Color = .indigo, iconName: String = "dollarsign.square") {
-//        self.id = id
-//        self.name = name
-//        self.colour = colour
-//        self.iconName = iconName
-//    }
-//}
-
-struct Category: Identifiable {
-    let id: UUID
+struct Category: Identifiable, Hashable {
+    let id: Int
     let name: String
     var colour: Color = .indigo
     let icon: FontAwesomeCode
-    var mainCategoryId: UUID?
+    var mainCategoryId: Int?
     
     var subcategories: [Category]? {
         Category.subCategories.filter { $0.mainCategoryId == id }
@@ -41,29 +22,29 @@ struct Category: Identifiable {
 }
 
 extension Category {
-    static let autoAndTransport = Category(id: UUID(), name: "Auto & Transport", icon: .car_alt)
-    static let billsAndUtilities = Category(id: UUID(), name: "Bills & Utilities", icon: .file_invoice_dollar)
-    static let entertainment = Category(id: UUID(), name: "Entertainment", icon: .film)
-    static let feesAndCharges = Category(id: UUID(), name: "Fees & Charges", icon: .hand_holding_usd)
-    static let foodAndDining = Category(id: UUID(), name: "Food & Dining", icon: .hamburger)
-    static let home = Category(id: UUID(), name: "Home", icon: .home)
-    static let income = Category(id: UUID(), name: "Income", icon: .dollar_sign)
-    static let shopping = Category(id: UUID(), name: "Shopping", icon: .shopping_cart)
-    static let transfer = Category(id: UUID(), name: "Transfer", icon: .exchange_alt)
+    static let autoAndTransport = Category(id: 1, name: "Auto & Transport", icon: .car_alt)
+    static let billsAndUtilities = Category(id: 2, name: "Bills & Utilities", icon: .file_invoice_dollar)
+    static let entertainment = Category(id: 3, name: "Entertainment", icon: .film)
+    static let feesAndCharges = Category(id: 4, name: "Fees & Charges", icon: .hand_holding_usd)
+    static let foodAndDining = Category(id: 5, name: "Food & Dining", icon: .hamburger)
+    static let home = Category(id: 6, name: "Home", icon: .home)
+    static let income = Category(id: 7, name: "Income", icon: .dollar_sign)
+    static let shopping = Category(id: 8, name: "Shopping", icon: .shopping_cart)
+    static let transfer = Category(id: 9, name: "Transfer", icon: .exchange_alt)
     
-    static let publicTransportation = Category(id: UUID(), name: "Public Transportation", icon: .bus, mainCategoryId: UUID())
-    static let taxi = Category(id: UUID(), name: "Taxi", icon: .taxi, mainCategoryId: UUID())
-    static let mobilePhone = Category(id: UUID(), name: "Mobile Phone", icon: .mobile_alt, mainCategoryId: UUID())
-    static let moviesAndDVDs = Category(id: UUID(), name: "Movies & DVDs", icon: .film, mainCategoryId: UUID())
-    static let bankFee = Category(id: UUID(), name: "Bank Fee", icon: .hand_holding_usd, mainCategoryId: UUID())
-    static let financeCharge = Category(id: UUID(), name: "Finance Charge", icon: .hand_holding_usd, mainCategoryId: UUID())
-    static let groceries = Category(id: UUID(), name: "Groceries", icon: .shopping_basket, mainCategoryId: UUID())
-    static let restaurants = Category(id: UUID(), name: "Restaurants", icon: .utensils, mainCategoryId: UUID())
-    static let rent = Category(id: UUID(), name: "Rent", icon: .house_user, mainCategoryId: UUID())
-    static let homeSupplies = Category(id: UUID(), name: "Home Supplies", icon: .lightbulb, mainCategoryId: UUID())
-    static let paycheque = Category(id: UUID(), name: "Paycheque", icon: .dollar_sign, mainCategoryId: UUID())
-    static let software = Category(id: UUID(), name: "Software", icon: .icons, mainCategoryId: UUID())
-    static let creditCardPayment = Category(id: UUID(), name: "Credit Card Payment", icon: .exchange_alt, mainCategoryId: UUID())
+    static let publicTransportation = Category(id: 101, name: "Public Transportation", icon: .bus, mainCategoryId: 1)
+    static let taxi = Category(id: 102, name: "Taxi", icon: .taxi, mainCategoryId: 1)
+    static let mobilePhone = Category(id: 201, name: "Mobile Phone", icon: .mobile_alt, mainCategoryId: 2)
+    static let moviesAndDVDs = Category(id: 301, name: "Movies & DVDs", icon: .film, mainCategoryId: 3)
+    static let bankFee = Category(id: 401, name: "Bank Fee", icon: .hand_holding_usd, mainCategoryId: 4)
+    static let financeCharge = Category(id: 402, name: "Finance Charge", icon: .hand_holding_usd, mainCategoryId: 4)
+    static let groceries = Category(id: 501, name: "Groceries", icon: .shopping_basket, mainCategoryId: 5)
+    static let restaurants = Category(id: 502, name: "Restaurants", icon: .utensils, mainCategoryId: 5)
+    static let rent = Category(id: 601, name: "Rent", icon: .house_user, mainCategoryId: 6)
+    static let homeSupplies = Category(id: 602, name: "Home Supplies", icon: .lightbulb, mainCategoryId: 6)
+    static let paycheque = Category(id: 701, name: "Paycheque", icon: .dollar_sign, mainCategoryId: 7)
+    static let software = Category(id: 801, name: "Software", icon: .icons, mainCategoryId: 8)
+    static let creditCardPayment = Category(id: 901, name: "Credit Card Payment", icon: .exchange_alt, mainCategoryId: 9)
 }
 
 extension Category {

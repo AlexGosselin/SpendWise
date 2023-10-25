@@ -28,6 +28,7 @@
 		BFFB01D62AE874C000C63C1C /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = BFFB01D52AE874C000C63C1C /* OrderedCollections */; };
 		BFFB01DA2AE877BA00C63C1C /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = BFFB01D92AE877BA00C63C1C /* SwiftUICharts */; };
 		BFFB01DD2AE87AB000C63C1C /* RecentExpenseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFB01DC2AE87AB000C63C1C /* RecentExpenseList.swift */; };
+		BFFB01DF2AE8A49C00C63C1C /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFB01DE2AE8A49C00C63C1C /* MenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		BFFB01C92AE864A800C63C1C /* ExpenseRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseRow.swift; sourceTree = "<group>"; };
 		BFFB01CE2AE867AC00C63C1C /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 		BFFB01DC2AE87AB000C63C1C /* RecentExpenseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentExpenseList.swift; sourceTree = "<group>"; };
+		BFFB01DE2AE8A49C00C63C1C /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 				46BAD52E2ADE065500AF0169 /* AddCategory.swift */,
 				BFFB01C92AE864A800C63C1C /* ExpenseRow.swift */,
 				BFFB01DC2AE87AB000C63C1C /* RecentExpenseList.swift */,
+				BFFB01DE2AE8A49C00C63C1C /* MenuView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				465E904E2AC8F5C700D8FC00 /* SpendWiseApp.swift in Sources */,
 				46BAD52F2ADE065500AF0169 /* AddCategory.swift in Sources */,
 				BFFB01CA2AE864A900C63C1C /* ExpenseRow.swift in Sources */,
+				BFFB01DF2AE8A49C00C63C1C /* MenuView.swift in Sources */,
 				460F2C622AE45F6800D9778A /* ExpenseViewModel.swift in Sources */,
 				460F2C5C2AE45BC400D9778A /* Expense.swift in Sources */,
 				460F2C5E2AE45BD000D9778A /* Category.swift in Sources */,

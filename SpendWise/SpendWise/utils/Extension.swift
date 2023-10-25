@@ -9,9 +9,9 @@ import Foundation
 import SwiftUI
 
 extension Color {
-    static let background = Color("Background")
-    static let icon = Color("Icon")
-    static let text = Color("Text")
+    static let background2 = Color("Background")
+    static let icon2 = Color("Icon")
+    static let text2 = Color("Text")
     static let systemBackground = Color(uiColor: .systemBackground)
 }
 

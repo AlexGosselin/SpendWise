@@ -16,17 +16,17 @@ struct ContentView: View {
     
     var body: some View {
         ///TODO: commenting this so as to put the homescreen here a tabbar navigation will be be created for the menus
-//        NavigationStack {
-//            List {
-//                NavigationLink(destination: AddExpense(expenseViewModel: expenseViewModel, categoryViewModel: categoryViewModel)) {
-//                    Text("Add Expense")
-//                }
-//                NavigationLink(destination: AddCategory(viewModel: categoryViewModel)) {
-//                    Text("Add Category")
-//                }
-//            }
-//            .navigationTitle("Home")
-//        }
+        NavigationStack {
+            List {
+                NavigationLink(destination: AddExpense(expenseViewModel: expenseViewModel, categoryViewModel: categoryViewModel)) {
+                    Text("Add Expense")
+                }
+                NavigationLink(destination: AddCategory(viewModel: categoryViewModel)) {
+                    Text("Add Category")
+                }
+            }
+            .navigationTitle("Home")
+        }
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
@@ -50,7 +50,7 @@ struct ContentView: View {
                             .background(Color.systemBackground)
                         }
                         .data(data)
-                        .chartStyle(ChartStyle(backgroundColor: Color.systemBackground, foregroundColor: ColorGradient(Color.icon.opacity(0.4), Color.icon)))
+                        .chartStyle(ChartStyle(backgroundColor: Color.systemBackground, foregroundColor: ColorGradient(Color.icon2.opacity(0.4), Color.icon)))
                         .frame(height: 300)
                     }
                     
@@ -60,22 +60,39 @@ struct ContentView: View {
                 .padding()
                 .frame(maxWidth: .infinity)
             }
-            .background(Color.background)
+            .background(Color.background2)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 // MARK: Notification Icon
                 ToolbarItem {
                     Image(systemName: "bell.badge")
                         .symbolRenderingMode(.palette)
-                        .foregroundStyle(Color.icon, .primary)
+                        .foregroundStyle(Color.icon2, .primary)
                 }
             }
         }
     }
 }
 
-#Preview {
-    ContentView(expenseViewModel: ExpenseViewModel(store: ExpenseStore.testExpenseStore),
-                categoryViewModel: CategoryViewModel(store: CategoryStore.testCategoryStore))
-    .preferredColorScheme(.dark)
+//#Preview {
+//    ContentView(expenseViewModel: ExpenseViewModel(store: ExpenseStore.testExpenseStore),
+//                categoryViewModel: CategoryViewModel(store: CategoryStore.testCategoryStore))
+//    .preferredColorScheme(.dark)
+//}
+
+struct ContentView_Previews: PreviewProvider {
+    static let expenseListVM: ExpenseViewModel = {
+        let expenseListVM = ExpenseViewModel(store: ExpenseStore.testExpenseStore)
+        expenseListVM.transactions = expenseListPreviewData
+        return expenseListVM
+    }()
+    
+    static var previews: some View {
+        Group {
+//            ContentView()
+            ContentView(expenseViewModel: ExpenseViewModel(store: ExpenseStore.testExpenseStore), categoryViewModel: CategoryViewModel(store: CategoryStore.testCategoryStore))
+                .preferredColorScheme(.dark)
+        }
+        .environmentObject(expenseListVM)
+    }
 }

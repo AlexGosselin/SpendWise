@@ -198,7 +198,7 @@ struct AddCategory: View {
             
             Button("Save") {
                 if(name != "") {
-                    viewModel.addCategory(category: Category(name: name, colour: colour, iconName: iconName))
+//                    viewModel.addCategory(category: Category(id: UUID(), name: name, colour: colour, icon: .shopware))
                     dismiss()
                 } else {
                     animateName.toggle()

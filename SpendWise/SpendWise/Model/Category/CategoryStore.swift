@@ -19,11 +19,10 @@ final class CategoryStore {
 
 extension CategoryStore {
     static var testData = [
-        Category(name: "No Category"),
-        Category(name: "Food", colour: .orange, iconName: "carrot"),
-        Category(name: "Rent", colour: .red, iconName: "house"),
-        Category(name: "Car", colour: .blue, iconName: "car"),
-        Category(name: "Other")
+        Category(id: 1, name: "Food", icon: .carrot),
+        Category(id: 2, name: "Rent", icon: .home),
+        Category(id: 3, name: "Car", icon: .car),
+        Category(id: 4, name: "Other", icon: .cog)
     ]
     
     static var testCategoryStore: CategoryStore = CategoryStore(categories: testData)

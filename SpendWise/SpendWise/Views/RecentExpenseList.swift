@@ -33,13 +33,11 @@ struct RecentTransactionList: View {
             .padding(.top)
             
             // MARK: Recent Transaction List
-            ForEach(Array(expenseListVM.expenses.prefix(5).enumerated()), id: \.offset) { index, transaction in
+            ForEach(Array(expenseListVM.transactions.prefix(5).enumerated()), id: \.offset) { index, expenses in
                 NavigationLink {
                     // MARK: Femi this is where you come in
-//                    TransactionView(transaction: transaction)
                 } label: {
-                    // MARK: Femi this is where you come in
-//                    TransactionRow(transaction: transaction)
+                    ExpenseRow(expense: expenses)
                 }
                 
                 Divider()
@@ -55,7 +53,7 @@ struct RecentTransactionList: View {
 
 struct RecentTransactionList_Previews: PreviewProvider {
     static let transactionListVM: ExpenseViewModel = {
-        let expenseListVM = ExpenseViewModel(store: <#ExpenseStore#>)
+        let expenseListVM = ExpenseViewModel(store: ExpenseStore.testExpenseStore)
         expenseListVM.transactions = expenseListPreviewData
         return transactionListVM
     }()
