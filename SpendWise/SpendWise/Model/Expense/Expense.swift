@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUIFontIcon
 
-struct Expense: Identifiable, Decodable, Hashable {
+struct Expense: Identifiable, Hashable {
     var id: Int
     var title: String
     var amount: Double
@@ -24,19 +24,19 @@ struct Expense: Identifiable, Decodable, Hashable {
     var isTransfer: Bool
     var isExpense: Bool
     
-//    private var timer: Timer?
+    var timer: Timer?
     
-//    mutating func setTimer(timer: Timer) {
-//        self.timer = timer
-//    }
-//    
-//    mutating func stopRepeating() {
-//        self.interval = "None"
-//        
-//        if let timer = timer {
-//            timer.invalidate()
-//        }
-//    }
+    mutating func setTimer(timer: Timer) {
+        self.timer = timer
+    }
+    
+    mutating func stopRepeating() {
+        self.interval = "None"
+        
+        if let timer = timer {
+            timer.invalidate()
+        }
+    }
     
     var icon: FontAwesomeCode {
         if let category = Category.all.first(where: { $0.id == categoryId }) {
