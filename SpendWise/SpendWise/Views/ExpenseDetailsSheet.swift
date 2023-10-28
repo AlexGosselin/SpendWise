@@ -6,21 +6,27 @@
 //
 
 import SwiftUI
+import SwiftUIFontIcon
 
 struct ExpenseDetailsSheet: View {
    @Binding var isShowDetails: Bool
     let expenses: Expense
     
+       
     var body: some View {
+        
+        let imageCode: FontAwesomeCode = expenses.categoryItem.icon
+
             VStack {
                 Spacer()
-//                Image(systemName: expenses.categoryItem.icon)
+//                Image(systemName: "\(expenses.categoryItem.name)")
 //                    .font(.system(size: 60))
 //                    .padding(.bottom, 30)
 //                    .foregroundColor(expenses.categoryItem.colour)
-//                
-//                
-//                Spacer()
+                
+                FontIcon.text(.awesome5Solid(code: imageCode), fontsize: 60, color: Color.icon)
+                
+                Spacer()
                 
                 Text("Expenses Details")
                     .font(.title)

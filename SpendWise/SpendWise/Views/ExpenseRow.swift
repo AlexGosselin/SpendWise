@@ -49,6 +49,7 @@ struct ExpenseRow: View {
                 .foregroundColor(expense.type == TransactionType.credit.rawValue ? Color.text : .primary)
         }
         .padding([.top, .bottom], 8)
+        .background(Rectangle().fill(Color(UIColor.systemBackground)))
         .onTapGesture {
             isShowDetails.toggle()
         }

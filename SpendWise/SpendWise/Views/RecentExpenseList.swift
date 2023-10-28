@@ -34,13 +34,7 @@ struct RecentTransactionList: View {
             
             // MARK: Recent Transaction List
             ForEach(Array(expenseListVM.transactions.prefix(5).enumerated()), id: \.offset) { index, expenses in
-                NavigationLink {
-                    // MARK: Femi this is where you come in
-                    
-                    ///I have added it to the row, so you can just show only the row here
-                } label: {
                     ExpenseRow(expense: expenses)
-                }
                 
                 Divider()
                     .opacity(index == 4 ? 0 : 1)
