@@ -15,7 +15,7 @@ struct ExpenseDetailsSheet: View {
        
     var body: some View {
         
-        let imageCode: FontAwesomeCode = expenses.categoryItem.icon
+        let imageCode: FontAwesomeCode = expenses.categoryItem.fontAwesomeIcon
 
             VStack {
                 Spacer()

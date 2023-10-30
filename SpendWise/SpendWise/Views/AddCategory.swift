@@ -11,8 +11,8 @@ struct AddCategory: View {
     
     @Environment(\.dismiss) var dismiss
     
-    @State var viewModel: CategoryViewModel
-    
+    @Environment(CategoryViewModel.self) private var categoryViewModel: CategoryViewModel
+
     @State var name: String = ""
     @State var colour: Color = .indigo
     @State var iconName: String = "dollarsign.square"
@@ -198,7 +198,7 @@ struct AddCategory: View {
             
             Button("Save") {
                 if(name != "") {
-//                    viewModel.addCategory(category: Category(id: UUID(), name: name, colour: colour, icon: .shopware))
+                    categoryViewModel.addCategory(category: Category(id: 89332, name: name, colour: colour, fontAwesomeIcon: .hand_holding_usd))
                     dismiss()
                 } else {
                     animateName.toggle()
@@ -221,5 +221,5 @@ struct AddCategory: View {
 }
 
 #Preview {
-    AddCategory(viewModel: CategoryViewModel(store: CategoryStore.testCategoryStore))
+    AddCategory()
 }

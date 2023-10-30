@@ -12,19 +12,28 @@ struct AddExpense: View {
     
     @Environment(\.dismiss) var dismiss
     
-    @State var expenseViewModel: ExpenseViewModel
-    @State var categoryViewModel: CategoryViewModel
+//    @Environment(ExpenseStore.self) private var expenseStore: ExpenseStore
+//    @Environment(CategoryStore.self) private var categoryStore: CategoryStore
     
-    @State var title = ""
-    @State var amount: String = ""
-    @State var date = Date()
-    @State var description = ""
-    @State var category: Category?
-    @State var repeatFrequency: String = ExpenseViewModel.repeatFrequencies[0]
+    @Environment(CategoryViewModel.self) private var categoryViewModel: CategoryViewModel
     
-    @State var animateTitle = false
-    @State var animateAmount = false
-    @State var animateCategory = false
+    @State var expenseViewModel: ExpenseViewModel?
+//    @State var categoryViewModel: CategoryViewModel?
+    
+    
+//    @State var title = ""
+//    @State var amount: String = ""
+//    @State var date = Date()
+//    @State var description = ""
+//    @State var category: Category?
+//    @State var repeatFrequency: String = ExpenseViewModel.repeatFrequencies[0]
+    
+    @State private var expense: Expense = Expense()
+    @State private var amountString = ""
+    
+    @State private var animateTitle = false
+    @State private var animateAmount = false
+    @State private var animateCategory = false
     
     @FocusState private var titleFocused: Bool
     @FocusState private var amountFocused: Bool
@@ -32,8 +41,17 @@ struct AddExpense: View {
     
     var currencyFormatter = NumberFormatter()
     
-    var body: some View {
+    init() {
+        self.expenseViewModel = ExpenseViewModel(store: ExpenseStore())
+//        self.categoryViewModel = CategoryViewModel(store: categoryStore)
+
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        self.currencyFormatter = formatter
         
+    }
+    
+    var body: some View {
         
         NavigationView {
             
@@ -48,7 +66,7 @@ struct AddExpense: View {
                     HStack {
                         Text("Title*")
                         Spacer()
-                        TextField("My Expense", text: $title)
+                        TextField("My Expense", text: $expense.title)
                             .focused($titleFocused)
                             .multilineTextAlignment(.trailing)
                             .offset(x: animateTitle ? -1 : 1)
@@ -59,7 +77,7 @@ struct AddExpense: View {
                     HStack {
                         Text("Amount*")
                         Spacer()
-                        TextField("Amount", text: $amount)
+                        TextField("Amount", text: $amountString)
                             .focused($amountFocused)
                             .keyboardType(.decimalPad)
                             .multilineTextAlignment(.trailing)
@@ -73,14 +91,14 @@ struct AddExpense: View {
                         Spacer()
                         
                         VStack(alignment: .trailing) {
-                            Picker("Category", selection: $category) {
+                            Picker("Category", selection: $expense.category) {
                                 
                                 Text("Select Category").tag(Category?.none)
                                 
                                 ForEach(categoryViewModel.categories) { cat in
                                     HStack {
                                         Text(cat.name)
-                                        FontIcon.text(.awesome5Solid(code: cat.icon), fontsize: 24, color: Color.icon)
+                                        cat.icon
                                     }.tag(Category?.some(cat))
                                 }
                             }
@@ -90,33 +108,33 @@ struct AddExpense: View {
                             .offset(x: animateCategory ? -1 : 1)
                             .animation(.interpolatingSpring(stiffness: 3000, damping: 10, initialVelocity: 100), value: animateCategory)
                             
-                            NavigationLink(destination: AddCategory(viewModel: categoryViewModel)){
+                            NavigationLink(destination: AddCategory()){
                                 Text("New Category")
                             }
                         }
                     }
                     .padding()
                     
-                    DatePicker("Date", selection: $date, displayedComponents: [.date])
+                    DatePicker("Date", selection: $expense.date, displayedComponents: [.date])
                         .padding()
                     
-                    HStack {
-                        Text("Repeat")
-                        Spacer()
-                        Picker("", selection: $repeatFrequency) {
-                            ForEach(ExpenseViewModel.repeatFrequencies, id: \.self) { f in
-                                Text(f)
-                            }
-                        }
-                        .pickerStyle(.menu)
-                        .cornerRadius(80.0)
-                        .background(RoundedRectangle(cornerRadius: 8.0).fill(.quinary))
-                    }
-                    .padding()
+//                    HStack {
+//                        Text("Repeat")
+//                        Spacer()
+//                        Picker("", selection: $repeatFrequency) {
+//                            ForEach(ExpenseViewModel.repeatFrequencies, id: \.self) { f in
+//                                Text(f)
+//                            }
+//                        }
+//                        .pickerStyle(.menu)
+//                        .cornerRadius(80.0)
+//                        .background(RoundedRectangle(cornerRadius: 8.0).fill(.quinary))
+//                    }
+//                    .padding()
                     
                     VStack(alignment: .leading) {
                         Text("Description")
-                        TextEditor(text: $description)
+                        TextEditor(text: $expense.desc)
                             .focused($descFocused)
                             .cornerRadius(8.0)
                             .overlay(RoundedRectangle(cornerRadius: 8).stroke(.quaternary, lineWidth: 2))
@@ -128,12 +146,12 @@ struct AddExpense: View {
                         
                         var valid = true
                         
-                        if(title == "") {
+                        if(expense.title == "") {
                             animateTitle.toggle()
                             valid = false
                         }
                         
-                        if category == nil {
+                        if expense.category == nil {
                             print("category is null")
                             animateCategory.toggle()
                             valid = false
@@ -141,8 +159,8 @@ struct AddExpense: View {
                         
                         
                         var doubleAmount = 0.0
-                        if(amount != "") {
-                            if let dAmount = Double(amount) {
+                        if(amountString != "") {
+                            if let dAmount = Double(amountString) {
                                 doubleAmount = dAmount
                             } else {
                                 print("could not convert amount to double")
@@ -158,9 +176,11 @@ struct AddExpense: View {
                             return
                         }
                         
-                        let newExpense = Expense(id: 15, title: title, amount: doubleAmount, categoryId: 401, category: category!.name, desc: description, date: date.ISO8601Format(), interval: repeatFrequency, type: "debit", merchant: "Apple", instituition: "Scotia Bank", account: "Savings Account", isTransfer: true, isExpense: true)
+                        expense.amount = doubleAmount
                         
-                        expenseViewModel.addExpense(expense: newExpense)
+//                        let newExpense = Expense(id: 15, title: title, amount: doubleAmount, categoryId: 401, category: category!.name, desc: description, date: date.ISO8601Format(), type: "debit", merchant: "Apple", instituition: "Scotia Bank", account: "Savings Account", isTransfer: true, isExpense: true)
+//                        
+//                        expenseViewModel.addExpense(expense: newExpense)
                         dismiss()
                     }
                     
@@ -184,6 +204,5 @@ struct AddExpense: View {
 }
 
 #Preview {
-    AddExpense(expenseViewModel: ExpenseViewModel(store: ExpenseStore.testExpenseStore),
-               categoryViewModel: CategoryViewModel(store: CategoryStore.testCategoryStore))
+    AddExpense()
 }

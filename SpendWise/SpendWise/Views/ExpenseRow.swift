@@ -30,7 +30,7 @@ struct ExpenseRow: View {
                     .lineLimit(1)
                 
                 // MARK: Transaction Category
-                Text(expense.category)
+                Text(expense.categoryName)
                     .font(.footnote)
                     .opacity(0.7)
                     .lineLimit(1)
