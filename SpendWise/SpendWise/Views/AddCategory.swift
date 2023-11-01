@@ -197,8 +197,9 @@ struct AddCategory: View {
             .padding()
             
             Button("Save") {
+                let rand = Int.random(in: 0...Int.max)
                 if(name != "") {
-                    categoryViewModel.addCategory(category: Category(id: 89332, name: name, colour: colour, fontAwesomeIcon: .hand_holding_usd))
+                    categoryViewModel.addCategory(category: Category(id: rand, name: name, colour: colour, fontAwesomeIcon: .hand_holding_usd))
                     dismiss()
                 } else {
                     animateName.toggle()

@@ -17,7 +17,9 @@ struct AddExpense: View {
     
     @Environment(CategoryViewModel.self) private var categoryViewModel: CategoryViewModel
     
-    @State var expenseViewModel: ExpenseViewModel?
+//    @State var expenseViewModel: ExpenseViewModel?
+    @EnvironmentObject var expenseViewModel: ExpenseViewModel
+
 //    @State var categoryViewModel: CategoryViewModel?
     
     
@@ -42,7 +44,7 @@ struct AddExpense: View {
     var currencyFormatter = NumberFormatter()
     
     init() {
-        self.expenseViewModel = ExpenseViewModel(store: ExpenseStore())
+//        self.expenseViewModel = ExpenseViewModel(store: ExpenseStore())
 //        self.categoryViewModel = CategoryViewModel(store: categoryStore)
 
         let formatter = NumberFormatter()
@@ -180,7 +182,9 @@ struct AddExpense: View {
                         
 //                        let newExpense = Expense(id: 15, title: title, amount: doubleAmount, categoryId: 401, category: category!.name, desc: description, date: date.ISO8601Format(), type: "debit", merchant: "Apple", instituition: "Scotia Bank", account: "Savings Account", isTransfer: true, isExpense: true)
 //                        
-//                        expenseViewModel.addExpense(expense: newExpense)
+                        print("here")
+                        expenseViewModel.addExpense(expense: expense)
+                        print(expenseViewModel.store.expenses)
                         dismiss()
                     }
                     

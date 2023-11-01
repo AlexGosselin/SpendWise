@@ -28,8 +28,8 @@ final class ExpenseViewModel: ObservableObject {
     }
     
     func addExpense(expense: Expense) {
-        var newExpense = expense
-        var repeatingExpense = expense
+//        var newExpense = expense
+//        var repeatingExpense = expense
 //        var timer: Timer?
 //        
 //        switch expense.interval {
@@ -68,7 +68,8 @@ final class ExpenseViewModel: ObservableObject {
 //        if let timer = timer {
 //            newExpense.setTimer(timer: timer)
 //        }
-        store.expenses.append(newExpense)
+        store.expenses.append(expense)
+        transactions.append(expense)
     }
     
     func populateExpense() {
