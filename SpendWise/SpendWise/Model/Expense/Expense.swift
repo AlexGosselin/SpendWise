@@ -19,7 +19,8 @@ struct Expense: Identifiable, Hashable {
     var dateString: String = ""
     var date: Date = Date()
 //    var interval: String
-    let type: TransactionType.RawValue = TransactionType.debit.rawValue
+    var transactionType: TransactionType = TransactionType.credit
+    var type: TransactionType.RawValue = TransactionType.credit.rawValue
     var merchant: String = ""
     var instituition: String = ""
     var account: String = ""

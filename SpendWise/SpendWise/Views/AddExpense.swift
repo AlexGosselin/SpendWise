@@ -32,6 +32,7 @@ struct AddExpense: View {
     
     @State private var expense: Expense = Expense()
     @State private var amountString = ""
+    @State private var transactionType: TransactionType = TransactionType.credit
     
     @State private var animateTitle = false
     @State private var animateAmount = false
@@ -40,6 +41,9 @@ struct AddExpense: View {
     @FocusState private var titleFocused: Bool
     @FocusState private var amountFocused: Bool
     @FocusState private var descFocused: Bool
+    @FocusState private var merchantFocused: Bool
+    @FocusState private var institutionFocused: Bool
+    @FocusState private var accountFocused: Bool
     
     var currencyFormatter = NumberFormatter()
     
@@ -62,6 +66,13 @@ struct AddExpense: View {
                 Text("Create Expense")
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                     .padding()
+                
+                Picker("Type", selection: $transactionType) {
+                    Text("Outgoing").tag(TransactionType.credit)
+                    Text("Incoming").tag(TransactionType.debit)
+                }
+                .pickerStyle(.segmented)
+                .padding()
                 
                 VStack {
                     
@@ -119,6 +130,39 @@ struct AddExpense: View {
                     
                     DatePicker("Date", selection: $expense.date, displayedComponents: [.date])
                         .padding()
+                    
+                    HStack {
+                        Text("Merchant")
+                        Spacer()
+                        TextField("Enter Merchant", text: $expense.merchant)
+                            .focused($merchantFocused)
+                            .multilineTextAlignment(.trailing)
+//                            .offset(x: animateTitle ? -1 : 1)
+//                            .animation(.interpolatingSpring(stiffness: 3000, damping: 10, initialVelocity: 100), value: animateTitle)
+                    }
+                    .padding()
+                    
+                    HStack {
+                        Text("Institution")
+                        Spacer()
+                        TextField("i.e. Scotiabank", text: $expense.instituition)
+                            .focused($institutionFocused)
+                            .multilineTextAlignment(.trailing)
+//                            .offset(x: animateTitle ? -1 : 1)
+//                            .animation(.interpolatingSpring(stiffness: 3000, damping: 10, initialVelocity: 100), value: animateTitle)
+                    }
+                    .padding()
+                    
+                    HStack {
+                        Text("Account")
+                        Spacer()
+                        TextField("Enter Account", text: $expense.account)
+                            .focused($accountFocused)
+                            .multilineTextAlignment(.trailing)
+//                            .offset(x: animateTitle ? -1 : 1)
+//                            .animation(.interpolatingSpring(stiffness: 3000, damping: 10, initialVelocity: 100), value: animateTitle)
+                    }
+                    .padding()
                     
 //                    HStack {
 //                        Text("Repeat")
@@ -179,12 +223,32 @@ struct AddExpense: View {
                         }
                         
                         expense.amount = doubleAmount
+                        expense.transactionType = transactionType
+                        expense.type = transactionType.rawValue
                         
+                        if (transactionType == TransactionType.credit) {
+                            expense.isExpense = true
+                            expense.isTransfer = false
+                        } else {
+                            expense.isTransfer = true
+                            expense.isExpense = false
+                        }
+                        
+                        if let category = expense.category {
+                            expense.categoryId = category.id
+                            expense.categoryName = category.name
+                        }
+                        expense.dateString = expense.date.description
+                        
+
 //                        let newExpense = Expense(id: 15, title: title, amount: doubleAmount, categoryId: 401, category: category!.name, desc: description, date: date.ISO8601Format(), type: "debit", merchant: "Apple", instituition: "Scotia Bank", account: "Savings Account", isTransfer: true, isExpense: true)
 //                        
-                        print("here")
                         expenseViewModel.addExpense(expense: expense)
                         print(expenseViewModel.store.expenses)
+                        print("-----------------------")
+                        print("-----------------------")
+                        print("-----------------------")
+                        print(expense)
                         dismiss()
                     }
                     
@@ -201,6 +265,9 @@ struct AddExpense: View {
                     amountFocused = false
                     titleFocused = false
                     descFocused = false
+                    merchantFocused = false
+                    institutionFocused = false
+                    accountFocused = false
                 }
             }
         }
