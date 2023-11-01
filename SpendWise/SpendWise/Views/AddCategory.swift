@@ -199,7 +199,7 @@ struct AddCategory: View {
             Button("Save") {
                 let rand = Int.random(in: 0...Int.max)
                 if(name != "") {
-                    categoryViewModel.addCategory(category: Category(id: rand, name: name, colour: colour, fontAwesomeIcon: .hand_holding_usd))
+                    categoryViewModel.addCategory(category: Category(id: rand, name: name, colour: colour, fontAwesomeIcon: .hand_holding_usd, iconName: iconName))
                     dismiss()
                 } else {
                     animateName.toggle()

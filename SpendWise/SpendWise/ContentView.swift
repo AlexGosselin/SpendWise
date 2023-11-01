@@ -14,7 +14,7 @@ struct ContentView: View {
     @State var expenseViewModel: ExpenseViewModel
     @State var categoryViewModel: CategoryViewModel
     @EnvironmentObject var expenseListVM: ExpenseViewModel
-    @EnvironmentObject var categoryListVM: CategoryViewModel
+//    @EnvironmentObject var categoryListVM: CategoryViewModel
 
     
     var body: some View {
