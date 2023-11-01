@@ -30,6 +30,8 @@ struct AddExpense: View {
 //    @State var category: Category?
 //    @State var repeatFrequency: String = ExpenseViewModel.repeatFrequencies[0]
     
+    @State private var pageTitle: String = "Create Expense"
+    
     @State private var expense: Expense = Expense()
     @State private var amountString = ""
     @State private var transactionType: TransactionType = TransactionType.credit
@@ -63,15 +65,22 @@ struct AddExpense: View {
             
             ScrollView {
                 
-                Text("Create Expense")
-                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                    .padding()
+//                Text(pageTitle)
+//                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+//                    .padding()
                 
                 Picker("Type", selection: $transactionType) {
                     Text("Outgoing").tag(TransactionType.credit)
                     Text("Incoming").tag(TransactionType.debit)
                 }
                 .pickerStyle(.segmented)
+                .onChange(of: transactionType) {
+                    if(transactionType == TransactionType.credit) {
+                        pageTitle = "Create Expense"
+                    } else if(transactionType == TransactionType.debit) {
+                        pageTitle = "Create Incoming Payment"
+                    }
+                }
                 .padding()
                 
                 VStack {
@@ -271,6 +280,7 @@ struct AddExpense: View {
                 }
             }
         }
+        .navigationTitle(pageTitle)
     }
 }
 

@@ -22,9 +22,9 @@ struct AddCategory: View {
     @FocusState var isFocused: Bool
     
     var body: some View {
-        Text("Create Category")
-            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-            .padding()
+//        Text("Create Category")
+//            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+//            .padding()
         
         VStack {
             
@@ -217,6 +217,7 @@ struct AddCategory: View {
                 }
             }
         }
+        .navigationTitle("Create Category")
     }
     
 }
