@@ -116,12 +116,34 @@ struct AddExpense: View {
                             Picker("Category", selection: $expense.category) {
                                 
                                 Text("Select Category").tag(Category?.none)
+                                Divider()
                                 
                                 ForEach(categoryViewModel.categories) { cat in
-                                    HStack {
-                                        Text(cat.name)
-                                        cat.icon
-                                    }.tag(Category?.some(cat))
+                                    if cat.mainCategoryId == nil {
+                                                                                
+                                        HStack {
+                                            Text(cat.name).font(.title)
+                                            cat.icon
+                                        }.tag(Category?.some(cat))
+                                        ForEach(categoryViewModel.categories) { subcat in
+                                            
+                                            if let parentId = subcat.mainCategoryId {
+                                                if(parentId == cat.id) {
+                                                    HStack {
+                                                        Spacer()
+                                                        Text("- " + subcat.name)
+                                                        subcat.icon
+                                                    }.tag(Category?.some(subcat))
+                                                }
+                                            }
+
+//                                            Text(subcat.name)
+
+                                            
+                                        }
+                                        Divider()
+
+                                    }
                                 }
                             }
                             .pickerStyle(.menu)

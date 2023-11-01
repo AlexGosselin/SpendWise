@@ -27,7 +27,7 @@ struct Category: Identifiable, Hashable {
 }
 
 extension Category {
-    static let autoAndTransport = Category(id: 1, name: "Auto & Transport", fontAwesomeIcon: .car_alt)
+    static let autoAndTransport = Category(id: 1, name: "Auto & Transport", fontAwesomeIcon: .car_alt, iconName: "car")
     static let billsAndUtilities = Category(id: 2, name: "Bills & Utilities", fontAwesomeIcon: .file_invoice_dollar)
     static let entertainment = Category(id: 3, name: "Entertainment", fontAwesomeIcon: .film)
     static let feesAndCharges = Category(id: 4, name: "Fees & Charges", fontAwesomeIcon: .hand_holding_usd)
