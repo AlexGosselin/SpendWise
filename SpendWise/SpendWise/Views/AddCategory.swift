@@ -90,13 +90,13 @@ struct AddCategory: View {
                         .onTapGesture() {
                             iconName = "dollarsign.square"
                         }
-                    Image(systemName: "macbook")
+                    Image(systemName: "wineglass")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .foregroundStyle(colour)
                         .padding()
                         .onTapGesture() {
-                            iconName = "macbook"
+                            iconName = "wineglass"
                         }
                     Image(systemName: "football")
                         .resizable()
@@ -113,6 +113,14 @@ struct AddCategory: View {
                         .padding()
                         .onTapGesture() {
                             iconName = "stethoscope"
+                        }
+                    Image(systemName: "video")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundStyle(colour)
+                        .padding()
+                        .onTapGesture() {
+                            iconName = "video"
                         }
                 }
                 
@@ -133,13 +141,13 @@ struct AddCategory: View {
                         .onTapGesture() {
                             iconName = "airplane.departure"
                         }
-                    Image(systemName: "iphone")
+                    Image(systemName: "bed.double")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .foregroundStyle(colour)
                         .padding()
                         .onTapGesture() {
-                            iconName = "iphone"
+                            iconName = "bed.double"
                         }
                     Image(systemName: "list.clipboard")
                         .resizable()
@@ -148,6 +156,14 @@ struct AddCategory: View {
                         .padding()
                         .onTapGesture() {
                             iconName = "list.clipboard"
+                        }
+                    Image(systemName: "phone")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundStyle(colour)
+                        .padding()
+                        .onTapGesture() {
+                            iconName = "phone"
                         }
                 }
                 
@@ -160,13 +176,13 @@ struct AddCategory: View {
                         .onTapGesture() {
                             iconName = "cup.and.saucer"
                         }
-                    Image(systemName: "wineglass")
+                    Image(systemName: "macbook")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .foregroundStyle(colour)
                         .padding()
                         .onTapGesture() {
-                            iconName = "wineglass"
+                            iconName = "macbook"
                         }
                     Image(systemName: "cart")
                         .resizable()
@@ -183,6 +199,14 @@ struct AddCategory: View {
                         .padding()
                         .onTapGesture() {
                             iconName = "gym.bag"
+                        }
+                    Image(systemName: "music.note")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundStyle(colour)
+                        .padding()
+                        .onTapGesture() {
+                            iconName = "music.note"
                         }
                 }
                 
@@ -203,6 +227,49 @@ struct AddCategory: View {
                         .onTapGesture() {
                             iconName = "creditcard"
                         }
+                    Image(systemName: "pawprint")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundStyle(colour)
+                        .padding()
+                        .onTapGesture() {
+                            iconName = "pawprint"
+                        }
+                    Image(systemName: "wifi.router")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundStyle(colour)
+                        .padding()
+                        .onTapGesture() {
+                            iconName = "wifi.router"
+                        }                    
+                    Image(systemName: "gamecontroller")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundStyle(colour)
+                        .padding()
+                        .onTapGesture() {
+                            iconName = "gamecontroller"
+                        }
+                }
+                
+                HStack {
+                    Image(systemName: "gift")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundStyle(colour)
+                        .padding()
+                        .onTapGesture() {
+                            iconName = "gift"
+                        }
+                    Image(systemName: "fuelpump")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundStyle(colour)
+                        .padding()
+                        .onTapGesture() {
+                            iconName = "fuelpump"
+                        }
                     Image(systemName: "banknote")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -211,22 +278,30 @@ struct AddCategory: View {
                         .onTapGesture() {
                             iconName = "banknote"
                         }
-                    Image(systemName: "tram")
+                    Image(systemName: "signature")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .foregroundStyle(colour)
                         .padding()
                         .onTapGesture() {
-                            iconName = "tram"
+                            iconName = "signature"
+                        }
+                    Image(systemName: "iphone")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundStyle(colour)
+                        .padding()
+                        .onTapGesture() {
+                            iconName = "iphone"
                         }
                 }
                 
             }
-            .padding()
+//            .padding()
             
             Button("Save") {
                 let rand = Int.random(in: 0...Int.max)
-                var parentId = 0
+//                var parentId = 0
                 
                 if(name != "") {
                     if let parentCategory = parentCategory {
