@@ -15,6 +15,7 @@ struct AddCategory: View {
 
     @State var name: String = ""
     @State var colour: Color = .indigo
+    @State var parentCategory: Category?
     @State var iconName: String = "dollarsign.square"
     
     @State var animateName = false
@@ -41,6 +42,33 @@ struct AddCategory: View {
             
             ColorPicker("Colour", selection: $colour, supportsOpacity: false)
                 .padding()
+            
+            HStack {
+                Text("Parent Category")
+                Spacer()
+                
+                VStack(alignment: .trailing) {
+                    Picker("Category", selection: $parentCategory) {
+                        
+                        Text("None").tag(Category?.none)
+                        Divider()
+                        
+                        ForEach(categoryViewModel.categories) { cat in
+                            if cat.mainCategoryId == nil {
+                                                                        
+                                HStack {
+                                    Text(cat.name).font(.title)
+                                    cat.icon
+                                }.tag(Category?.some(cat))
+                            }
+                        }
+                    }
+                    .pickerStyle(.menu)
+                    .cornerRadius(80.0)
+                    .background(RoundedRectangle(cornerRadius: 8.0).fill(.quinary))
+                }
+            }
+            .padding()
             
             VStack {
                 HStack {
@@ -198,12 +226,22 @@ struct AddCategory: View {
             
             Button("Save") {
                 let rand = Int.random(in: 0...Int.max)
+                var parentId = 0
+                
                 if(name != "") {
-                    categoryViewModel.addCategory(category: Category(id: rand, name: name, colour: colour, fontAwesomeIcon: .hand_holding_usd, iconName: iconName))
+                    if let parentCategory = parentCategory {
+    //                    parentId = parentCategory.id
+                        categoryViewModel.addCategory(category: Category(id: rand, name: name, colour: colour, fontAwesomeIcon: .hand_holding_usd, iconName: iconName, mainCategoryId: parentCategory.id))
+                    } else {
+                        categoryViewModel.addCategory(category: Category(id: rand, name: name, colour: colour, fontAwesomeIcon: .hand_holding_usd, iconName: iconName))
+                    }
                     dismiss()
                 } else {
                     animateName.toggle()
                 }
+
+                
+
             }
             
             Spacer()
