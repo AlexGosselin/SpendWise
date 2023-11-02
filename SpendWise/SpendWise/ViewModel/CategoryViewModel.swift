@@ -9,7 +9,7 @@ import Foundation
 import Observation
 
 @Observable
-final class CategoryViewModel {
+final class CategoryViewModel: ObservableObject {
     var store: CategoryStore
     
     var categories: [Category] { return store.categories }

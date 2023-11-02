@@ -28,47 +28,48 @@ final class ExpenseViewModel: ObservableObject {
     }
     
     func addExpense(expense: Expense) {
-        var newExpense = expense
-        var repeatingExpense = expense
-        var timer: Timer?
-        
-        switch expense.interval {
-        case "Daily":
-            timer = Timer.scheduledTimer(withTimeInterval: 86400, repeats: true) { timer in
-                repeatingExpense.date = Date().ISO8601Format()
-                repeatingExpense.setTimer(timer: timer)
-                self.store.expenses.append(repeatingExpense)
-            }
-            break
-        case "Weekly":
-            timer = Timer.scheduledTimer(withTimeInterval: 604800, repeats: true) { timer in
-                repeatingExpense.date = Date().ISO8601Format()
-                repeatingExpense.setTimer(timer: timer)
-                self.store.expenses.append(repeatingExpense)
-            }
-            break
-        case "Monthly":
-            timer = Timer.scheduledTimer(withTimeInterval: 2628288, repeats: true) { timer in
-                repeatingExpense.date = Date().ISO8601Format()
-                repeatingExpense.setTimer(timer: timer)
-                self.store.expenses.append(repeatingExpense)
-            }
-            break
-        case "Yearly":
-            timer = Timer.scheduledTimer(withTimeInterval: 31536000, repeats: true) { timer in
-                repeatingExpense.date = Date().ISO8601Format()
-                repeatingExpense.setTimer(timer: timer)
-                self.store.expenses.append(repeatingExpense)
-            }
-            break
-        default: break
-            
-        }
-        
-        if let timer = timer {
-            newExpense.setTimer(timer: timer)
-        }
-        store.expenses.append(newExpense)
+//        var newExpense = expense
+//        var repeatingExpense = expense
+//        var timer: Timer?
+//        
+//        switch expense.interval {
+//        case "Daily":
+//            timer = Timer.scheduledTimer(withTimeInterval: 86400, repeats: true) { timer in
+//                repeatingExpense.date = Date().ISO8601Format()
+//                repeatingExpense.setTimer(timer: timer)
+//                self.store.expenses.append(repeatingExpense)
+//            }
+//            break
+//        case "Weekly":
+//            timer = Timer.scheduledTimer(withTimeInterval: 604800, repeats: true) { timer in
+//                repeatingExpense.date = Date().ISO8601Format()
+//                repeatingExpense.setTimer(timer: timer)
+//                self.store.expenses.append(repeatingExpense)
+//            }
+//            break
+//        case "Monthly":
+//            timer = Timer.scheduledTimer(withTimeInterval: 2628288, repeats: true) { timer in
+//                repeatingExpense.date = Date().ISO8601Format()
+//                repeatingExpense.setTimer(timer: timer)
+//                self.store.expenses.append(repeatingExpense)
+//            }
+//            break
+//        case "Yearly":
+//            timer = Timer.scheduledTimer(withTimeInterval: 31536000, repeats: true) { timer in
+//                repeatingExpense.date = Date().ISO8601Format()
+//                repeatingExpense.setTimer(timer: timer)
+//                self.store.expenses.append(repeatingExpense)
+//            }
+//            break
+//        default: break
+//            
+//        }
+//        
+//        if let timer = timer {
+//            newExpense.setTimer(timer: timer)
+//        }
+        store.expenses.append(expense)
+        transactions.append(expense)
     }
     
     func populateExpense() {

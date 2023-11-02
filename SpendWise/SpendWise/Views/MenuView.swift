@@ -15,10 +15,10 @@ struct MenuView: View {
     var body: some View {
         NavigationStack {
             List {
-                NavigationLink(destination: AddExpense(expenseViewModel: expenseViewModel, categoryViewModel: categoryViewModel)) {
+                NavigationLink(destination: AddExpense()) {
                     Text("Add Expense")
                 }
-                NavigationLink(destination: AddCategory(viewModel: categoryViewModel)) {
+                NavigationLink(destination: AddCategory()) {
                     Text("Add Category")
                 }
             }
