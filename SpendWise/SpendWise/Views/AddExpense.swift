@@ -50,13 +50,9 @@ struct AddExpense: View {
     var currencyFormatter = NumberFormatter()
     
     init() {
-//        self.expenseViewModel = ExpenseViewModel(store: ExpenseStore())
-//        self.categoryViewModel = CategoryViewModel(store: categoryStore)
-
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         self.currencyFormatter = formatter
-        
     }
     
     var body: some View {
@@ -64,10 +60,6 @@ struct AddExpense: View {
         NavigationView {
             
             ScrollView {
-                
-//                Text(pageTitle)
-//                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-//                    .padding()
                 
                 Picker("Type", selection: $transactionType) {
                     Text("Outgoing").tag(TransactionType.credit)
@@ -78,7 +70,7 @@ struct AddExpense: View {
                     if(transactionType == TransactionType.credit) {
                         pageTitle = "Create Expense"
                     } else if(transactionType == TransactionType.debit) {
-                        pageTitle = "Create Incoming Payment"
+                        pageTitle = "Create Transfer"
                     }
                 }
                 .padding()

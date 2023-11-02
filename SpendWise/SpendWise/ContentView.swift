@@ -11,10 +11,9 @@ import SwiftUIFontIcon
 
 struct ContentView: View {
     
-    @State var expenseViewModel: ExpenseViewModel
-    @State var categoryViewModel: CategoryViewModel
+//    @State var expenseViewModel: ExpenseViewModel
+//    @State var categoryViewModel: CategoryViewModel
     @EnvironmentObject var expenseListVM: ExpenseViewModel
-//    @EnvironmentObject var categoryListVM: CategoryViewModel
 
     
     var body: some View {
@@ -56,7 +55,7 @@ struct ContentView: View {
             .toolbar {
                 // MARK: Notification Icon
                 ToolbarItem {
-                    NavigationLink(destination: MenuView(expenseViewModel: expenseViewModel, categoryViewModel: categoryViewModel)) {
+                    NavigationLink(destination: MenuView()) {
                         FontIcon.text(.awesome5Solid(code: .plus), fontsize: 24, color: Color.icon)
                     }
                     
@@ -82,7 +81,7 @@ struct ContentView: View {
         
         static var previews: some View {
             Group {
-                ContentView(expenseViewModel: ExpenseViewModel(store: ExpenseStore.testExpenseStore), categoryViewModel: CategoryViewModel(store: CategoryStore.testCategoryStore))
+                ContentView()
                     .preferredColorScheme(.dark)
             }
             .environmentObject(expenseListVM)
