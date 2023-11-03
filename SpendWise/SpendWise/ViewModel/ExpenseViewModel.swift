@@ -72,6 +72,36 @@ final class ExpenseViewModel: ObservableObject {
         transactions.append(expense)
     }
     
+    func editExpense(expense: Expense, id: Int){
+//        ExpenseStore.testExpenseStore.expenses[12].title = "Dodo"
+//        store.expenses[2].title = "Dodo"
+        
+        store.expenses = store.expenses.map{ exp in
+            var modifiedExpenses = exp
+            
+            //Meant to be ID
+            if exp.id == 12{
+                modifiedExpenses.title = expense.title
+                modifiedExpenses.amount = expense.amount
+                modifiedExpenses.date = expense.date
+                modifiedExpenses.desc = expense.desc
+                modifiedExpenses.merchant = expense.merchant
+                modifiedExpenses.instituition = expense.instituition
+                modifiedExpenses.account = expense.account
+                modifiedExpenses.transactionType = expense.transactionType
+                modifiedExpenses.type =  expense.type
+                modifiedExpenses.isExpense =  expense.isExpense
+                modifiedExpenses.isTransfer =  expense.isTransfer
+                modifiedExpenses.dateString =  expense.dateString
+                modifiedExpenses.category =  expense.category
+                modifiedExpenses.categoryId = expense.categoryId
+                modifiedExpenses.categoryName = expense.categoryName
+            }
+            return modifiedExpenses
+        }
+        
+    }
+    
     func populateExpense() {
         self.transactions = expenseListPreviewData
         print(expenseListPreviewData)
