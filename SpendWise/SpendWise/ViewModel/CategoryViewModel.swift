@@ -23,7 +23,7 @@ final class CategoryViewModel: ObservableObject {
     }
     
     func editCategory(category: Category, id: Int){
-//        print(category)
+
         
         store.categories = store.categories.map{ cat in
             var modifiedCategories = cat
@@ -35,8 +35,6 @@ final class CategoryViewModel: ObservableObject {
                 modifiedCategories.iconName = category.iconName
                 
                 if let mainCat = category.mainCategoryId{
-//                    print("This is the parent something")
-//                    print("The new mainID - \(mainCat)")
                     modifiedCategories.mainCategoryId = mainCat
                 }
             }
