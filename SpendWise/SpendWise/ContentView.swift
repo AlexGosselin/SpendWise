@@ -53,6 +53,13 @@ struct ContentView: View {
             .background(Color.background2)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem {
+                    NavigationLink(destination: SettingsView()) {
+                        Image(systemName: "gearshape.fill")
+                            .tint(Color.icon)
+                    }
+                }
+                
                 // MARK: Notification Icon
                 ToolbarItem {
                     NavigationLink(destination: MenuView()) {
@@ -67,6 +74,7 @@ struct ContentView: View {
                     //                }
                     
                 }
+
             }
         }
     }
