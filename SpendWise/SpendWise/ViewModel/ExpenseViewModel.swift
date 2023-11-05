@@ -73,13 +73,11 @@ final class ExpenseViewModel: ObservableObject {
     }
     
     func editExpense(expense: Expense, id: Int){
-//        ExpenseStore.testExpenseStore.expenses[12].title = "Dodo"
-//        store.expenses[2].title = "Dodo"
+
         
         store.expenses = store.expenses.map{ exp in
             var modifiedExpenses = exp
             
-            //Meant to be ID
             if exp.id == 12{
                 modifiedExpenses.title = expense.title
                 modifiedExpenses.amount = expense.amount

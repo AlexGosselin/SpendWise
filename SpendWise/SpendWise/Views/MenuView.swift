@@ -21,6 +21,9 @@ struct MenuView: View {
                 NavigationLink(destination: AddCategory()) {
                     Text("Add Category")
                 }
+                NavigationLink(destination: ListCategory()) {
+                    Text("Category List")
+                }
             }
             .navigationTitle("Home")
         }
