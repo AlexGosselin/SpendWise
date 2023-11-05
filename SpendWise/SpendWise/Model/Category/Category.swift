@@ -11,9 +11,9 @@ import SwiftUIFontIcon
 
 struct Category: Identifiable, Hashable {
     let id: Int
-    let name: String
+    var name: String
     var colour: Color = .indigo
-    let fontAwesomeIcon: FontAwesomeCode
+    var fontAwesomeIcon: FontAwesomeCode
     var iconName: String = "dollarsign.square"
     var mainCategoryId: Int?
     
