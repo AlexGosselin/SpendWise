@@ -49,6 +49,10 @@ struct Expense: Identifiable, Hashable {
 //        return .question
 //    }
     
+    mutating func updateDateString() {
+        dateString = date.formatted(date: .numeric, time: .omitted)
+    }
+    
     var dateParsed: Date {
         dateString.dateParsed()
     }
