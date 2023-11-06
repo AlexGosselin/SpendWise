@@ -48,9 +48,11 @@ struct ExpenseDetailsSheet: View {
                     
                     Divider()
                     
+                    DetailRows(title: "Title", text: "\(expenses.title)")
                     DetailRows(title: "Amount", text: "$ \(expenses.amount)")
-                    DetailRows(title: "Date & Time", text: "\(expenses.dateParsed)")
-                    DetailRows(title: "Category", text: expenses.categoryItem.name)
+                    DetailRows(title: "Transaction Type", text: "\(expenses.transactionType)")
+                    DetailRows(title: "Date & Time", text: "\(expenses.dateString)")
+                    DetailRows(title: "Category", text: expenses.category?.name ?? "-")
                     DetailRows(title: "Description", text: "\(expenses.desc ?? "-")")
                     
                     Spacer()
@@ -82,7 +84,7 @@ struct DetailRows: View {
         HStack {
             Text("\(title):")
                 .foregroundStyle(.gray)
-                .frame(maxWidth: 120, alignment: .leading)
+                .frame(maxWidth: 145, alignment: .leading)
             
             Text(text)
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
