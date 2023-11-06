@@ -39,6 +39,7 @@ struct AddExpense: View {
     @State private var animateTitle = false
     @State private var animateAmount = false
     @State private var animateCategory = false
+    @State private var animateMerchant = false
     
     @FocusState private var titleFocused: Bool
     @FocusState private var amountFocused: Bool
@@ -155,13 +156,13 @@ struct AddExpense: View {
                         .padding()
                     
                     HStack {
-                        Text("Merchant")
+                        Text("Merchant*")
                         Spacer()
                         TextField("Enter Merchant", text: $expense.merchant)
                             .focused($merchantFocused)
                             .multilineTextAlignment(.trailing)
-//                            .offset(x: animateTitle ? -1 : 1)
-//                            .animation(.interpolatingSpring(stiffness: 3000, damping: 10, initialVelocity: 100), value: animateTitle)
+                            .offset(x: animateMerchant ? -1 : 1)
+                            .animation(.interpolatingSpring(stiffness: 3000, damping: 10, initialVelocity: 100), value: animateMerchant)
                     }
                     .padding()
                     
@@ -241,6 +242,11 @@ struct AddExpense: View {
                             valid = false
                         }
                         
+                        if(expense.merchant == "") {
+                            animateMerchant.toggle()
+                            valid = false
+                        }
+                        
                         if(!valid) {
                             return
                         }
@@ -261,7 +267,7 @@ struct AddExpense: View {
                             expense.categoryId = category.id
                             expense.categoryName = category.name
                         }
-                        expense.dateString = expense.date.description
+                        expense.updateDateString()
                         
 
 //                        let newExpense = Expense(id: 15, title: title, amount: doubleAmount, categoryId: 401, category: category!.name, desc: description, date: date.ISO8601Format(), type: "debit", merchant: "Apple", instituition: "Scotia Bank", account: "Savings Account", isTransfer: true, isExpense: true)
