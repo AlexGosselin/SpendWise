@@ -15,8 +15,6 @@ struct ExpenseDetailsSheet: View {
     
     var body: some View {
         
-        let imageCode: FontAwesomeCode = expenses.categoryItem.fontAwesomeIcon
-
         NavigationStack {
             VStack {
                     HStack {
@@ -34,12 +32,11 @@ struct ExpenseDetailsSheet: View {
                
             
                     Spacer()
-    //                Image(systemName: "\(expenses.categoryItem.name)")
-    //                    .font(.system(size: 60))
-    //                    .padding(.bottom, 30)
-    //                    .foregroundColor(expenses.categoryItem.colour)
-                    
-                    FontIcon.text(.awesome5Solid(code: imageCode), fontsize: 60, color: Color.icon)
+                Image(systemName: expenses.category!.iconName)
+                        .font(.system(size: 60))
+                        .padding(.bottom, 30)
+                        .foregroundColor(expenses.categoryItem.colour)
+                
                     
                     Spacer()
                     

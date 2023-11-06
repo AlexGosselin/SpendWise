@@ -29,6 +29,7 @@ struct EditExpense: View {
     @State private var animateTitle = false
     @State private var animateAmount = false
     @State private var animateCategory = false
+    @State private var animateMerchant = false
     
     @FocusState private var titleFocused: Bool
     @FocusState private var amountFocused: Bool
@@ -143,11 +144,13 @@ struct EditExpense: View {
                     .padding()
                 
                 HStack {
-                    Text("Merchant")
+                    Text("Merchant*")
                     Spacer()
                     TextField("Enter Merchant", text: $merchant)
                         .focused($merchantFocused)
                         .multilineTextAlignment(.trailing)
+                        .offset(x: animateMerchant ? -1 : 1)
+                        .animation(.interpolatingSpring(stiffness: 3000, damping: 10, initialVelocity: 100), value: animateMerchant)
                 }
                 .padding()
                 
@@ -224,6 +227,11 @@ struct EditExpense: View {
                         valid = false
                     }
                     
+                    if(expense.merchant == "") {
+                        animateMerchant.toggle()
+                        valid = false
+                    }
+                    
                     if(!valid) {
                         return
                     }
@@ -251,7 +259,8 @@ struct EditExpense: View {
                         newExpense.categoryId = category.id
                         newExpense.categoryName = category.name
                     }
-                    newExpense.dateString = date.description
+                    
+                    newExpense.updateDateString()
                     
                     
                     expenseViewModel.editExpense(expense: newExpense, id: expense.id)
