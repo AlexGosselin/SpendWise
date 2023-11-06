@@ -11,6 +11,7 @@ import SwiftUIFontIcon
 struct ExpenseRow: View {
     var expense: Expense
     @State private var isShowDetails: Bool = false
+    @State private var isNavigateToEdit: Bool = false
     
     var body: some View {
         HStack(spacing: 20) {
@@ -54,14 +55,16 @@ struct ExpenseRow: View {
             isShowDetails.toggle()
         }
         .sheet(isPresented: $isShowDetails, content: {
-            ExpenseDetailsSheet(isShowDetails: $isShowDetails, expenses: expense)
+            ExpenseDetailsSheet(isShowDetails: $isShowDetails,isNavigateToEdit: $isNavigateToEdit, expenses: expense)
                 .foregroundStyle(.black)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(.white)
                 .presentationDetents([ .fraction(0.6), .fraction(0.75)])
                 .presentationDragIndicator(.visible)
                 .padding()
-        })
+        }).background(
+            NavigationLink("", destination: EditExpense(expense: expense), isActive: $isNavigateToEdit)
+        )
     }
 }
 

@@ -10,52 +10,67 @@ import SwiftUIFontIcon
 
 struct ExpenseDetailsSheet: View {
    @Binding var isShowDetails: Bool
+    @Binding var isNavigateToEdit: Bool
     let expenses: Expense
     
-       
     var body: some View {
         
-        let imageCode: FontAwesomeCode = expenses.categoryItem.fontAwesomeIcon
-
+        NavigationStack {
             VStack {
-                Spacer()
-//                Image(systemName: "\(expenses.categoryItem.name)")
-//                    .font(.system(size: 60))
-//                    .padding(.bottom, 30)
-//                    .foregroundColor(expenses.categoryItem.colour)
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            isShowDetails = false
+                            isNavigateToEdit = true
+                        }, label: {
+                            Image(systemName: "pencil")
+                                                .font(.system(size: 30))
+                                                .foregroundColor(Color.icon)
+                        })
+                        
+                    }
+               
+            
+                    Spacer()
+                Image(systemName: expenses.category!.iconName)
+                        .font(.system(size: 60))
+                        .padding(.bottom, 30)
+                        .foregroundColor(expenses.categoryItem.colour)
                 
-                FontIcon.text(.awesome5Solid(code: imageCode), fontsize: 60, color: Color.icon)
-                
-                Spacer()
-                
-                Text("Expenses Details")
-                    .font(.title)
-                
-                Divider()
-                
-                DetailRows(title: "Amount", text: "$ \(expenses.amount)")
-                DetailRows(title: "Date & Time", text: "\(expenses.dateParsed)")
-                DetailRows(title: "Category", text: expenses.categoryItem.name)
-                DetailRows(title: "Description", text: "\(expenses.desc ?? "-")")
-                
-                Spacer()
-                
-                Button(action: {
-                    isShowDetails = false
-                }, label: {
-                    Text("Close")
-                })
-                .foregroundColor(expenses.categoryItem.colour)
-                .padding()
-                
-                Spacer()
+                    
+                    Spacer()
+                    
+                    Text("Expenses Details")
+                        .font(.title)
+                    
+                    Divider()
+                    
+                    DetailRows(title: "Title", text: "\(expenses.title)")
+                    DetailRows(title: "Amount", text: "$ \(expenses.amount)")
+                    DetailRows(title: "Transaction Type", text: "\(expenses.transactionType)")
+                    DetailRows(title: "Date & Time", text: "\(expenses.dateString)")
+                    DetailRows(title: "Category", text: expenses.category?.name ?? "-")
+                    DetailRows(title: "Description", text: "\(expenses.desc ?? "-")")
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        isShowDetails = false
+                    }, label: {
+                        Text("Close")
+                    })
+                    .foregroundColor(expenses.categoryItem.colour)
+                    .padding()
+                    
+                    Spacer()
             }
+        }
             
     }
 }
 
 #Preview {
-    ExpenseDetailsSheet(isShowDetails: .constant(false), expenses: ExpenseStore.testExpenseStore.expenses[2])
+    ExpenseDetailsSheet(isShowDetails: .constant(false), isNavigateToEdit:.constant(false), expenses: ExpenseStore.testExpenseStore.expenses[2])
 }
 
 struct DetailRows: View {
@@ -66,7 +81,7 @@ struct DetailRows: View {
         HStack {
             Text("\(title):")
                 .foregroundStyle(.gray)
-                .frame(maxWidth: 120, alignment: .leading)
+                .frame(maxWidth: 145, alignment: .leading)
             
             Text(text)
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
