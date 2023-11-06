@@ -17,7 +17,7 @@ typealias ExpensePrefixSum = [(String, Double)]
 final class ExpenseViewModel: ObservableObject {
     @Published var transactions: [Expense] = []
     var store: ExpenseStore
-    static let repeatFrequencies = ["Never", "Daily", "Weekly", "Monthly", "Yearly"]
+//    static let repeatFrequencies = ["Never", "Daily", "Weekly", "Monthly", "Yearly"]
     
     // MARK: Alex this will be uncommented later
 //    @Published var expenses: [Expense] { return store.expenses }
@@ -99,5 +99,10 @@ final class ExpenseViewModel: ObservableObject {
         }
         
         return cumulativeSum
+    }
+    
+    func clearExpenses() {
+        self.transactions = []
+        self.store.expenses = []
     }
 }

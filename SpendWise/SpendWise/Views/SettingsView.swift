@@ -9,8 +9,8 @@ import SwiftUI
 
 struct SettingsView: View {
     
-//    @Environment(CategoryViewModel.self) private var categoryViewModel: CategoryViewModel
-//    @EnvironmentObject var expenseViewModel: ExpenseViewModel
+    @Environment(CategoryViewModel.self) private var categoryViewModel: CategoryViewModel
+    @EnvironmentObject var expenseViewModel: ExpenseViewModel
     
     @State private var showExpenseAlert = false
     @State private var showCategoryAlert = false
@@ -29,7 +29,7 @@ struct SettingsView: View {
                         .alert("Delete all expenses?", isPresented: $showExpenseAlert) {
                             Button("Cancel", role: .cancel){}
                             Button("Delete", role: .destructive){
-                                
+                                expenseViewModel.clearExpenses()
                             }
                         } message: {
                             Text("This cannot be undone!")
@@ -41,7 +41,7 @@ struct SettingsView: View {
                         .alert("Delete all user created categories?", isPresented: $showCategoryAlert) {
                             Button("Cancel", role: .cancel){}
                             Button("Delete", role: .destructive){
-                                
+                                categoryViewModel.clearUserCategories()
                             }
                         } message: {
                             Text("This cannot be undone!")
@@ -53,7 +53,8 @@ struct SettingsView: View {
                         .alert("Delete all user data?", isPresented: $showDataAlert) {
                             Button("Cancel", role: .cancel){}
                             Button("Delete", role: .destructive){
-                                
+                                expenseViewModel.clearExpenses()
+                                categoryViewModel.clearUserCategories()
                             }
                         } message: {
                             Text("This cannot be undone!")
