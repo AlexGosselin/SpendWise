@@ -24,7 +24,7 @@ final class CategoryViewModel: ObservableObject {
     
     func clearUserCategories(){
         store.categories = CategoryStore.testData
-        
+    }
         func editCategory(category: Category, id: Int){
             
             
@@ -53,4 +53,4 @@ final class CategoryViewModel: ObservableObject {
             }
         }
     }
-}
+
