@@ -22,6 +22,9 @@ final class CategoryViewModel: ObservableObject {
         store.categories.append(category)
     }
     
+    func clearUserCategories(){
+        store.categories = CategoryStore.testData
+      
     func editCategory(category: Category, id: Int){
 
         
