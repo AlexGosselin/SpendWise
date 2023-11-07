@@ -78,7 +78,7 @@ final class ExpenseViewModel: ObservableObject {
         store.expenses = store.expenses.map{ exp in
             var modifiedExpenses = exp
             
-            if exp.id == 12{
+            if exp.id == id{
                 modifiedExpenses.title = expense.title
                 modifiedExpenses.amount = expense.amount
                 modifiedExpenses.date = expense.date
