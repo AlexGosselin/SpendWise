@@ -25,7 +25,7 @@ struct ExpenseRow: View {
             
             VStack(alignment: .leading, spacing: 6) {
                 // MARK: Transaction Merchant
-                Text(expense.merchant)
+                Text(expense.title)
                     .font(.subheadline)
                     .bold()
                     .lineLimit(1)
@@ -50,7 +50,6 @@ struct ExpenseRow: View {
                 .foregroundColor(expense.type == TransactionType.credit.rawValue ? Color.text : .primary)
         }
         .padding([.top, .bottom], 8)
-        .background(Rectangle().fill(Color(UIColor.systemBackground)))
         .onTapGesture {
             isShowDetails.toggle()
         }

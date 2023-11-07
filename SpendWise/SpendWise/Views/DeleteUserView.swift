@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SettingsView: View {
+struct DeleteUserDataView: View {
     
     @Environment(CategoryViewModel.self) private var categoryViewModel: CategoryViewModel
     @EnvironmentObject var expenseViewModel: ExpenseViewModel
@@ -70,5 +70,5 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView()
+    DeleteUserDataView()
 }
