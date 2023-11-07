@@ -201,12 +201,12 @@ struct EditExpense: View {
                     
                     var valid = true
                     
-                    if(expense.title == "") {
+                    if(title == "") {
                         animateTitle.toggle()
                         valid = false
                     }
                     
-                    if expense.category == nil {
+                    if category == nil {
                         print("category is null")
                         animateCategory.toggle()
                         valid = false
@@ -227,7 +227,7 @@ struct EditExpense: View {
                         valid = false
                     }
                     
-                    if(expense.merchant == "") {
+                    if(merchant == "") {
                         animateMerchant.toggle()
                         valid = false
                     }
@@ -265,8 +265,8 @@ struct EditExpense: View {
                     
                     expenseViewModel.editExpense(expense: newExpense, id: expense.id)
                     
-                    print("Edir=t variable")
-                    print(expenseViewModel.store.expenses)
+//                    print("Edir=t variable")
+//                    print(expenseViewModel.store.expenses)
                     
                     dismiss()
                 }

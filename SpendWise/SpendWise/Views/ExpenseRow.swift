@@ -59,7 +59,7 @@ struct ExpenseRow: View {
                 .foregroundStyle(.black)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(.white)
-                .presentationDetents([ .fraction(0.6), .fraction(0.75)])
+                .presentationDetents([ .fraction(0.76)])
                 .presentationDragIndicator(.visible)
                 .padding()
         }).background(
