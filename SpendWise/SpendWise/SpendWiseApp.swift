@@ -15,6 +15,7 @@ struct SpendWiseApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(AppModel())
                 .environmentObject(expenseListVM)
                 .environment(categoryListVM)
         }

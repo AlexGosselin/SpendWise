@@ -12,7 +12,7 @@ struct TabBar: View {
     @State var selectedX: CGFloat = 0
     @State var x: [CGFloat] = [0, 0, 0, 0]
     
-
+    @EnvironmentObject var model: AppModel
     @AppStorage("selectedTab") var selectedTab: Tab = .home
     
     var body: some View {
@@ -44,6 +44,8 @@ struct TabBar: View {
             .cornerRadius(hasHomeIndicator ? 34 : 0)
             .frame(maxHeight: .infinity, alignment: .bottom)
             .ignoresSafeArea()
+            .offset(y: model.showTab ? 0 : 200)
+            .accessibility(hidden: !model.showTab)
         }
     }
     

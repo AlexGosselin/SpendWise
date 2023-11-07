@@ -10,7 +10,9 @@ import SwiftUI
 struct NavigationBar: View {
     var title = ""
     @State var showSheet = false
+    @State private var selected = 0
     @Binding var contentHasScrolled: Bool
+    @Binding var showFilter: Bool
     
     @EnvironmentObject var model: AppModel
     
@@ -33,11 +35,32 @@ struct NavigationBar: View {
                 .padding(.top, 24)
                 .opacity(contentHasScrolled ? 0.7 : 1)
             
-            HStack(spacing: 16) {
+            if showFilter {
+                HStack(spacing: 16) {
+                    Menu {
+                               Button("Sort by Ascending") {
+                                   // Action for Option 1
+                               }
+                               Button("Sort by Descending") {
+                                   // Action for Option 2
+                               }
+                           } label: {
+                               Image(systemName: "line.3.horizontal.decrease.circle")
+                                   .font(.system(size: 17, weight: .bold))
+                                   .frame(width: 36, height: 36)
+                                   .foregroundColor(.secondary)
+                                   .background(.ultraThinMaterial)
+                                   .cornerRadius(18)
+                           }
+                       }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+            .padding()
+            } else {
+                HStack(spacing: 16) {
                 Button {
                     showSheet.toggle()
                 } label: {
-                    Image(systemName: "magnifyingglass")
+                    Image(systemName: "line.3.horizontal.decrease.circle")
                         .font(.system(size: 17, weight: .bold))
                         .frame(width: 36, height: 36)
                         .foregroundColor(.secondary)
@@ -55,7 +78,10 @@ struct NavigationBar: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
             .padding()
+            }
         }
+        .offset(y: model.showNav ? 0 : -120)
+        .accessibility(hidden: !model.showNav)
         .offset(y: contentHasScrolled ? -16 : 0)
     }
     
@@ -84,7 +110,7 @@ struct NavigationBar: View {
 
 struct NavigationBar_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationBar(contentHasScrolled: .constant(false))
+        NavigationBar(contentHasScrolled: .constant(false), showFilter: .constant(false))
             .environmentObject(AppModel())
     }
 }

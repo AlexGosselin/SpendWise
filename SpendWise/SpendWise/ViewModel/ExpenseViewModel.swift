@@ -72,6 +72,14 @@ final class ExpenseViewModel: ObservableObject {
         transactions.append(expense)
     }
     
+    func groupExpenseByMonth() -> ExpenseGroup {
+        guard !store.expenses.isEmpty else { return [:] }
+        
+        let groupedTransactions = ExpenseGroup(grouping: store.expenses) { $0.month }
+        
+        return groupedTransactions
+    }
+    
     func editExpense(expense: Expense, id: Int){
 
         

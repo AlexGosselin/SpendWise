@@ -285,6 +285,7 @@ struct AddExpense: View {
                 }
                 .padding(.horizontal)
             }
+            .padding(.bottom, 70)
             
         }
         .toolbar {

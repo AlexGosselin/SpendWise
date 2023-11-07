@@ -25,7 +25,7 @@ struct ExpenseRow: View {
             
             VStack(alignment: .leading, spacing: 6) {
                 // MARK: Transaction Merchant
-                Text(expense.merchant)
+                Text(expense.title)
                     .font(.subheadline)
                     .bold()
                     .lineLimit(1)

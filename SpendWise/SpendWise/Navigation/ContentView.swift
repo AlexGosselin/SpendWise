@@ -20,7 +20,7 @@ struct ContentView: View {
                 case .home:
                     HomeView()
                 case .explore:
-                    HomeView()
+                    ExpenseView()
                 case .notifications:
                     HomeView()
                 case .settings:
@@ -41,5 +41,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(AppModel())
     }
 }

@@ -10,54 +10,65 @@ import SwiftUI
 struct SettingsView: View {
     @State var isPinned = false
     @State var isDeleted = false
+    @State var showBudgetting = false
+    @State var showStatusBar = true
     
+    @EnvironmentObject var model: AppModel
     @Environment(\.presentationMode) var presentationMode
+    @Namespace var namespace
     @AppStorage("isLogged") var isLogged = false
     @AppStorage("isLiteMode") var isLiteMode = true
     @State var address: Address = Address(id: 1, country: "Canada")
     
     var body: some View {
-        NavigationView {
-            List {
-                Section {
-                    profile
-                }
-                
-                Section {
-                    NavigationLink {} label: {
-                        Label("Settings", systemImage: "gear")
+        ZStack {
+            
+            NavigationView {
+                List {
+                    Section {
+                        profile
                     }
                     
-                    NavigationLink {} label: {
-                        Label("Billing", systemImage: "creditcard")
+                    Section {
+                        NavigationLink {} label: {
+                            Label("Settings", systemImage: "gear")
+                        }
+                        
+                        Label("Budgeting", systemImage: "creditcard")
+                            .onTapGesture {
+                                model.showBudgetting = true
+                            }
+                            .sheet(isPresented: $model.showBudgetting) {
+                                BudgettingView(namespace: namespace)
+                            }
+                        
+                        NavigationLink(destination: MenuView(), label: {
+                            Label("Help", systemImage: "questionmark.circle")
+                        })
+                    }
+                    .listRowSeparator(.automatic)
+                    
+                    Section {
+                        Toggle(isOn: $isLiteMode) {
+                            Label("Lite Mode", systemImage: isLiteMode ? "tortoise" : "hare")
+                        }
                     }
                     
-                    NavigationLink {} label: {
-                        Label("Help", systemImage: "questionmark.circle")
-                    }
+                    linksSection
+                    
+                    Button {} label: {
+                            Text("Delete user data")
+                                .frame(maxWidth: .infinity)
+                        }
+                        .tint(.red)
+                        .overlay(
+                            NavigationLink(destination: DeleteUserDataView(), label: { EmptyView()})
+                        )
+                    
                 }
-                .listRowSeparator(.automatic)
-                
-                Section {
-                    Toggle(isOn: $isLiteMode) {
-                        Label("Lite Mode", systemImage: isLiteMode ? "tortoise" : "hare")
-                    }
-                }
-                
-                linksSection
-                
-                Button {} label: {
-                    Text("Sign out")
-                        .frame(maxWidth: .infinity)
-                }
-                .tint(.red)
-                .onTapGesture {
-                    isLogged = false
-                    presentationMode.wrappedValue.dismiss()
-                }
+                .listStyle(.insetGrouped)
+                .navigationTitle("Settings")
             }
-            .listStyle(.insetGrouped)
-            .navigationTitle("Account")
         }
     }
     
@@ -126,10 +137,6 @@ struct SettingsView: View {
 struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
+            .environmentObject(AppModel())
     }
-}
-
-
-#Preview {
-    SettingsView()
 }

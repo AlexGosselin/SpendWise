@@ -10,74 +10,77 @@ import SwiftUICharts
 import SwiftUIFontIcon
 
 struct HomeView: View {
-    
-//    @State var expenseViewModel: ExpenseViewModel
-//    @State var categoryViewModel: CategoryViewModel
+    @State var contentHasScrolled = false
+    @State var showFilter = false
+    @EnvironmentObject var model: AppModel
     @EnvironmentObject var expenseListVM: ExpenseViewModel
 
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 24) {
-                    // MARK: Title
-                    Text("Overview")
-                        .font(.title2)
-                        .bold()
-                    
-                    // MARK: Chart
-                    let data = expenseListVM.accumulateTransactions()
-                    
-                    if !data.isEmpty {
-                        let totalExpenses = data.last?.1 ?? 0
+        ZStack {
+            Color("Background").ignoresSafeArea()
+            
+            content
+                .background(Image("Blob 1").offset(x: -180, y: 300))
+        }
+    }
+    
+    var content: some View {
+        ScrollView {
+            scrollDetection
+                    VStack(alignment: .leading, spacing: 24) {
                         
-                        CardView {
-                            VStack(alignment: .leading) {
-                                ChartLabel(totalExpenses.formatted(.currency(code: "CAD")), type: .title, format: "$%.02f")
-                                
-                                LineChart()
+                        // MARK: Chart
+                        let data = expenseListVM.accumulateTransactions()
+                        
+                        if !data.isEmpty {
+                            let totalExpenses = data.last?.1 ?? 0
+                            
+                            CardView {
+                                VStack(alignment: .leading) {
+                                    ChartLabel(totalExpenses.formatted(.currency(code: "CAD")), type: .title, format: "$%.02f")
+                                    
+                                    LineChart()
+                                }
+                                .background(Color.systemBackground)
                             }
-                            .background(Color.systemBackground)
+                            .data(data)
+                            .chartStyle(ChartStyle(backgroundColor: Color.systemBackground, foregroundColor: ColorGradient(Color.icon2.opacity(0.4), Color.icon)))
+                            .frame(height: 300)
                         }
-                        .data(data)
-                        .chartStyle(ChartStyle(backgroundColor: Color.systemBackground, foregroundColor: ColorGradient(Color.icon2.opacity(0.4), Color.icon)))
-                        .frame(height: 300)
+                        
+                        // MARK: Transaction List
+                        RecentTransactionList()
                     }
-                    
-                    // MARK: Transaction List
-                    RecentTransactionList()
+                    .padding()
+                    .padding(.top, 70)
+                    .frame(maxWidth: .infinity)
+//                    // MARK: Notification Icon
+//                    ToolbarItem {
+//                        NavigationLink(destination: MenuView()) {
+//                            FontIcon.text(.awesome5Solid(code: .plus), fontsize: 24, color: Color.icon)
+        }
+        .coordinateSpace(name: "scroll")
+        .overlay(NavigationBar(title: "Welcome", contentHasScrolled: $contentHasScrolled, showFilter: $showFilter))
+    }
+    
+    var scrollDetection: some View {
+        GeometryReader { proxy in
+            let offset = proxy.frame(in: .named("scroll")).minY
+            Color.clear.preference(key: ScrollPreferenceKey.self, value: offset)
+        }
+        .onPreferenceChange(ScrollPreferenceKey.self) { offset in
+            withAnimation(.easeInOut) {
+                if offset < 0 {
+                    contentHasScrolled = true
+                } else {
+                    contentHasScrolled = false
                 }
-                .padding()
-                .frame(maxWidth: .infinity)
-            }
-            .background(Color.background2)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem {
-                    NavigationLink(destination: SettingsView()) {
-                        Image(systemName: "gearshape.fill")
-                            .tint(Color.icon)
-                    }
-                }
-                
-                // MARK: Notification Icon
-                ToolbarItem {
-                    NavigationLink(destination: MenuView()) {
-                        FontIcon.text(.awesome5Solid(code: .plus), fontsize: 24, color: Color.icon)
-                    }
-                    
-                    // MARK: ADD this later
-                    //                ToolbarItem {
-                    //                    Image(systemName: "bell.badge")
-                    //                        .symbolRenderingMode(.palette)
-                    //                        .foregroundStyle(Color.icon2, .primary)
-                    //                }
-                    
-                }
-
             }
         }
     }
+    
+    
     
     
     struct HomeView_Previews: PreviewProvider {
@@ -93,6 +96,7 @@ struct HomeView: View {
                     .preferredColorScheme(.dark)
             }
             .environmentObject(expenseListVM)
+            .environmentObject(AppModel())
         }
     }
 }

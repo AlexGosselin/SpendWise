@@ -18,5 +18,8 @@ class AppModel: ObservableObject {
     // Modal
     @Published var showModal: Bool = false
     @Published var dismissModal: Bool = false
+    
+    // Settings
+    @Published var showBudgetting: Bool = false
 }
 
