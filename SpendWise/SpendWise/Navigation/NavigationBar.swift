@@ -52,6 +52,21 @@ struct NavigationBar: View {
                                    .background(.ultraThinMaterial)
                                    .cornerRadius(18)
                            }
+                    
+                    Button {
+                        showSheet.toggle()
+                    } label: {
+                        Image(systemName: "doc.badge.plus")
+                            .font(.system(size: 17, weight: .bold))
+                            .frame(width: 36, height: 36)
+                            .foregroundColor(.secondary)
+                            .background(.ultraThinMaterial)
+                            .cornerRadius(18)
+                    }
+                    .sheet(isPresented: $showSheet) {
+                        // MARK: Incase anyone wants to explore and do anything here
+                        MenuView()
+                    }
                        }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
             .padding()
