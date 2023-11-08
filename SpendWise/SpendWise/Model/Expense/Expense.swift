@@ -9,45 +9,52 @@ import Foundation
 import SwiftUIFontIcon
 
 struct Expense: Identifiable, Hashable {
-    var id: Int
-    var title: String
-    var amount: Double
-    var categoryId: Int
-    var category: String
-    var desc: String?
-    var date: String
-    var interval: String
-    let type: TransactionType.RawValue
-    var merchant: String
-    var instituition: String
-    var account: String
-    var isTransfer: Bool
-    var isExpense: Bool
+    var id: Int = Int.random(in: 0...Int.max)
+    var title: String = ""
+    var amount: Double = 0.0
+    var categoryId: Int = -1
+    var categoryName: String = ""
+    var category: Category?
+    var desc: String = ""
+    var dateString: String = ""
+    var date: Date = Date()
+//    var interval: String
+    var transactionType: TransactionType = TransactionType.credit
+    var type: TransactionType.RawValue = TransactionType.credit.rawValue
+    var merchant: String = ""
+    var instituition: String = ""
+    var account: String = ""
+    var isTransfer: Bool = false
+    var isExpense: Bool = false
     
-    var timer: Timer?
+//    var timer: Timer?
     
-    mutating func setTimer(timer: Timer) {
-        self.timer = timer
-    }
+//    mutating func setTimer(timer: Timer) {
+//        self.timer = timer
+//    }
+//    
+//    mutating func stopRepeating() {
+//        self.interval = "None"
+//        
+//        if let timer = timer {
+//            timer.invalidate()
+//        }
+//    }
     
-    mutating func stopRepeating() {
-        self.interval = "None"
-        
-        if let timer = timer {
-            timer.invalidate()
-        }
-    }
+//    var icon: FontAwesomeCode {
+//        if let category = Category.all.first(where: { $0.id == categoryId }) {
+//            return category.icon
+//        }
+//        
+//        return .question
+//    }
     
-    var icon: FontAwesomeCode {
-        if let category = Category.all.first(where: { $0.id == categoryId }) {
-            return category.icon
-        }
-        
-        return .question
+    mutating func updateDateString() {
+        dateString = date.formatted(date: .numeric, time: .omitted)
     }
     
     var dateParsed: Date {
-        date.dateParsed()
+        dateString.dateParsed()
     }
     
     var signedAmount: Double {

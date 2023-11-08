@@ -9,25 +9,27 @@ import SwiftUI
 
 struct MenuView: View {
     
-    @State var expenseViewModel: ExpenseViewModel
-    @State var categoryViewModel: CategoryViewModel
+//    @State var expenseViewModel: ExpenseViewModel
+//    @State var categoryViewModel: CategoryViewModel
     
     var body: some View {
         NavigationStack {
             List {
-                NavigationLink(destination: AddExpense(expenseViewModel: expenseViewModel, categoryViewModel: categoryViewModel)) {
+                NavigationLink(destination: AddExpense()) {
                     Text("Add Expense")
                 }
-                NavigationLink(destination: AddCategory(viewModel: categoryViewModel)) {
+                NavigationLink(destination: AddCategory()) {
                     Text("Add Category")
                 }
+                NavigationLink(destination: ListCategory()) {
+                    Text("Category List")
+                }
             }
-            .navigationTitle("Home")
+            .navigationTitle("Manage Expense")
         }
     }
 }
 
 #Preview {
-    MenuView(expenseViewModel: ExpenseViewModel(store: ExpenseStore.testExpenseStore),
-                categoryViewModel: CategoryViewModel(store: CategoryStore.testCategoryStore))
+    MenuView()
 }

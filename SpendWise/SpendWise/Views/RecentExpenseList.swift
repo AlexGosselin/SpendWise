@@ -14,7 +14,7 @@ struct RecentTransactionList: View {
         VStack {
             HStack {
                 // MARK: Header Title
-                Text("Recent Transactions")
+                Text("Recent Expense")
                     .bold()
                 
                 Spacer()
@@ -33,7 +33,7 @@ struct RecentTransactionList: View {
             .padding(.top)
             
             // MARK: Recent Transaction List
-            ForEach(Array(expenseListVM.transactions.prefix(5).enumerated()), id: \.offset) { index, expenses in
+            ForEach(Array(expenseListVM.store.expenses.enumerated().reversed()), id: \.offset) { index, expenses in
                     ExpenseRow(expense: expenses)
                 
                 Divider()
@@ -41,9 +41,8 @@ struct RecentTransactionList: View {
             }
         }
         .padding()
-        .background(Color.systemBackground)
+        .background(.ultraThinMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-        .shadow(color: Color.primary.opacity(0.2), radius: 10, x: 0, y: 5)
     }
 }
 

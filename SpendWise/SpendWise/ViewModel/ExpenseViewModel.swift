@@ -17,7 +17,7 @@ typealias ExpensePrefixSum = [(String, Double)]
 final class ExpenseViewModel: ObservableObject {
     @Published var transactions: [Expense] = []
     var store: ExpenseStore
-    static let repeatFrequencies = ["Never", "Daily", "Weekly", "Monthly", "Yearly"]
+//    static let repeatFrequencies = ["Never", "Daily", "Weekly", "Monthly", "Yearly"]
     
     // MARK: Alex this will be uncommented later
 //    @Published var expenses: [Expense] { return store.expenses }
@@ -28,47 +28,84 @@ final class ExpenseViewModel: ObservableObject {
     }
     
     func addExpense(expense: Expense) {
-        var newExpense = expense
-        var repeatingExpense = expense
-        var timer: Timer?
+//        var newExpense = expense
+//        var repeatingExpense = expense
+//        var timer: Timer?
+//        
+//        switch expense.interval {
+//        case "Daily":
+//            timer = Timer.scheduledTimer(withTimeInterval: 86400, repeats: true) { timer in
+//                repeatingExpense.date = Date().ISO8601Format()
+//                repeatingExpense.setTimer(timer: timer)
+//                self.store.expenses.append(repeatingExpense)
+//            }
+//            break
+//        case "Weekly":
+//            timer = Timer.scheduledTimer(withTimeInterval: 604800, repeats: true) { timer in
+//                repeatingExpense.date = Date().ISO8601Format()
+//                repeatingExpense.setTimer(timer: timer)
+//                self.store.expenses.append(repeatingExpense)
+//            }
+//            break
+//        case "Monthly":
+//            timer = Timer.scheduledTimer(withTimeInterval: 2628288, repeats: true) { timer in
+//                repeatingExpense.date = Date().ISO8601Format()
+//                repeatingExpense.setTimer(timer: timer)
+//                self.store.expenses.append(repeatingExpense)
+//            }
+//            break
+//        case "Yearly":
+//            timer = Timer.scheduledTimer(withTimeInterval: 31536000, repeats: true) { timer in
+//                repeatingExpense.date = Date().ISO8601Format()
+//                repeatingExpense.setTimer(timer: timer)
+//                self.store.expenses.append(repeatingExpense)
+//            }
+//            break
+//        default: break
+//            
+//        }
+//        
+//        if let timer = timer {
+//            newExpense.setTimer(timer: timer)
+//        }
+        store.expenses.append(expense)
+        transactions.append(expense)
+    }
+    
+    func groupExpenseByMonth() -> ExpenseGroup {
+        guard !store.expenses.isEmpty else { return [:] }
         
-        switch expense.interval {
-        case "Daily":
-            timer = Timer.scheduledTimer(withTimeInterval: 86400, repeats: true) { timer in
-                repeatingExpense.date = Date().ISO8601Format()
-                repeatingExpense.setTimer(timer: timer)
-                self.store.expenses.append(repeatingExpense)
-            }
-            break
-        case "Weekly":
-            timer = Timer.scheduledTimer(withTimeInterval: 604800, repeats: true) { timer in
-                repeatingExpense.date = Date().ISO8601Format()
-                repeatingExpense.setTimer(timer: timer)
-                self.store.expenses.append(repeatingExpense)
-            }
-            break
-        case "Monthly":
-            timer = Timer.scheduledTimer(withTimeInterval: 2628288, repeats: true) { timer in
-                repeatingExpense.date = Date().ISO8601Format()
-                repeatingExpense.setTimer(timer: timer)
-                self.store.expenses.append(repeatingExpense)
-            }
-            break
-        case "Yearly":
-            timer = Timer.scheduledTimer(withTimeInterval: 31536000, repeats: true) { timer in
-                repeatingExpense.date = Date().ISO8601Format()
-                repeatingExpense.setTimer(timer: timer)
-                self.store.expenses.append(repeatingExpense)
-            }
-            break
-        default: break
+        let groupedTransactions = ExpenseGroup(grouping: store.expenses) { $0.month }
+        
+        return groupedTransactions
+    }
+    
+    func editExpense(expense: Expense, id: Int){
+
+        
+        store.expenses = store.expenses.map{ exp in
+            var modifiedExpenses = exp
             
+            if exp.id == id{
+                modifiedExpenses.title = expense.title
+                modifiedExpenses.amount = expense.amount
+                modifiedExpenses.date = expense.date
+                modifiedExpenses.desc = expense.desc
+                modifiedExpenses.merchant = expense.merchant
+                modifiedExpenses.instituition = expense.instituition
+                modifiedExpenses.account = expense.account
+                modifiedExpenses.transactionType = expense.transactionType
+                modifiedExpenses.type =  expense.type
+                modifiedExpenses.isExpense =  expense.isExpense
+                modifiedExpenses.isTransfer =  expense.isTransfer
+                modifiedExpenses.dateString =  expense.dateString
+                modifiedExpenses.category =  expense.category
+                modifiedExpenses.categoryId = expense.categoryId
+                modifiedExpenses.categoryName = expense.categoryName
+            }
+            return modifiedExpenses
         }
         
-        if let timer = timer {
-            newExpense.setTimer(timer: timer)
-        }
-        store.expenses.append(newExpense)
     }
     
     func populateExpense() {
@@ -98,5 +135,10 @@ final class ExpenseViewModel: ObservableObject {
         }
         
         return cumulativeSum
+    }
+    
+    func clearExpenses() {
+        self.transactions = []
+        self.store.expenses = []
     }
 }
