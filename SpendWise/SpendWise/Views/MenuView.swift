@@ -25,7 +25,7 @@ struct MenuView: View {
                     Text("Category List")
                 }
             }
-            .navigationTitle("Home")
+            .navigationTitle("Manage Expense")
         }
     }
 }

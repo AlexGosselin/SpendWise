@@ -14,27 +14,29 @@ struct ContentView: View {
     @AppStorage("selectedTab") var selectedTab: Tab = .home
     
     var body: some View {
-        ZStack {
-            Group {
-                switch selectedTab {
-                case .home:
-                    HomeView()
-                case .explore:
-                    ExpenseView()
-                case .notifications:
-                    HomeView()
-                case .settings:
-                    SettingsView()
+        NavigationView {
+            ZStack {
+                Group {
+                    switch selectedTab {
+                    case .home:
+                        HomeView()
+                    case .explore:
+                        ExpenseView()
+                    case .notifications:
+                        HomeView()
+                    case .settings:
+                        SettingsView()
+                    }
                 }
+                .safeAreaInset(edge: .bottom) {
+                    VStack {}.frame(height: 44)
+                }
+                
+                TabBar()
             }
-            .safeAreaInset(edge: .bottom) {
-                VStack {}.frame(height: 44)
-            }
+            .dynamicTypeSize(.large ... .xxLarge)
             
-            TabBar()
         }
-        .dynamicTypeSize(.large ... .xxLarge)
-        
     }
 }
 
