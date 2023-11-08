@@ -16,6 +16,9 @@ struct BudgettingView: View {
     @State var appear = [false, false, false]
     @State var showStatusBar = true
     
+    @State var budget = 3000.00
+    @State var budgetString = ""
+    
     @EnvironmentObject var model: AppModel
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Environment(\.presentationMode) var presentationMode
@@ -118,14 +121,14 @@ struct BudgettingView: View {
                         .opacity(appear[0] ? 1 : 0)
                         .accessibilityElement(children: .combine)
                     
-                    Text("Current Budget: $300,000".uppercased())
+                    Text("Current Budget: $\(String(format: "%.2f", budget))".uppercased())
                         .font(.footnote).bold()
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(.primary.opacity(0.7))
                         .opacity(appear[1] ? 1 : 0)
                         .accessibilityElement(children: .combine)
                     
-                    Text("Good job, you have currently set a budget of $300,000, you can change this by inputing a new budget below.")
+                    Text("Good job, you have currently set a budget of $\(String(format: "%.2f", budget)), you can change this by inputing a new budget below.")
                         .font(.footnote)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(.primary.opacity(0.7))
@@ -133,7 +136,7 @@ struct BudgettingView: View {
                         .accessibilityElement(children: .combine)
                     
                     HStack {
-                        TextField("e.g. 2000", text: $expense.instituition)
+                        TextField("e.g. 2000", text: $budgetString)
                             .focused($institutionFocused)
                             .multilineTextAlignment(.center)
                     }
@@ -145,6 +148,9 @@ struct BudgettingView: View {
                         Spacer()
                         Button(action: {
                                 // Button action
+                            if let b = Double(budgetString) {
+                                budget = b
+                            }
                             }) {
                                 Text("Save")
                                     .foregroundColor(.black)  // Set text color to black
