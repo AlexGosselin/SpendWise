@@ -137,6 +137,28 @@ final class ExpenseViewModel: ObservableObject {
         return cumulativeSum
     }
     
+    func getMonthlyExpenses() -> Double {
+        
+        var sum = 0.0
+        let currentDate = Calendar.current.dateComponents([.day, .month, .year], from: Date())
+        
+        print(currentDate.month!)
+        
+        store.expenses.forEach({ e in
+            let expenseDate = Calendar.current.dateComponents([.day, .month, .year], from: e.date)
+            print(expenseDate.month!)
+
+            if(currentDate.month == expenseDate.month) {
+                if(e.isExpense) {
+                    sum += e.amount
+                }
+            }
+        })
+        
+        return sum
+        
+    }
+    
     func clearExpenses() {
         self.transactions = []
         self.store.expenses = []
