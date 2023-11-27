@@ -13,6 +13,9 @@ struct SettingsView: View {
     @State var showBudgetting = false
     @State var showStatusBar = true
     
+    @State private var isShowTaxCalculator: Bool = false
+    @State private var isNavigateTaxCalculatorResult: Bool = false
+    
     @EnvironmentObject var model: AppModel
     @Environment(\.presentationMode) var presentationMode
     @Namespace var namespace
@@ -48,6 +51,13 @@ struct SettingsView: View {
                     }
                     .listRowSeparator(.automatic)
                     
+                    Section{
+                        Label("Tax Calculator", systemImage: "percent")
+                            .onTapGesture {
+                                isShowTaxCalculator.toggle()
+                            }
+                    }
+                    
                     Section {
                         Toggle(isOn: $isLiteMode) {
                             Label("Lite Mode", systemImage: isLiteMode ? "tortoise" : "hare")
@@ -64,6 +74,17 @@ struct SettingsView: View {
                         .overlay(
                             NavigationLink(destination: DeleteUserDataView(), label: { EmptyView()})
                         )
+                    
+                        .sheet(isPresented: $isShowTaxCalculator, content: {
+                            TaxCalculatorSheet(isShowTaxCalculator: $isShowTaxCalculator, isNavigateTaxCalculatorResult: $isNavigateTaxCalculatorResult)
+                                .presentationDragIndicator(.visible)
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                .presentationDetents([ .fraction(0.5)])
+                                .padding()
+                        }).background(
+                            NavigationLink("", destination: TaxCalculatorResult(), isActive: $isNavigateTaxCalculatorResult)
+                        )
+                        
                     
                 }
                 .listStyle(.insetGrouped)
