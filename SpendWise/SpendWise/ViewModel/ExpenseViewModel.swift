@@ -141,9 +141,7 @@ final class ExpenseViewModel: ObservableObject {
         
         var sum = 0.0
         let currentDate = Calendar.current.dateComponents([.day, .month, .year], from: Date())
-        
-        print(currentDate.month!)
-        
+                
         store.expenses.forEach({ e in
             let expenseDate = Calendar.current.dateComponents([.day, .month, .year], from: e.date)
             print(expenseDate.month!)
@@ -156,7 +154,45 @@ final class ExpenseViewModel: ObservableObject {
         })
         
         return sum
+    }
+    
+    func getMonthlyDebits() -> Double {
         
+        var sum = 0.0
+        let currentDate = Calendar.current.dateComponents([.day, .month, .year], from: Date())
+                
+        store.expenses.forEach({ e in
+            let expenseDate = Calendar.current.dateComponents([.day, .month, .year], from: e.date)
+            print(expenseDate.month!)
+
+            if(currentDate.month == expenseDate.month) {
+                if(e.isTransfer) {
+                    sum += e.amount
+                }
+            }
+        })
+        
+        return sum
+    }
+    
+    func getExpenses(startDate: Date, endDate: Date) -> [Expense] {
+        var filteredExpenses: [Expense] = []
+        
+        if(startDate < endDate) {
+            return []
+        }
+        
+//        store.expenses.forEach({ e in
+//            if(e.date >= startDate && e.date <= endDate) {
+//                filteredExpenses.append(e)
+//            }
+//        })
+        
+        filteredExpenses = store.expenses.filter({ e in
+            e.date >= startDate && e.date <= endDate
+        })
+        
+        return filteredExpenses
     }
     
     func clearExpenses() {
