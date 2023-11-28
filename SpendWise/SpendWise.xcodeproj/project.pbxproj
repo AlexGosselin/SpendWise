@@ -22,6 +22,7 @@
 		467ABAC92AF83317009CDCC1 /* DeleteUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467ABAC82AF83317009CDCC1 /* DeleteUserView.swift */; };
 		46BAD52D2ADE064400AF0169 /* AddExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BAD52C2ADE064400AF0169 /* AddExpense.swift */; };
 		46BAD52F2ADE065500AF0169 /* AddCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BAD52E2ADE065500AF0169 /* AddCategory.swift */; };
+		46CA60CD2B168DBA00FE3CE3 /* ReportSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CA60CC2B168DBA00FE3CE3 /* ReportSummaryView.swift */; };
 		9436A4032AE6FC3900067DBD /* ExpenseDetailsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9436A4022AE6FC3900067DBD /* ExpenseDetailsSheet.swift */; };
 		9437B1C72AF415F6003ED68B /* EditExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9437B1C62AF415F6003ED68B /* EditExpense.swift */; };
 		9437B1C92AF56A8F003ED68B /* ListCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9437B1C82AF56A8F003ED68B /* ListCategory.swift */; };
@@ -70,6 +71,7 @@
 		467ABAC82AF83317009CDCC1 /* DeleteUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserView.swift; sourceTree = "<group>"; };
 		46BAD52C2ADE064400AF0169 /* AddExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpense.swift; sourceTree = "<group>"; };
 		46BAD52E2ADE065500AF0169 /* AddCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategory.swift; sourceTree = "<group>"; };
+		46CA60CC2B168DBA00FE3CE3 /* ReportSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportSummaryView.swift; sourceTree = "<group>"; };
 		9436A4022AE6FC3900067DBD /* ExpenseDetailsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseDetailsSheet.swift; sourceTree = "<group>"; };
 		9437B1C62AF415F6003ED68B /* EditExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExpense.swift; sourceTree = "<group>"; };
 		9437B1C82AF56A8F003ED68B /* ListCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCategory.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				BF091E542AFAC27C00F35139 /* BudgettingView.swift */,
 				4643A5F32B157AE300AEE50B /* CreateReportView.swift */,
 				4643A5F52B1681F900AEE50B /* ReportView.swift */,
+				46CA60CC2B168DBA00FE3CE3 /* ReportSummaryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				4643A5F62B1681F900AEE50B /* ReportView.swift in Sources */,
 				460F2C682AE462EE00D9778A /* CategoryViewModel.swift in Sources */,
 				BFFB01DD2AE87AB000C63C1C /* RecentExpenseList.swift in Sources */,
+				46CA60CD2B168DBA00FE3CE3 /* ReportSummaryView.swift in Sources */,
 				BF091E422AF871E400F35139 /* Animation.swift in Sources */,
 				BF091E4F2AFAB24600F35139 /* NavigationBar.swift in Sources */,
 				465E90502AC8F5C700D8FC00 /* ContentView.swift in Sources */,

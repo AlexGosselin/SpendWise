@@ -175,21 +175,19 @@ final class ExpenseViewModel: ObservableObject {
         return sum
     }
     
-    func getExpenses(startDate: Date, endDate: Date) -> [Expense] {
-        var filteredExpenses: [Expense] = []
+    func getExpenses(startDate: Date, endDate: Date) -> [Expense]? {
         
-        if(startDate < endDate) {
-            return []
+        if(startDate > endDate) {
+            return nil
         }
         
-//        store.expenses.forEach({ e in
-//            if(e.date >= startDate && e.date <= endDate) {
-//                filteredExpenses.append(e)
-//            }
-//        })
+        var filteredExpenses: [Expense] = []
+        let startDateComponents = Calendar.current.dateComponents([.day, .month, .year], from: startDate)
+        let endDateComponents = Calendar.current.dateComponents([.day, .month, .year], from: endDate)
         
         filteredExpenses = store.expenses.filter({ e in
-            e.date >= startDate && e.date <= endDate
+            let expenseDate = Calendar.current.dateComponents([.day, .month, .year], from: e.date)
+            return expenseDate >= startDateComponents && expenseDate <= endDateComponents
         })
         
         return filteredExpenses

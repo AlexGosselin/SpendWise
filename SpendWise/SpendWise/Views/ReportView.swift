@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct ReportView: View {
+    
+    @State var expenses: [Expense]
+    
     var body: some View {
+        ReportSummaryView()
         Text("Report View")
     }
 }
 
 #Preview {
-    ReportView()
+    ReportView(expenses: ExpenseStore.testData)
 }
