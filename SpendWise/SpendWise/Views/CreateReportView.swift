@@ -16,7 +16,9 @@ struct CreateReportView: View {
     @State private var showInvalidDatesAlert = false
     @State private var showNoResultsAlert = false
     @State private var showReport = false
-    @State private var filteredExpenses: [Expense]?
+    @State private var filteredExpenses: [Expense] = []
+    @State private var outgoing = 0.0
+    @State private var incoming = 0.0
     
     var body: some View {
         NavigationStack {
@@ -26,11 +28,21 @@ struct CreateReportView: View {
                 .padding(.bottom)
             
             Button("Generate Report") {
+                outgoing = 0.0
+                incoming = 0.0
                 
-                filteredExpenses = expenseViewModel.getExpenses(startDate: startDate, endDate: endDate)
-                
-                if let filterExpenses = filteredExpenses {
-                    if(filterExpenses.count > 0) {
+                if let expenses = expenseViewModel.getExpenses(startDate: startDate, endDate: endDate) {
+                    filteredExpenses = expenses
+                    print("count = \(filteredExpenses.count)")
+                    if(filteredExpenses.count > 0) {
+                        expenses.forEach({ ex in
+                            if(ex.isExpense) {
+                                outgoing += ex.amount
+                            } else {
+                                incoming += ex.amount
+                            }
+                        })
+                        
                         showReport.toggle()
                     } else {
                         showNoResultsAlert.toggle()
@@ -39,11 +51,12 @@ struct CreateReportView: View {
                     showInvalidDatesAlert.toggle()
                 }
                 
+                
             }
             .padding()
         }
         .padding()
-        .navigationTitle("Generate Report")
+        .navigationTitle("Create Report")
         .alert("Start date cannot be after end date.", isPresented: $showInvalidDatesAlert) {
             Button("OK", role: .cancel) {
                 showInvalidDatesAlert.toggle()
@@ -55,7 +68,7 @@ struct CreateReportView: View {
             }
         }
         .sheet(isPresented: $showReport, content: {
-            ReportView(expenses: filteredExpenses!)
+            ReportView(filteredExpenses: $filteredExpenses, incoming: $incoming, outgoing: $outgoing)
         })
     }
         

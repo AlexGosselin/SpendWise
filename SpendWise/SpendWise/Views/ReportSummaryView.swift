@@ -8,11 +8,46 @@
 import SwiftUI
 
 struct ReportSummaryView: View {
+    
+    @Binding var outgoing: Double
+    @Binding var incoming: Double
+    
     var body: some View {
-        Text("Summary goes here")
+        HStack {
+            VStack {
+                Text("Incoming")
+                    .font(.headline)
+                Text(String(incoming.formatted(.currency(code: "USD")) ))
+                    .font(.title2)
+                    .foregroundStyle(.green)
+
+            }
+            
+            Spacer()
+            
+            VStack {
+                Text("Outgoing")
+                    .font(.headline)
+                Text(String(((outgoing ) * -1).formatted(.currency(code: "USD")) ))
+                    .font(.title2)
+                    .foregroundStyle(.red)
+
+            }
+            
+            Spacer()
+
+            VStack {
+                Text("Net")
+                    .font(.headline)
+                Text(String((incoming - outgoing).formatted(.currency(code: "USD")) ))
+                    .font(.title2)
+
+            }
+        }
+        .padding()
     }
 }
 
-#Preview {
-    ReportSummaryView()
-}
+//#Preview {
+//    ReportSummaryView()
+//}
