@@ -24,7 +24,7 @@ struct ListCategory: View {
                             
                             if let parentId = subcat.mainCategoryId {
                                 if(parentId == cat.id) {
-                                    ExtractedView(subcat: subcat)
+                                    TaxResultRow(subcat: subcat)
                                 }
                             }
                         }
@@ -56,7 +56,7 @@ struct CatgoryRow: View {
     }
 }
 
-struct ExtractedView: View {
+struct TaxResultRow: View {
     var subcat: Category
     
     var body: some View {
