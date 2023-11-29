@@ -27,6 +27,10 @@
 		9437B1C72AF415F6003ED68B /* EditExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9437B1C62AF415F6003ED68B /* EditExpense.swift */; };
 		9437B1C92AF56A8F003ED68B /* ListCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9437B1C82AF56A8F003ED68B /* ListCategory.swift */; };
 		9437B1CB2AF583C6003ED68B /* EditCategorySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9437B1CA2AF583C6003ED68B /* EditCategorySheet.swift */; };
+		94607D0A2B0BF189001DE99D /* TaxCalculatorSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94607D092B0BF189001DE99D /* TaxCalculatorSheet.swift */; };
+		94607D0E2B0D1A26001DE99D /* TaxCalculatorResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94607D0D2B0D1A26001DE99D /* TaxCalculatorResult.swift */; };
+		94607D122B0D27C0001DE99D /* TaxCalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94607D112B0D27C0001DE99D /* TaxCalculatorViewModel.swift */; };
+		94607D162B0D484D001DE99D /* Province.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94607D152B0D484D001DE99D /* Province.swift */; };
 		BF091E3B2AF864EE00F35139 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF091E3A2AF864EE00F35139 /* TabBar.swift */; };
 		BF091E3D2AF8655600F35139 /* TabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF091E3C2AF8655600F35139 /* TabModel.swift */; };
 		BF091E3F2AF865F900F35139 /* PreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF091E3E2AF865F900F35139 /* PreferenceKey.swift */; };
@@ -76,6 +80,10 @@
 		9437B1C62AF415F6003ED68B /* EditExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExpense.swift; sourceTree = "<group>"; };
 		9437B1C82AF56A8F003ED68B /* ListCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCategory.swift; sourceTree = "<group>"; };
 		9437B1CA2AF583C6003ED68B /* EditCategorySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategorySheet.swift; sourceTree = "<group>"; };
+		94607D092B0BF189001DE99D /* TaxCalculatorSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxCalculatorSheet.swift; sourceTree = "<group>"; };
+		94607D0D2B0D1A26001DE99D /* TaxCalculatorResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxCalculatorResult.swift; sourceTree = "<group>"; };
+		94607D112B0D27C0001DE99D /* TaxCalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxCalculatorViewModel.swift; sourceTree = "<group>"; };
+		94607D152B0D484D001DE99D /* Province.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Province.swift; sourceTree = "<group>"; };
 		BF091E3A2AF864EE00F35139 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		BF091E3C2AF8655600F35139 /* TabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabModel.swift; sourceTree = "<group>"; };
 		BF091E3E2AF865F900F35139 /* PreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceKey.swift; sourceTree = "<group>"; };
@@ -119,6 +127,7 @@
 			children = (
 				460F2C612AE45F6800D9778A /* ExpenseViewModel.swift */,
 				460F2C672AE462EE00D9778A /* CategoryViewModel.swift */,
+				94607D112B0D27C0001DE99D /* TaxCalculatorViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -190,6 +199,7 @@
 				BF091E3E2AF865F900F35139 /* PreferenceKey.swift */,
 				BF091E4C2AFAA04A00F35139 /* AddressModel.swift */,
 				BF091E502AFAB2FC00F35139 /* AppModel.swift */,
+				94607D152B0D484D001DE99D /* Province.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -212,6 +222,8 @@
 				4643A5F32B157AE300AEE50B /* CreateReportView.swift */,
 				4643A5F52B1681F900AEE50B /* ReportView.swift */,
 				46CA60CC2B168DBA00FE3CE3 /* ReportSummaryView.swift */,
+				94607D092B0BF189001DE99D /* TaxCalculatorSheet.swift */,
+				94607D0D2B0D1A26001DE99D /* TaxCalculatorResult.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -334,6 +346,7 @@
 				460F2C602AE45E2B00D9778A /* CategoryStore.swift in Sources */,
 				46BAD52D2ADE064400AF0169 /* AddExpense.swift in Sources */,
 				4643A5F62B1681F900AEE50B /* ReportView.swift in Sources */,
+				94607D0E2B0D1A26001DE99D /* TaxCalculatorResult.swift in Sources */,
 				460F2C682AE462EE00D9778A /* CategoryViewModel.swift in Sources */,
 				BFFB01DD2AE87AB000C63C1C /* RecentExpenseList.swift in Sources */,
 				46CA60CD2B168DBA00FE3CE3 /* ReportSummaryView.swift in Sources */,
@@ -356,6 +369,7 @@
 				BF091E512AFAB2FC00F35139 /* AppModel.swift in Sources */,
 				BF091E532AFAB48A00F35139 /* AnimatableFont.swift in Sources */,
 				BF091E3D2AF8655600F35139 /* TabModel.swift in Sources */,
+				94607D0A2B0BF189001DE99D /* TaxCalculatorSheet.swift in Sources */,
 				BF091E552AFAC27C00F35139 /* BudgettingView.swift in Sources */,
 				9437B1C72AF415F6003ED68B /* EditExpense.swift in Sources */,
 				9436A4032AE6FC3900067DBD /* ExpenseDetailsSheet.swift in Sources */,
@@ -363,12 +377,14 @@
 				460F2C5C2AE45BC400D9778A /* Expense.swift in Sources */,
 				4643A5F42B157AE300AEE50B /* CreateReportView.swift in Sources */,
 				9437B1C92AF56A8F003ED68B /* ListCategory.swift in Sources */,
+				94607D122B0D27C0001DE99D /* TaxCalculatorViewModel.swift in Sources */,
 				BF091E572AFAD36A00F35139 /* Modifiers.swift in Sources */,
 				9437B1CB2AF583C6003ED68B /* EditCategorySheet.swift in Sources */,
 				460F2C5E2AE45BD000D9778A /* Category.swift in Sources */,
 				460F2C642AE4600700D9778A /* ExpenseStore.swift in Sources */,
 				BF091E452AF872DB00F35139 /* Home.swift in Sources */,
 				BF091E3B2AF864EE00F35139 /* TabBar.swift in Sources */,
+				94607D162B0D484D001DE99D /* Province.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
