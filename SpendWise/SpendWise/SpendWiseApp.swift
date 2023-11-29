@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct SpendWiseApp: App {
     @StateObject var expenseListVM = ExpenseViewModel(store: ExpenseStore.testExpenseStore)
+    @StateObject private var taxCalculatorModel = TaxCalculatorViewModel()
     @State private var categoryListVM = CategoryViewModel(store: CategoryStore())
 
     var body: some Scene {
@@ -18,6 +19,7 @@ struct SpendWiseApp: App {
                 .environmentObject(AppModel())
                 .environmentObject(expenseListVM)
                 .environment(categoryListVM)
+                .environmentObject(taxCalculatorModel)
         }
     }
 }
