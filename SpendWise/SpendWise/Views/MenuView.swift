@@ -24,6 +24,9 @@ struct MenuView: View {
                 NavigationLink(destination: ListCategory()) {
                     Text("Category List")
                 }
+                NavigationLink(destination: CreateReportView()) {
+                    Text("Create Report")
+                }
             }
             .navigationTitle("Manage Expense")
         }

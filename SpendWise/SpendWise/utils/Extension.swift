@@ -38,3 +38,27 @@ extension Double {
         return (self * 100).rounded() / 100
     }
 }
+
+extension DateComponents : Comparable {
+    public static func < (lhs: DateComponents, rhs: DateComponents) -> Bool {
+        let cal = Calendar.current
+        return cal.date(from: lhs)! < cal.date(from: rhs)!
+    }
+    
+    public static func > (lhs: DateComponents, rhs: DateComponents) -> Bool {
+        let cal = Calendar.current
+        return cal.date(from: lhs)! > cal.date(from: rhs)!
+    }
+    
+    public static func <= (lhs: DateComponents, rhs: DateComponents) -> Bool {
+        let cal = Calendar.current
+        return cal.date(from: lhs)! <= cal.date(from: rhs)!
+    }
+    
+    public static func >= (lhs: DateComponents, rhs: DateComponents) -> Bool {
+        let cal = Calendar.current
+        return cal.date(from: lhs)! >= cal.date(from: rhs)!
+    }
+    
+    
+}

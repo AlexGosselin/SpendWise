@@ -137,6 +137,62 @@ final class ExpenseViewModel: ObservableObject {
         return cumulativeSum
     }
     
+    func getMonthlyExpenses() -> Double {
+        
+        var sum = 0.0
+        let currentDate = Calendar.current.dateComponents([.day, .month, .year], from: Date())
+                
+        store.expenses.forEach({ e in
+            let expenseDate = Calendar.current.dateComponents([.day, .month, .year], from: e.date)
+            print(expenseDate.month!)
+
+            if(currentDate.month == expenseDate.month) {
+                if(e.isExpense) {
+                    sum += e.amount
+                }
+            }
+        })
+        
+        return sum
+    }
+    
+    func getMonthlyDebits() -> Double {
+        
+        var sum = 0.0
+        let currentDate = Calendar.current.dateComponents([.day, .month, .year], from: Date())
+                
+        store.expenses.forEach({ e in
+            let expenseDate = Calendar.current.dateComponents([.day, .month, .year], from: e.date)
+            print(expenseDate.month!)
+
+            if(currentDate.month == expenseDate.month) {
+                if(e.isTransfer) {
+                    sum += e.amount
+                }
+            }
+        })
+        
+        return sum
+    }
+    
+    func getExpenses(startDate: Date, endDate: Date) -> [Expense]? {
+        
+        if(startDate > endDate) {
+            return nil
+        }
+        
+        var filteredExpenses: [Expense] = []
+        let startDateComponents = Calendar.current.dateComponents([.day, .month, .year], from: startDate)
+        let endDateComponents = Calendar.current.dateComponents([.day, .month, .year], from: endDate)
+        
+        filteredExpenses = store.expenses.filter({ e in
+            let expenseDate = Calendar.current.dateComponents([.day, .month, .year], from: e.date)
+            return expenseDate >= startDateComponents && expenseDate <= endDateComponents
+        })
+        
+        return filteredExpenses
+    }
+    
     func clearExpenses() {
         self.transactions = []
         self.store.expenses = []

@@ -34,7 +34,8 @@ struct HomeView: View {
                         let data = expenseListVM.accumulateTransactions()
                         
                         if !data.isEmpty {
-                            let totalExpenses = data.last?.1 ?? 0
+//                            let totalExpenses = data.last?.1 ?? 0
+                            let totalExpenses = expenseListVM.getMonthlyExpenses()
                             
                             CardView {
                                 VStack(alignment: .leading) {
