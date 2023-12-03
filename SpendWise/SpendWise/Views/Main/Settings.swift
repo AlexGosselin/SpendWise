@@ -21,7 +21,8 @@ struct SettingsView: View {
     @Namespace var namespace
     @AppStorage("isLogged") var isLogged = false
     @AppStorage("isLiteMode") var isLiteMode = true
-    @State var address: Address = Address(id: 1, country: "Canada")
+//    @State var address: Address = Address(id: 1, country: "Canada")
+    @EnvironmentObject var userModel: UserViewModel
     
     var body: some View {
         ZStack {
@@ -33,10 +34,11 @@ struct SettingsView: View {
                     }
                     
                     Section {
-                        NavigationLink {} label: {
+                
+                        NavigationLink(destination: AppSettingsView(), label: {
                             Label("Settings", systemImage: "gear")
-                        }
-                        
+                        })
+
                         Label("Budgeting", systemImage: "creditcard")
                             .onTapGesture {
                                 model.showBudgetting = true
@@ -145,9 +147,9 @@ struct SettingsView: View {
                 .background(Circle().fill(.ultraThinMaterial))
                 .background(AnimatedBlobView().frame(width: 400, height: 414).offset(x: 200, y: 0).scaleEffect(0.5))
                 .background(HexagonUIView().offset(x: -50, y: -100))
-            Text("Femi Oyebayo")
+            Text(userModel.user.name)
                 .font(.title.weight(.semibold))
-            Text(address.country)
+            Text(userModel.user.address.country)
                 .foregroundColor(.secondary)
         }
         .frame(maxWidth: .infinity)
@@ -159,5 +161,6 @@ struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
             .environmentObject(AppModel())
+            .environmentObject(UserViewModel())
     }
 }

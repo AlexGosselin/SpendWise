@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Address: Identifiable, Decodable {
+struct Address: Identifiable, Decodable, Hashable {
     var id: Int
     var country: String
 }

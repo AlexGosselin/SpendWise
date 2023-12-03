@@ -27,6 +27,11 @@
 		9437B1C72AF415F6003ED68B /* EditExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9437B1C62AF415F6003ED68B /* EditExpense.swift */; };
 		9437B1C92AF56A8F003ED68B /* ListCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9437B1C82AF56A8F003ED68B /* ListCategory.swift */; };
 		9437B1CB2AF583C6003ED68B /* EditCategorySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9437B1CA2AF583C6003ED68B /* EditCategorySheet.swift */; };
+		94417C092B1C96F900161022 /* AppSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94417C082B1C96F900161022 /* AppSettingsView.swift */; };
+		94417C0C2B1C996C00161022 /* AddressStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94417C0B2B1C996C00161022 /* AddressStore.swift */; };
+		94417C0E2B1C9DCC00161022 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94417C0D2B1C9DCC00161022 /* UserViewModel.swift */; };
+		94417C102B1C9E3E00161022 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94417C0F2B1C9E3E00161022 /* User.swift */; };
+		94417C122B1CA28000161022 /* EditUserSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94417C112B1CA28000161022 /* EditUserSheet.swift */; };
 		94607D0A2B0BF189001DE99D /* TaxCalculatorSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94607D092B0BF189001DE99D /* TaxCalculatorSheet.swift */; };
 		94607D0E2B0D1A26001DE99D /* TaxCalculatorResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94607D0D2B0D1A26001DE99D /* TaxCalculatorResult.swift */; };
 		94607D122B0D27C0001DE99D /* TaxCalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94607D112B0D27C0001DE99D /* TaxCalculatorViewModel.swift */; };
@@ -80,6 +85,11 @@
 		9437B1C62AF415F6003ED68B /* EditExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExpense.swift; sourceTree = "<group>"; };
 		9437B1C82AF56A8F003ED68B /* ListCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCategory.swift; sourceTree = "<group>"; };
 		9437B1CA2AF583C6003ED68B /* EditCategorySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategorySheet.swift; sourceTree = "<group>"; };
+		94417C082B1C96F900161022 /* AppSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsView.swift; sourceTree = "<group>"; };
+		94417C0B2B1C996C00161022 /* AddressStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressStore.swift; sourceTree = "<group>"; };
+		94417C0D2B1C9DCC00161022 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		94417C0F2B1C9E3E00161022 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		94417C112B1CA28000161022 /* EditUserSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserSheet.swift; sourceTree = "<group>"; };
 		94607D092B0BF189001DE99D /* TaxCalculatorSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxCalculatorSheet.swift; sourceTree = "<group>"; };
 		94607D0D2B0D1A26001DE99D /* TaxCalculatorResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxCalculatorResult.swift; sourceTree = "<group>"; };
 		94607D112B0D27C0001DE99D /* TaxCalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxCalculatorViewModel.swift; sourceTree = "<group>"; };
@@ -128,6 +138,7 @@
 				460F2C612AE45F6800D9778A /* ExpenseViewModel.swift */,
 				460F2C672AE462EE00D9778A /* CategoryViewModel.swift */,
 				94607D112B0D27C0001DE99D /* TaxCalculatorViewModel.swift */,
+				94417C0D2B1C9DCC00161022 /* UserViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -193,13 +204,14 @@
 		46BAD52A2ADE060600AF0169 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				94417C0A2B1C995100161022 /* Address */,
 				460F2C652AE4602400D9778A /* Expense */,
 				460F2C662AE4603000D9778A /* Category */,
 				BF091E3C2AF8655600F35139 /* TabModel.swift */,
 				BF091E3E2AF865F900F35139 /* PreferenceKey.swift */,
-				BF091E4C2AFAA04A00F35139 /* AddressModel.swift */,
 				BF091E502AFAB2FC00F35139 /* AppModel.swift */,
 				94607D152B0D484D001DE99D /* Province.swift */,
+				94417C0F2B1C9E3E00161022 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -224,8 +236,19 @@
 				46CA60CC2B168DBA00FE3CE3 /* ReportSummaryView.swift */,
 				94607D092B0BF189001DE99D /* TaxCalculatorSheet.swift */,
 				94607D0D2B0D1A26001DE99D /* TaxCalculatorResult.swift */,
+				94417C082B1C96F900161022 /* AppSettingsView.swift */,
+				94417C112B1CA28000161022 /* EditUserSheet.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		94417C0A2B1C995100161022 /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				BF091E4C2AFAA04A00F35139 /* AddressModel.swift */,
+				94417C0B2B1C996C00161022 /* AddressStore.swift */,
+			);
+			path = Address;
 			sourceTree = "<group>";
 		};
 		BF091E392AF8646F00F35139 /* Navigation */ = {
@@ -359,10 +382,13 @@
 				BF091E492AFA9D7500F35139 /* AnimatedBlobUiView.swift in Sources */,
 				465E904E2AC8F5C700D8FC00 /* SpendWiseApp.swift in Sources */,
 				BF091E472AFA9C2500F35139 /* Settings.swift in Sources */,
+				94417C092B1C96F900161022 /* AppSettingsView.swift in Sources */,
 				46BAD52F2ADE065500AF0169 /* AddCategory.swift in Sources */,
 				BF091E592AFAECA500F35139 /* ExpenseTab.swift in Sources */,
 				BF091E4D2AFAA04A00F35139 /* AddressModel.swift in Sources */,
+				94417C0C2B1C996C00161022 /* AddressStore.swift in Sources */,
 				BFFB01CA2AE864A900C63C1C /* ExpenseRow.swift in Sources */,
+				94417C102B1C9E3E00161022 /* User.swift in Sources */,
 				BFFB01DF2AE8A49C00C63C1C /* MenuView.swift in Sources */,
 				460F2C622AE45F6800D9778A /* ExpenseViewModel.swift in Sources */,
 				BF091E3F2AF865F900F35139 /* PreferenceKey.swift in Sources */,
@@ -378,7 +404,9 @@
 				4643A5F42B157AE300AEE50B /* CreateReportView.swift in Sources */,
 				9437B1C92AF56A8F003ED68B /* ListCategory.swift in Sources */,
 				94607D122B0D27C0001DE99D /* TaxCalculatorViewModel.swift in Sources */,
+				94417C122B1CA28000161022 /* EditUserSheet.swift in Sources */,
 				BF091E572AFAD36A00F35139 /* Modifiers.swift in Sources */,
+				94417C0E2B1C9DCC00161022 /* UserViewModel.swift in Sources */,
 				9437B1CB2AF583C6003ED68B /* EditCategorySheet.swift in Sources */,
 				460F2C5E2AE45BD000D9778A /* Category.swift in Sources */,
 				460F2C642AE4600700D9778A /* ExpenseStore.swift in Sources */,
