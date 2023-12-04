@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftUIFontIcon
 
 struct ExpenseDetailsSheet: View {
+    @EnvironmentObject var themeManager: ThemeManagers
+    
    @Binding var isShowDetails: Bool
     @Binding var isNavigateToEdit: Bool
     let expenses: Expense
@@ -25,7 +27,7 @@ struct ExpenseDetailsSheet: View {
                         }, label: {
                             Image(systemName: "pencil")
                                                 .font(.system(size: 30))
-                                                .foregroundColor(Color.icon)
+                                                .foregroundColor(themeManager.selectedtheme.primaryColor)
                         })
                         
                     }

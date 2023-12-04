@@ -299,7 +299,7 @@ struct AddCategory: View {
             }
 //            .padding()
             
-            Button("Save") {
+            PlainButton(buttonName: "Save", action: {
                 let rand = Int.random(in: 0...Int.max)
 //                var parentId = 0
                 
@@ -314,10 +314,7 @@ struct AddCategory: View {
                 } else {
                     animateName.toggle()
                 }
-
-                
-
-            }
+            })
             
             Spacer()
         }
@@ -325,9 +322,9 @@ struct AddCategory: View {
         .toolbar {
             ToolbarItemGroup(placement: .keyboard) {
                 Spacer()
-                Button("Done") {
+                PlainButton(buttonName: "Done", action: {
                     isFocused = false
-                }
+                })
             }
         }
         .navigationTitle("Create Category")

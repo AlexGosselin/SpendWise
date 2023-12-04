@@ -9,16 +9,21 @@ import SwiftUI
 
 struct AppSettingsView: View {
     @EnvironmentObject var userModel: UserViewModel
+    @EnvironmentObject var themeManager: ThemeManagers
     
     @State private var isShowEditUserSheet: Bool = false
     var body: some View {
         List {
-            Label("Change Theme", systemImage: "paintpalette.fill")
+            NavigationLink(destination: EditThemeView(), label: {
+                Label("Change Theme", systemImage: "paintpalette.fill")
+                    .foregroundColor(themeManager.selectedtheme.primaryColor)
+            })
             
             Label("Profile", systemImage: "person.circle.fill")
                 .onTapGesture {
                     isShowEditUserSheet.toggle()
                 }
+                .foregroundColor(themeManager.selectedtheme.primaryColor)
             
             
         }

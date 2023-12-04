@@ -250,8 +250,8 @@ struct EditCategorySheet: View {
         
         Spacer()
         
-        Button("Done"){
-
+        PlainButton(buttonName: "Done", action: {
+            
             let rand = Int.random(in: 0...Int.max)
             
             var newCategory: Category
@@ -266,7 +266,7 @@ struct EditCategorySheet: View {
             categoryViewModel.editCategory(category: newCategory, id: category.id)
             
             dismiss()
-        }
+        })
         .onAppear(perform: {
             getCat()
         })

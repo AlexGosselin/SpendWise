@@ -211,9 +211,8 @@ struct AddExpense: View {
                             .frame(minHeight: 100)
                     }
                     .padding()
-                    
-                    Button("Save") {
-                        
+                
+                    PlainButton(buttonName: "Save", action: {
                         var valid = true
                         
                         if(expense.title == "") {
@@ -269,9 +268,9 @@ struct AddExpense: View {
                         }
                         expense.updateDateString()
                         
-
-//                        let newExpense = Expense(id: 15, title: title, amount: doubleAmount, categoryId: 401, category: category!.name, desc: description, date: date.ISO8601Format(), type: "debit", merchant: "Apple", instituition: "Scotia Bank", account: "Savings Account", isTransfer: true, isExpense: true)
-//                        
+                        
+                        //                        let newExpense = Expense(id: 15, title: title, amount: doubleAmount, categoryId: 401, category: category!.name, desc: description, date: date.ISO8601Format(), type: "debit", merchant: "Apple", instituition: "Scotia Bank", account: "Savings Account", isTransfer: true, isExpense: true)
+                        //
                         expenseViewModel.addExpense(expense: expense)
                         print(expenseViewModel.store.expenses)
                         print("-----------------------")
@@ -279,7 +278,7 @@ struct AddExpense: View {
                         print("-----------------------")
                         print(expense)
                         dismiss()
-                    }
+                    })
                     
 //                    Spacer()
                 }
@@ -291,14 +290,14 @@ struct AddExpense: View {
         .toolbar {
             ToolbarItemGroup(placement: .keyboard) {
                 Spacer()
-                Button("Done") {
+                PlainButton(buttonName: "Done", action: {
                     amountFocused = false
                     titleFocused = false
                     descFocused = false
                     merchantFocused = false
                     institutionFocused = false
                     accountFocused = false
-                }
+                })
             }
         }
         .navigationTitle(pageTitle)

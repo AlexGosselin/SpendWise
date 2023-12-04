@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RecentTransactionList: View {
     @EnvironmentObject var expenseListVM: ExpenseViewModel
+    @EnvironmentObject var themeManager: ThemeManagers
     
     var body: some View {
         VStack {
@@ -27,7 +28,7 @@ struct RecentTransactionList: View {
                         Text("See All")
                         Image(systemName: "chevron.right")
                     }
-                    .foregroundColor(Color.text)
+                    .foregroundColor(themeManager.selectedtheme.primaryColor)
                 }
             }
             .padding(.top)

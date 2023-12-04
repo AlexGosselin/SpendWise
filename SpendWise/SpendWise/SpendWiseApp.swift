@@ -12,6 +12,7 @@ struct SpendWiseApp: App {
     @StateObject var expenseListVM = ExpenseViewModel(store: ExpenseStore.testExpenseStore)
     @StateObject private var taxCalculatorModel = TaxCalculatorViewModel()
     @StateObject private var userModel = UserViewModel()
+//    @StateObject private var ThemeManagers = ThemeManagers()
     @State private var categoryListVM = CategoryViewModel(store: CategoryStore())
 
     var body: some Scene {
@@ -22,6 +23,7 @@ struct SpendWiseApp: App {
                 .environment(categoryListVM)
                 .environmentObject(taxCalculatorModel)
                 .environmentObject(userModel)
+                .environmentObject(ThemeManagers())
         }
     }
 }

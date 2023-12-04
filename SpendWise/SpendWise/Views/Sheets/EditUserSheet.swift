@@ -10,6 +10,7 @@ import SwiftUI
 struct EditUserSheet: View {
     @Environment(\.dismiss) var dismiss
     
+    @EnvironmentObject var themeManager: ThemeManagers
     @EnvironmentObject var userModel: UserViewModel
     var user: User
     let addressList: [Address] = AddressStore.addressStoreData.address
@@ -61,7 +62,7 @@ struct EditUserSheet: View {
         
         Spacer()
         
-        Button("Save"){
+        FullButton(buttonName: "Save", action: {
             var valid = true
             
             if(name == "") {
@@ -80,12 +81,8 @@ struct EditUserSheet: View {
             
             dismiss()
             dismiss()
-        }
-        .frame(maxWidth: .infinity)
-        .padding()
-        .background(Color.blue)
-        .foregroundColor(.white)
-        .cornerRadius(10)
+        })
+        
         Spacer()
     }
 }

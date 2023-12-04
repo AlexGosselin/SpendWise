@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftUIFontIcon
 
 struct ExpenseRow: View {
+    @EnvironmentObject var themeManager: ThemeManagers
+    
     var expense: Expense
     @State private var isShowDetails: Bool = false
     @State private var isNavigateToEdit: Bool = false
@@ -17,10 +19,10 @@ struct ExpenseRow: View {
         HStack(spacing: 20) {
             // MARK: Transaction Category Icon
             RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .fill(Color.icon.opacity(0.3))
+                .fill(themeManager.selectedtheme.primaryColor.opacity(0.3))
                 .frame(width: 44, height: 44)
                 .overlay {
-                    FontIcon.text(.awesome5Solid(code: .icons), fontsize: 24, color: Color.icon)
+                    FontIcon.text(.awesome5Solid(code: .icons), fontsize: 24, color: themeManager.selectedtheme.primaryColor)
                 }
             
             VStack(alignment: .leading, spacing: 6) {
@@ -39,7 +41,7 @@ struct ExpenseRow: View {
                 // MARK: Transaction Date
                 Text(expense.dateParsed, format: .dateTime.year().month().day())
                     .font(.footnote)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(themeManager.selectedtheme.secondaryColor)
             }
             
             Spacer()
@@ -47,7 +49,7 @@ struct ExpenseRow: View {
             // MARK: Transaction Amount
             Text(expense.amount, format: .currency(code: "CAD"))
                 .bold()
-                .foregroundColor(expense.type == TransactionType.credit.rawValue ? Color.text : .primary)
+                .foregroundColor(expense.type == TransactionType.credit.rawValue ? themeManager.selectedtheme.primaryColor : .primary)
         }
         .padding([.top, .bottom], 8)
         .onTapGesture {
