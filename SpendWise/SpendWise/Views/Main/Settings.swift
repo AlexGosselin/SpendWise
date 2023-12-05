@@ -18,10 +18,12 @@ struct SettingsView: View {
     
     @EnvironmentObject var model: AppModel
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var themeManager: ThemeManagers
     @Namespace var namespace
     @AppStorage("isLogged") var isLogged = false
     @AppStorage("isLiteMode") var isLiteMode = true
-    @State var address: Address = Address(id: 1, country: "Canada")
+//    @State var address: Address = Address(id: 1, country: "Canada")
+    @EnvironmentObject var userModel: UserViewModel
     
     var body: some View {
         ZStack {
@@ -33,10 +35,12 @@ struct SettingsView: View {
                     }
                     
                     Section {
-                        NavigationLink {} label: {
+                
+                        NavigationLink(destination: AppSettingsView(), label: {
                             Label("Settings", systemImage: "gear")
-                        }
-                        
+                                .foregroundColor(themeManager.selectedtheme.primaryColor)
+                        })
+
                         Label("Budgeting", systemImage: "creditcard")
                             .onTapGesture {
                                 model.showBudgetting = true
@@ -44,9 +48,11 @@ struct SettingsView: View {
                             .sheet(isPresented: $model.showBudgetting) {
                                 BudgettingView(namespace: namespace)
                             }
+                            .foregroundColor(themeManager.selectedtheme.primaryColor)
                         
                         NavigationLink(destination: MenuView(), label: {
                             Label("Help", systemImage: "questionmark.circle")
+                                .foregroundColor(themeManager.selectedtheme.primaryColor)
                         })
                     }
                     .listRowSeparator(.automatic)
@@ -56,11 +62,13 @@ struct SettingsView: View {
                             .onTapGesture {
                                 isShowTaxCalculator.toggle()
                             }
+                            .foregroundColor(themeManager.selectedtheme.primaryColor)
                     }
                     
                     Section {
                         Toggle(isOn: $isLiteMode) {
                             Label("Lite Mode", systemImage: isLiteMode ? "tortoise" : "hare")
+                                .foregroundColor(themeManager.selectedtheme.primaryColor)
                         }
                     }
                     
@@ -99,10 +107,10 @@ struct SettingsView: View {
                 Link(destination: URL(string: "https://fanshaweonline.ca")!) {
                     HStack {
                         Label("Website", systemImage: "house")
-                            .tint(.primary)
+                            .foregroundColor(themeManager.selectedtheme.primaryColor)
                         Spacer()
                         Image(systemName: "link")
-                            .tint(.secondary)
+                            .tint(themeManager.selectedtheme.secondaryColor)
                     }
                 }
                 .swipeActions(edge: .leading) {
@@ -145,9 +153,9 @@ struct SettingsView: View {
                 .background(Circle().fill(.ultraThinMaterial))
                 .background(AnimatedBlobView().frame(width: 400, height: 414).offset(x: 200, y: 0).scaleEffect(0.5))
                 .background(HexagonUIView().offset(x: -50, y: -100))
-            Text("Femi Oyebayo")
+            Text(userModel.user.name)
                 .font(.title.weight(.semibold))
-            Text(address.country)
+            Text(userModel.user.address.country)
                 .foregroundColor(.secondary)
         }
         .frame(maxWidth: .infinity)
@@ -159,5 +167,6 @@ struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
             .environmentObject(AppModel())
+            .environmentObject(UserViewModel())
     }
 }

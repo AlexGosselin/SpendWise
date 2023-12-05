@@ -47,7 +47,8 @@ struct TaxCalculatorSheet: View {
             .padding()
         }
         Spacer()
-        Button("Calculate"){
+        
+        FullButton(buttonName: "Calculate", action: {
             var isNumber = taxCalculatorModel.checkIncome(isNumber: String(income))
             
             if(isNumber){
@@ -60,9 +61,7 @@ struct TaxCalculatorSheet: View {
             }else{
                 animateIncome.toggle()
             }
-        }
-        .buttonStyle(.borderedProminent)
-        .controlSize(.large)
+        })
         
         Spacer()
     }

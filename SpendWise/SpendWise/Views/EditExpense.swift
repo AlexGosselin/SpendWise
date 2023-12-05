@@ -197,8 +197,7 @@ struct EditExpense: View {
                 .padding()
                 
                 
-                Button("Done"){
-                    
+                PlainButton(buttonName: "Done", action: {
                     var valid = true
                     
                     if(title == "") {
@@ -269,7 +268,8 @@ struct EditExpense: View {
 //                    print(expenseViewModel.store.expenses)
                     
                     dismiss()
-                }
+                })
+                
                 
             }
         }
