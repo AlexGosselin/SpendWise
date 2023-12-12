@@ -37,7 +37,7 @@ struct ExpenseDetailsSheet: View {
                 Image(systemName: expenses.category!.iconName)
                         .font(.system(size: 60))
                         .padding(.bottom, 30)
-                        .foregroundColor(expenses.categoryItem.colour)
+//                        .foregroundColor(expenses.categoryItem.colour)
                 
                     
                     Spacer()
@@ -61,7 +61,7 @@ struct ExpenseDetailsSheet: View {
                     }, label: {
                         Text("Close")
                     })
-                    .foregroundColor(expenses.categoryItem.colour)
+//                    .foregroundColor(expenses.categoryItem.colour)
                     .padding()
                     
                     Spacer()

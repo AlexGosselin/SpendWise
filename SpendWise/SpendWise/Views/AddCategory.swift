@@ -306,9 +306,9 @@ struct AddCategory: View {
                 if(name != "") {
                     if let parentCategory = parentCategory {
     //                    parentId = parentCategory.id
-                        categoryViewModel.addCategory(category: Category(id: rand, name: name, colour: colour, fontAwesomeIcon: .hand_holding_usd, iconName: iconName, mainCategoryId: parentCategory.id))
+                        categoryViewModel.addCategory(category: Category(id: rand, name: name, colour: colour,  iconName: iconName, mainCategoryId: parentCategory.id))
                     } else {
-                        categoryViewModel.addCategory(category: Category(id: rand, name: name, colour: colour, fontAwesomeIcon: .hand_holding_usd, iconName: iconName))
+                        categoryViewModel.addCategory(category: Category(id: rand, name: name, colour: colour,iconName: iconName))
                     }
                     dismiss()
                 } else {

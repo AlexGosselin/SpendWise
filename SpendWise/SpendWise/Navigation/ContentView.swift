@@ -10,6 +10,7 @@ import SwiftUICharts
 import SwiftUIFontIcon
 
 struct ContentView: View {
+    @Environment(\.modelContext) private var context
     
     @AppStorage("selectedTab") var selectedTab: Tab = .home
     

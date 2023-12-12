@@ -16,8 +16,8 @@ struct EditCategorySheet: View {
     var category: Category
     
     @State private var name: String
-    @State private var colour: Color
-    @State private var fontAwesomeIcon: FontAwesomeCode
+//    @State private var colour: Color
+//    @State private var fontAwesomeIcon: FontAwesomeCode
     @State private var iconName: String
     @State var parentCategory: Category?
     @State private var mainCategoryId: Int?
@@ -32,8 +32,8 @@ struct EditCategorySheet: View {
     init(category: Category) {
         self.category = category
         self._name = State(initialValue: category.name)
-        self._colour = State(initialValue: category.colour)
-        self._fontAwesomeIcon = State(initialValue: category.fontAwesomeIcon)
+//        self._colour = State(initialValue: category.colour)
+//        self._fontAwesomeIcon = State(initialValue: category.fontAwesomeIcon)
         self._iconName = State(initialValue: category.iconName)
         self._mainCategoryId = State(initialValue: category.mainCategoryId)
         self._subcategories = State(initialValue: category.subcategories)
@@ -64,8 +64,8 @@ struct EditCategorySheet: View {
         }
         .padding()
         
-        ColorPicker("Colour", selection: $colour, supportsOpacity: false)
-            .padding()
+//        ColorPicker("Colour", selection: $colour, supportsOpacity: false)
+//            .padding()
         
         HStack {
             Text("Parent Category")
@@ -101,7 +101,7 @@ struct EditCategorySheet: View {
                 Image(systemName: iconName)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(colour)
+//                    .foregroundStyle(colour)
                     .padding(.vertical)
             }
             
@@ -109,7 +109,7 @@ struct EditCategorySheet: View {
                 Image(systemName: "dollarsign.square")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(colour)
+//                    .foregroundStyle(colour)
                     .padding()
                     .onTapGesture() {
                         iconName = "dollarsign.square"
@@ -117,7 +117,7 @@ struct EditCategorySheet: View {
                 Image(systemName: "macbook")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(colour)
+//                    .foregroundStyle(colour)
                     .padding()
                     .onTapGesture() {
                         iconName = "macbook"
@@ -125,7 +125,7 @@ struct EditCategorySheet: View {
                 Image(systemName: "football")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(colour)
+//                    .foregroundStyle(colour)
                     .padding()
                     .onTapGesture() {
                         iconName = "football"
@@ -133,7 +133,7 @@ struct EditCategorySheet: View {
                 Image(systemName: "stethoscope")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(colour)
+//                    .foregroundStyle(colour)
                     .padding()
                     .onTapGesture() {
                         iconName = "stethoscope"
@@ -144,7 +144,7 @@ struct EditCategorySheet: View {
                 Image(systemName: "graduationcap")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(colour)
+//                    .foregroundStyle(colour)
                     .padding()
                     .onTapGesture() {
                         iconName = "graduationcap"
@@ -152,7 +152,7 @@ struct EditCategorySheet: View {
                 Image(systemName: "airplane.departure")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(colour)
+//                    .foregroundStyle(colour)
                     .padding()
                     .onTapGesture() {
                         iconName = "airplane.departure"
@@ -160,7 +160,7 @@ struct EditCategorySheet: View {
                 Image(systemName: "iphone")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(colour)
+//                    .foregroundStyle(colour)
                     .padding()
                     .onTapGesture() {
                         iconName = "iphone"
@@ -168,7 +168,7 @@ struct EditCategorySheet: View {
                 Image(systemName: "list.clipboard")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(colour)
+//                    .foregroundStyle(colour)
                     .padding()
                     .onTapGesture() {
                         iconName = "list.clipboard"
@@ -179,7 +179,7 @@ struct EditCategorySheet: View {
                 Image(systemName: "cup.and.saucer")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(colour)
+//                    .foregroundStyle(colour)
                     .padding()
                     .onTapGesture() {
                         iconName = "cup.and.saucer"
@@ -187,7 +187,7 @@ struct EditCategorySheet: View {
                 Image(systemName: "wineglass")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(colour)
+//                    .foregroundStyle(colour)
                     .padding()
                     .onTapGesture() {
                         iconName = "wineglass"
@@ -195,7 +195,7 @@ struct EditCategorySheet: View {
                 Image(systemName: "cart")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(colour)
+//                    .foregroundStyle(colour)
                     .padding()
                     .onTapGesture() {
                         iconName = "cart"
@@ -203,7 +203,7 @@ struct EditCategorySheet: View {
                 Image(systemName: "gym.bag")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(colour)
+//                    .foregroundStyle(colour)
                     .padding()
                     .onTapGesture() {
                         iconName = "gym.bag"
@@ -214,7 +214,7 @@ struct EditCategorySheet: View {
                 Image(systemName: "basket")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(colour)
+//                    .foregroundStyle(colour)
                     .padding()
                     .onTapGesture() {
                         iconName = "basket"
@@ -222,7 +222,7 @@ struct EditCategorySheet: View {
                 Image(systemName: "creditcard")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(colour)
+//                    .foregroundStyle(colour)
                     .padding()
                     .onTapGesture() {
                         iconName = "creditcard"
@@ -230,7 +230,7 @@ struct EditCategorySheet: View {
                 Image(systemName: "banknote")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(colour)
+//                    .foregroundStyle(colour)
                     .padding()
                     .onTapGesture() {
                         iconName = "banknote"
@@ -238,7 +238,7 @@ struct EditCategorySheet: View {
                 Image(systemName: "tram")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(colour)
+//                    .foregroundStyle(colour)
                     .padding()
                     .onTapGesture() {
                         iconName = "tram"
@@ -258,9 +258,9 @@ struct EditCategorySheet: View {
             
             if let parentCategory = parentCategory {
                 
-                newCategory = Category(id: rand, name: name, colour: colour, fontAwesomeIcon: .hand_holding_usd, iconName: iconName, mainCategoryId: parentCategory.id)
+                newCategory = Category(id: rand, name: name,  iconName: iconName, mainCategoryId: parentCategory.id)
             } else {
-                newCategory = Category(id: rand, name: name, colour: colour, fontAwesomeIcon: .hand_holding_usd, iconName: iconName)
+                newCategory = Category(id: rand, name: name, iconName: iconName)
             }
             
             categoryViewModel.editCategory(category: newCategory, id: category.id)

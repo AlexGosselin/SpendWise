@@ -8,14 +8,29 @@
 import Foundation
 import SwiftUI
 import SwiftUIFontIcon
+import SwiftData
 
-struct Category: Identifiable, Hashable {
+@Model
+class Category: Identifiable, Hashable {
     let id: Int
     var name: String
-    var colour: Color = .indigo
-    var fontAwesomeIcon: FontAwesomeCode
+//    var colour: Color
+//    var fontAwesomeIcon: FontAwesomeCode
     var iconName: String = "dollarsign.square"
     var mainCategoryId: Int?
+    
+    init(id: Int,
+         name: String,
+         colour: Color = Color.black, 
+         iconName: String = "dollarsign.square",
+         mainCategoryId: Int? = nil) {
+        self.id = id
+        self.name = name
+//        self.colour = colour
+//        self.fontAwesomeIcon = fontAwesomeIcon
+        self.iconName = iconName
+        self.mainCategoryId = mainCategoryId
+    }
     
     var subcategories: [Category]? {
         Category.subCategories.filter { $0.mainCategoryId == id }
@@ -27,29 +42,29 @@ struct Category: Identifiable, Hashable {
 }
 
 extension Category {
-    static let autoAndTransport = Category(id: 1, name: "Auto & Transport", fontAwesomeIcon: .car_alt, iconName: "car")
-    static let billsAndUtilities = Category(id: 2, name: "Bills & Utilities", fontAwesomeIcon: .file_invoice_dollar, iconName: "poweroutlet.type.b")
-    static let entertainment = Category(id: 3, name: "Entertainment", fontAwesomeIcon: .film, iconName: "movieclapper")
-    static let feesAndCharges = Category(id: 4, name: "Fees & Charges", fontAwesomeIcon: .hand_holding_usd, iconName: "dollarsign")
-    static let foodAndDining = Category(id: 5, name: "Food & Dining", fontAwesomeIcon: .hamburger, iconName: "fork.knife")
-    static let home = Category(id: 6, name: "Home", fontAwesomeIcon: .home, iconName: "house.fill")
-    static let income = Category(id: 7, name: "Income", fontAwesomeIcon: .dollar_sign, iconName: "banknote")
-    static let shopping = Category(id: 8, name: "Shopping", fontAwesomeIcon: .shopping_cart, iconName: "cart")
-    static let transfer = Category(id: 9, name: "Transfer", fontAwesomeIcon: .exchange_alt, iconName: "dollarsign.arrow.circlepath")
+    static let autoAndTransport = Category(id: 1, name: "Auto & Transport", iconName: "car")
+    static let billsAndUtilities = Category(id: 2, name: "Bills & Utilities", iconName: "poweroutlet.type.b")
+    static let entertainment = Category(id: 3, name: "Entertainment", iconName: "movieclapper")
+    static let feesAndCharges = Category(id: 4, name: "Fees & Charges", iconName: "dollarsign")
+    static let foodAndDining = Category(id: 5, name: "Food & Dining", iconName: "fork.knife")
+    static let home = Category(id: 6, name: "Home",  iconName: "house.fill")
+    static let income = Category(id: 7, name: "Income", iconName: "banknote")
+    static let shopping = Category(id: 8, name: "Shopping", iconName: "cart")
+    static let transfer = Category(id: 9, name: "Transfer", iconName: "dollarsign.arrow.circlepath")
     
-    static let publicTransportation = Category(id: 101, name: "Public Transportation", fontAwesomeIcon: .bus, iconName: "tram", mainCategoryId: 1)
-    static let taxi = Category(id: 102, name: "Taxi", fontAwesomeIcon: .taxi, iconName: "car.side", mainCategoryId: 1)
-    static let mobilePhone = Category(id: 201, name: "Mobile Phone", fontAwesomeIcon: .mobile_alt, iconName: "iphone", mainCategoryId: 2)
-    static let moviesAndDVDs = Category(id: 301, name: "Movies & DVDs", fontAwesomeIcon: .film, iconName: "opticaldisc", mainCategoryId: 3)
-    static let bankFee = Category(id: 401, name: "Bank Fee", fontAwesomeIcon: .hand_holding_usd, iconName: "dollarsign", mainCategoryId: 4)
-    static let financeCharge = Category(id: 402, name: "Finance Charge", fontAwesomeIcon: .hand_holding_usd, iconName: "dollarsign", mainCategoryId: 4)
-    static let groceries = Category(id: 501, name: "Groceries", fontAwesomeIcon: .shopping_basket, iconName: "basket", mainCategoryId: 5)
-    static let restaurants = Category(id: 502, name: "Restaurants", fontAwesomeIcon: .utensils, iconName: "takeoutbag.and.cup.and.straw", mainCategoryId: 5)
-    static let rent = Category(id: 601, name: "Rent", fontAwesomeIcon: .house_user, iconName: "house", mainCategoryId: 6)
-    static let homeSupplies = Category(id: 602, name: "Home Supplies", fontAwesomeIcon: .lightbulb, iconName: "lightbulb", mainCategoryId: 6)
-    static let paycheque = Category(id: 701, name: "Paycheque", fontAwesomeIcon: .dollar_sign, iconName: "banknote", mainCategoryId: 7)
-    static let software = Category(id: 801, name: "Software", fontAwesomeIcon: .icons, iconName: "apple.terminal", mainCategoryId: 8)
-    static let creditCardPayment = Category(id: 901, name: "Credit Card Payment", fontAwesomeIcon: .exchange_alt, iconName: "creditcard", mainCategoryId: 9)
+    static let publicTransportation = Category(id: 101, name: "Public Transportation", iconName: "tram", mainCategoryId: 1)
+    static let taxi = Category(id: 102, name: "Taxi", iconName: "car.side", mainCategoryId: 1)
+    static let mobilePhone = Category(id: 201, name: "Mobile Phone", iconName: "iphone", mainCategoryId: 2)
+    static let moviesAndDVDs = Category(id: 301, name: "Movies & DVDs", iconName: "opticaldisc", mainCategoryId: 3)
+    static let bankFee = Category(id: 401, name: "Bank Fee", iconName: "dollarsign", mainCategoryId: 4)
+    static let financeCharge = Category(id: 402, name: "Finance Charge", iconName: "dollarsign", mainCategoryId: 4)
+    static let groceries = Category(id: 501, name: "Groceries",  iconName: "basket", mainCategoryId: 5)
+    static let restaurants = Category(id: 502, name: "Restaurants",  iconName: "takeoutbag.and.cup.and.straw", mainCategoryId: 5)
+    static let rent = Category(id: 601, name: "Rent",  iconName: "house", mainCategoryId: 6)
+    static let homeSupplies = Category(id: 602, name: "Home Supplies",  iconName: "lightbulb", mainCategoryId: 6)
+    static let paycheque = Category(id: 701, name: "Paycheque", iconName: "banknote", mainCategoryId: 7)
+    static let software = Category(id: 801, name: "Software", iconName: "apple.terminal", mainCategoryId: 8)
+    static let creditCardPayment = Category(id: 901, name: "Credit Card Payment", iconName: "creditcard", mainCategoryId: 9)
 }
 
 extension Category {

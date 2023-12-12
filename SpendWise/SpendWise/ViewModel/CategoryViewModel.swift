@@ -33,8 +33,8 @@ final class CategoryViewModel: ObservableObject {
                 
                 if cat.id == id{
                     modifiedCategories.name = category.name
-                    modifiedCategories.colour = category.colour
-                    modifiedCategories.fontAwesomeIcon = category.fontAwesomeIcon
+//                    modifiedCategories.colour = category.colour
+//                    modifiedCategories.fontAwesomeIcon = category.fontAwesomeIcon
                     modifiedCategories.iconName = category.iconName
                     
                     if let mainCat = category.mainCategoryId{

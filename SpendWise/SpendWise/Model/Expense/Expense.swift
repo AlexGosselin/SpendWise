@@ -7,25 +7,60 @@
 
 import Foundation
 import SwiftUIFontIcon
+import SwiftData
 
-struct Expense: Identifiable, Hashable {
-    var id: Int = Int.random(in: 0...Int.max)
-    var title: String = ""
-    var amount: Double = 0.0
-    var categoryId: Int = -1
-    var categoryName: String = ""
+@Model
+class Expense: Identifiable, Hashable {
+    var id: Int
+    var title: String
+    var amount: Double
+    var categoryId: Int
+    var categoryName: String
     var category: Category?
-    var desc: String = ""
-    var dateString: String = ""
-    var date: Date = Date()
+    var desc: String
+    var dateString: String
+    var date: Date
 //    var interval: String
-    var transactionType: TransactionType = TransactionType.credit
-    var type: TransactionType.RawValue = TransactionType.credit.rawValue
-    var merchant: String = ""
-    var instituition: String = ""
-    var account: String = ""
-    var isTransfer: Bool = false
-    var isExpense: Bool = false
+    var transactionType: TransactionType
+    var type: TransactionType.RawValue
+    var merchant: String
+    var instituition: String
+    var account: String
+    var isTransfer: Bool
+    var isExpense: Bool
+    
+    init(id: Int = Int.random(in: 0...Int.max),
+         title: String = "",
+         amount: Double = 0.0,
+         categoryId: Int = -1, 
+         categoryName: String = "",
+         category: Category? = nil, 
+         desc: String = "",
+         dateString: String = "",
+         date: Date = Date(),
+         transactionType: TransactionType = TransactionType.credit,
+         merchant: String = "",
+         instituition: String = "",
+         account: String = "",
+         isTransfer: Bool = false,
+         isExpense: Bool = false) {
+        self.id = id
+        self.title = title
+        self.amount = amount
+        self.categoryId = categoryId
+        self.categoryName = categoryName
+        self.category = category
+        self.desc = desc
+        self.dateString = dateString
+        self.date = date
+        self.transactionType = transactionType
+        self.type = transactionType.rawValue
+        self.merchant = merchant
+        self.instituition = instituition
+        self.account = account
+        self.isTransfer = isTransfer
+        self.isExpense = isExpense
+    }
     
 //    var timer: Timer?
     
@@ -49,7 +84,7 @@ struct Expense: Identifiable, Hashable {
 //        return .question
 //    }
     
-    mutating func updateDateString() {
+    func updateDateString() {
         dateString = date.formatted(date: .numeric, time: .omitted)
     }
     
@@ -74,7 +109,7 @@ struct Expense: Identifiable, Hashable {
     }
 }
 
-enum TransactionType: String {
+enum TransactionType: String, Codable {
     case debit = "debit"
     case credit = "credit"
 }
