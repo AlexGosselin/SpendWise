@@ -80,9 +80,11 @@ final class ExpenseViewModel: ObservableObject {
         return groupedTransactions
     }
     
+    func checkNumber(isNumber: String) -> Bool{
+        return !isNumber.isEmpty && Double(isNumber) != nil
+    }
+    
     func editExpense(expense: Expense, id: Int){
-
-        
         store.expenses = store.expenses.map{ exp in
             var modifiedExpenses = exp
             

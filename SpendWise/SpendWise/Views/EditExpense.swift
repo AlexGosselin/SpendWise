@@ -210,10 +210,8 @@ struct EditExpense: View {
                         animateCategory.toggle()
                         valid = false
                     }
-                    
-                    
                     var doubleAmount = 0.0
-                    if(amount != "") {
+                    if(amount != "" && expenseViewModel.checkNumber(isNumber: String(amount))) {
                         if let dAmount = Double(amount) {
                             doubleAmount = dAmount
                         } else {
@@ -264,8 +262,6 @@ struct EditExpense: View {
                     
                     expenseViewModel.editExpense(expense: newExpense, id: expense.id)
                     
-//                    print("Edir=t variable")
-//                    print(expenseViewModel.store.expenses)
                     
                     dismiss()
                 })
