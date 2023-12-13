@@ -67,7 +67,7 @@ struct CreateReportView: View {
             }
         }
         .sheet(isPresented: $showReport, content: {
-            ReportView(filteredExpenses: $filteredExpenses, incoming: $incoming, outgoing: $outgoing)
+            ReportView(filteredExpenses: $filteredExpenses, incoming: $incoming, outgoing: $outgoing, startDate: $startDate, endDate: $endDate)
         })
     }
         
