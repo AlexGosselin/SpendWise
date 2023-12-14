@@ -54,35 +54,10 @@ struct NotificationSheet: View {
                 }
 
                 Spacer()
-                
-                Spacer()
-
-                Button("Test Push Notification") {
-                    testPushNotification()
-                }
-                .padding()
             }
             .navigationTitle("Notification Settings")
         }
     }
-    
-    private func testPushNotification() {
-            let content = UNMutableNotificationContent()
-            content.title = "Test Push Notification"
-            content.body = "This is a test push notification."
-            content.sound = UNNotificationSound.default
-
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-            let request = UNNotificationRequest(identifier: "TestNotification", content: content, trigger: trigger)
-
-            UNUserNotificationCenter.current().add(request) { error in
-                if let error = error {
-                    print("Error scheduling test notification: \(error.localizedDescription)")
-                } else {
-                    print("Test notification scheduled successfully")
-                }
-            }
-        }
 }
 
 
