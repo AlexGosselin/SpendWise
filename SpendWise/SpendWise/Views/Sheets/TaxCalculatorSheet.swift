@@ -43,11 +43,15 @@ struct TaxCalculatorSheet: View {
                 .keyboardType(.decimalPad)
                 .offset(x: animateIncome ? -1 : 1)
                 .animation(.interpolatingSpring(stiffness: 3000, damping: 10, initialVelocity: 100), value:animateIncome)
+                .onChange(of: income) {
+                    income = String(income.prefix(11))
+                }
                 
             .padding()
         }
         Spacer()
-        Button("Calculate"){
+        
+        FullButton(buttonName: "Calculate", action: {
             var isNumber = taxCalculatorModel.checkIncome(isNumber: String(income))
             
             if(isNumber){
@@ -60,9 +64,7 @@ struct TaxCalculatorSheet: View {
             }else{
                 animateIncome.toggle()
             }
-        }
-        .buttonStyle(.borderedProminent)
-        .controlSize(.large)
+        })
         
         Spacer()
     }

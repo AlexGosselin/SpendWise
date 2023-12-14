@@ -27,7 +27,7 @@ struct CreateReportView: View {
             DatePicker("End Date", selection: $endDate, displayedComponents: .date)
                 .padding(.bottom)
             
-            Button("Generate Report") {
+            PlainButton(buttonName: "Generate Report", action: {
                 outgoing = 0.0
                 incoming = 0.0
                 
@@ -51,9 +51,8 @@ struct CreateReportView: View {
                     showInvalidDatesAlert.toggle()
                 }
                 
-                
-            }
-            .padding()
+            })
+            
         }
         .padding()
         .navigationTitle("Create Report")
@@ -68,7 +67,7 @@ struct CreateReportView: View {
             }
         }
         .sheet(isPresented: $showReport, content: {
-            ReportView(filteredExpenses: $filteredExpenses, incoming: $incoming, outgoing: $outgoing)
+            ReportView(filteredExpenses: $filteredExpenses, incoming: $incoming, outgoing: $outgoing, startDate: $startDate, endDate: $endDate)
         })
     }
         

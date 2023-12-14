@@ -61,6 +61,9 @@ struct EditCategorySheet: View {
                 .multilineTextAlignment(.trailing)
                 .offset(x: animateName ? -1 : 1)
                 .animation(.interpolatingSpring(stiffness: 3000, damping: 10, initialVelocity: 100), value: animateName)
+                .onChange(of: name) {
+                    name = String(name.prefix(20))
+                }
         }
         .padding()
         
@@ -250,8 +253,8 @@ struct EditCategorySheet: View {
         
         Spacer()
         
-        Button("Done"){
-
+        PlainButton(buttonName: "Done", action: {
+            
             let rand = Int.random(in: 0...Int.max)
             
             var newCategory: Category
@@ -266,7 +269,7 @@ struct EditCategorySheet: View {
             categoryViewModel.editCategory(category: newCategory, id: category.id)
             
             dismiss()
-        }
+        })
         .onAppear(perform: {
             getCat()
         })

@@ -37,6 +37,9 @@ struct AddCategory: View {
                     .multilineTextAlignment(.trailing)
                     .offset(x: animateName ? -1 : 1)
                     .animation(.interpolatingSpring(stiffness: 3000, damping: 10, initialVelocity: 100), value: animateName)
+                    .onChange(of: name) {
+                        name = String(name.prefix(20))
+                    }
             }
             .padding()
             
@@ -299,7 +302,7 @@ struct AddCategory: View {
             }
 //            .padding()
             
-            Button("Save") {
+            PlainButton(buttonName: "Save", action: {
                 let rand = Int.random(in: 0...Int.max)
 //                var parentId = 0
                 
@@ -314,10 +317,7 @@ struct AddCategory: View {
                 } else {
                     animateName.toggle()
                 }
-
-                
-
-            }
+            })
             
             Spacer()
         }
@@ -325,9 +325,9 @@ struct AddCategory: View {
         .toolbar {
             ToolbarItemGroup(placement: .keyboard) {
                 Spacer()
-                Button("Done") {
+                PlainButton(buttonName: "Done", action: {
                     isFocused = false
-                }
+                })
             }
         }
         .navigationTitle("Create Category")

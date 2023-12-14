@@ -13,9 +13,9 @@ struct ReportSummaryView: View {
     @Binding var incoming: Double
     
     var body: some View {
-        HStack {
-            VStack {
-                Text("Incoming")
+        VStack {
+            HStack {
+                Text("Incoming: ")
                     .font(.headline)
                 Text(String(incoming.formatted(.currency(code: "USD")) ))
                     .font(.title2)
@@ -23,10 +23,10 @@ struct ReportSummaryView: View {
 
             }
             
-            Spacer()
+//            Spacer()
             
-            VStack {
-                Text("Outgoing")
+            HStack {
+                Text("Outgoing: ")
                     .font(.headline)
                 Text(String(((outgoing ) * -1).formatted(.currency(code: "USD")) ))
                     .font(.title2)
@@ -34,13 +34,15 @@ struct ReportSummaryView: View {
 
             }
             
-            Spacer()
+//            Spacer()
 
-            VStack {
-                Text("Net")
+            HStack {
+                Text("Net: ")
                     .font(.headline)
                 Text(String((incoming - outgoing).formatted(.currency(code: "USD")) ))
                     .font(.title2)
+                    .foregroundStyle((incoming < outgoing) ? .red : .green)
+
 
             }
         }

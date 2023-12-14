@@ -139,6 +139,11 @@ struct BudgettingView: View {
                         TextField("e.g. 2000", text: $budgetString)
                             .focused($institutionFocused)
                             .multilineTextAlignment(.center)
+                            .keyboardType(.numberPad)
+                            .onChange(of: budgetString) {
+                                budgetString = String(budgetString.prefix(12))
+                            }
+                        
                     }
                     .opacity(appear[2] ? 1 : 0)
                     .accessibilityElement(children: .combine)
