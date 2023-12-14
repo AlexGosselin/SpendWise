@@ -14,7 +14,7 @@ struct SettingsView: View {
     @State var showStatusBar = true
     
     @State private var isShowTaxCalculator: Bool = false
-    @State private var isShowPushNotification: Bool = true
+    @State private var isShowPushNotification: Bool = false
     @State private var isNavigateTaxCalculatorResult: Bool = false
     
     @EnvironmentObject var model: AppModel
@@ -100,16 +100,16 @@ struct SettingsView: View {
                         }).background(
                             NavigationLink("", destination: TaxCalculatorResult(), isActive: $isNavigateTaxCalculatorResult)
                         )
+                        .sheet(isPresented: $isShowPushNotification, content: {
+                            NotificationSheet()
+                                .padding()
+                                .navigationTitle("Push Notification")
+                        }).background()
                         
                     
                 }
                 .listStyle(.insetGrouped)
                 .navigationTitle("Settings")
-                .sheet(isPresented: $isShowPushNotification, content: {
-                    NotificationSheet()
-                        .padding()
-                        .navigationTitle("Push Notification")
-                })
             }
         }
     }
