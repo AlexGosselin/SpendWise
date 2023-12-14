@@ -43,6 +43,9 @@ struct TaxCalculatorSheet: View {
                 .keyboardType(.decimalPad)
                 .offset(x: animateIncome ? -1 : 1)
                 .animation(.interpolatingSpring(stiffness: 3000, damping: 10, initialVelocity: 100), value:animateIncome)
+                .onChange(of: income) {
+                    income = String(income.prefix(11))
+                }
                 
             .padding()
         }

@@ -44,6 +44,9 @@ struct EditUserSheet: View {
                 .multilineTextAlignment(.trailing)
                 .offset(x: animateName ? -1 : 1)
                 .animation(.interpolatingSpring(stiffness: 3000, damping: 10, initialVelocity: 100), value: animateName)
+                .onChange(of: name) {
+                    name = String(name.prefix(20))
+                }
         }
         .padding()
         

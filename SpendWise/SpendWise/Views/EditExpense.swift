@@ -67,6 +67,9 @@ struct EditExpense: View {
                         .multilineTextAlignment(.trailing)
                         .offset(x: animateTitle ? -1 : 1)
                         .animation(.interpolatingSpring(stiffness: 3000, damping: 10, initialVelocity: 100), value: animateTitle)
+                        .onChange(of: title) {
+                            title = String(title.prefix(20))
+                        }
                 }
                 .padding()
                 
@@ -79,6 +82,9 @@ struct EditExpense: View {
                         .multilineTextAlignment(.trailing)
                         .offset(x: animateAmount ? -1 : 1)
                         .animation(.interpolatingSpring(stiffness: 3000, damping: 10, initialVelocity: 100), value: animateAmount)
+                        .onChange(of: amount) {
+                            amount = String(amount.prefix(11))
+                        }
                 }
                 .padding()
                 
@@ -151,6 +157,9 @@ struct EditExpense: View {
                         .multilineTextAlignment(.trailing)
                         .offset(x: animateMerchant ? -1 : 1)
                         .animation(.interpolatingSpring(stiffness: 3000, damping: 10, initialVelocity: 100), value: animateMerchant)
+                        .onChange(of: merchant) {
+                            merchant = String(merchant.prefix(20))
+                        }
                 }
                 .padding()
                 
@@ -160,6 +169,9 @@ struct EditExpense: View {
                     TextField("i.e. Scotiabank", text: $instituition)
                         .focused($institutionFocused)
                         .multilineTextAlignment(.trailing)
+                        .onChange(of: instituition) {
+                            instituition = String(instituition.prefix(20))
+                        }
                 }
                 .padding()
                 
@@ -169,6 +181,9 @@ struct EditExpense: View {
                     TextField("Enter Account", text: $account)
                         .focused($accountFocused)
                         .multilineTextAlignment(.trailing)
+                        .onChange(of: account) {
+                            account = String(account.prefix(20))
+                        }
                 }
                 .padding()
                 
