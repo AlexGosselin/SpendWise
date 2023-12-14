@@ -14,6 +14,7 @@ struct SettingsView: View {
     @State var showStatusBar = true
     
     @State private var isShowTaxCalculator: Bool = false
+    @State private var isShowPushNotification: Bool = true
     @State private var isNavigateTaxCalculatorResult: Bool = false
     
     @EnvironmentObject var model: AppModel
@@ -54,6 +55,13 @@ struct SettingsView: View {
                             Label("Help", systemImage: "questionmark.circle")
                                 .foregroundColor(themeManager.selectedtheme.primaryColor)
                         })
+                        
+                        Label("Notification", systemImage: "bell.badge.waveform")
+                            .onTapGesture {
+                                isShowPushNotification.toggle()
+                            }
+                            .foregroundColor(themeManager.selectedtheme.primaryColor)
+                        
                     }
                     .listRowSeparator(.automatic)
                     
@@ -97,6 +105,11 @@ struct SettingsView: View {
                 }
                 .listStyle(.insetGrouped)
                 .navigationTitle("Settings")
+                .sheet(isPresented: $isShowPushNotification, content: {
+                    NotificationSheet()
+                        .padding()
+                        .navigationTitle("Push Notification")
+                })
             }
         }
     }
