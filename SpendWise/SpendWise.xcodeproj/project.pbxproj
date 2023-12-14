@@ -56,6 +56,13 @@
 		BF091E552AFAC27C00F35139 /* BudgettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF091E542AFAC27C00F35139 /* BudgettingView.swift */; };
 		BF091E572AFAD36A00F35139 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF091E562AFAD36A00F35139 /* Modifiers.swift */; };
 		BF091E592AFAECA500F35139 /* ExpenseTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF091E582AFAECA500F35139 /* ExpenseTab.swift */; };
+		BFCD8AA62B2A226700F38E21 /* NotificationSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD8AA52B2A226700F38E21 /* NotificationSheet.swift */; };
+		BFCD8AA82B2A2D4500F38E21 /* PushNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD8AA72B2A2D4500F38E21 /* PushNotificationViewModel.swift */; };
+		BFCD8AAC2B2AA23400F38E21 /* OnboardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD8AAB2B2AA23400F38E21 /* OnboardingManager.swift */; };
+		BFCD8AAF2B2AA83400F38E21 /* UIOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = BFCD8AAE2B2AA83400F38E21 /* UIOnboarding */; };
+		BFCD8AB12B2AA87500F38E21 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD8AB02B2AA87500F38E21 /* OnboardingView.swift */; };
+		BFCD8AB32B2AA93B00F38E21 /* UIOnboardingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD8AB22B2AA93B00F38E21 /* UIOnboardingHelper.swift */; };
+		BFCD8AB52B2AB6A000F38E21 /* UIOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = BFCD8AB42B2AB6A000F38E21 /* UIOnboarding */; };
 		BFFB01C52AE863AF00C63C1C /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFB01C42AE863AF00C63C1C /* Extension.swift */; };
 		BFFB01CA2AE864A900C63C1C /* ExpenseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFB01C92AE864A800C63C1C /* ExpenseRow.swift */; };
 		BFFB01CD2AE8654600C63C1C /* SwiftUIFontIcon in Frameworks */ = {isa = PBXBuildFile; productRef = BFFB01CC2AE8654600C63C1C /* SwiftUIFontIcon */; };
@@ -119,6 +126,11 @@
 		BF091E542AFAC27C00F35139 /* BudgettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgettingView.swift; sourceTree = "<group>"; };
 		BF091E562AFAD36A00F35139 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		BF091E582AFAECA500F35139 /* ExpenseTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTab.swift; sourceTree = "<group>"; };
+		BFCD8AA52B2A226700F38E21 /* NotificationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSheet.swift; sourceTree = "<group>"; };
+		BFCD8AA72B2A2D4500F38E21 /* PushNotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationViewModel.swift; sourceTree = "<group>"; };
+		BFCD8AAB2B2AA23400F38E21 /* OnboardingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingManager.swift; sourceTree = "<group>"; };
+		BFCD8AB02B2AA87500F38E21 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		BFCD8AB22B2AA93B00F38E21 /* UIOnboardingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIOnboardingHelper.swift; sourceTree = "<group>"; };
 		BFFB01C42AE863AF00C63C1C /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		BFFB01C92AE864A800C63C1C /* ExpenseRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseRow.swift; sourceTree = "<group>"; };
 		BFFB01CE2AE867AC00C63C1C /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
@@ -132,8 +144,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFFB01D22AE874C000C63C1C /* Collections in Frameworks */,
+				BFCD8AAF2B2AA83400F38E21 /* UIOnboarding in Frameworks */,
 				BFFB01CD2AE8654600C63C1C /* SwiftUIFontIcon in Frameworks */,
 				BFFB01D62AE874C000C63C1C /* OrderedCollections in Frameworks */,
+				BFCD8AB52B2AB6A000F38E21 /* UIOnboarding in Frameworks */,
 				BFFB01D42AE874C000C63C1C /* DequeModule in Frameworks */,
 				BFFB01DA2AE877BA00C63C1C /* SwiftUICharts in Frameworks */,
 			);
@@ -149,6 +163,8 @@
 				460F2C672AE462EE00D9778A /* CategoryViewModel.swift */,
 				94607D112B0D27C0001DE99D /* TaxCalculatorViewModel.swift */,
 				94417C0D2B1C9DCC00161022 /* UserViewModel.swift */,
+				BFCD8AA72B2A2D4500F38E21 /* PushNotificationViewModel.swift */,
+				BFCD8AAB2B2AA23400F38E21 /* OnboardingManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -247,6 +263,7 @@
 				94607D0D2B0D1A26001DE99D /* TaxCalculatorResult.swift */,
 				94417C082B1C96F900161022 /* AppSettingsView.swift */,
 				94417C172B1CBE9400161022 /* EditThemeView.swift */,
+				BFCD8AB02B2AA87500F38E21 /* OnboardingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -267,6 +284,7 @@
 				94607D092B0BF189001DE99D /* TaxCalculatorSheet.swift */,
 				9436A4022AE6FC3900067DBD /* ExpenseDetailsSheet.swift */,
 				9437B1CA2AF583C6003ED68B /* EditCategorySheet.swift */,
+				BFCD8AA52B2A226700F38E21 /* NotificationSheet.swift */,
 			);
 			path = Sheets;
 			sourceTree = "<group>";
@@ -319,6 +337,7 @@
 				BF091E4A2AFA9DCA00F35139 /* HexagonUIView.swift */,
 				BF091E522AFAB48A00F35139 /* AnimatableFont.swift */,
 				BF091E562AFAD36A00F35139 /* Modifiers.swift */,
+				BFCD8AB22B2AA93B00F38E21 /* UIOnboardingHelper.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -345,6 +364,8 @@
 				BFFB01D32AE874C000C63C1C /* DequeModule */,
 				BFFB01D52AE874C000C63C1C /* OrderedCollections */,
 				BFFB01D92AE877BA00C63C1C /* SwiftUICharts */,
+				BFCD8AAE2B2AA83400F38E21 /* UIOnboarding */,
+				BFCD8AB42B2AB6A000F38E21 /* UIOnboarding */,
 			);
 			productName = SpendWise;
 			productReference = 465E904A2AC8F5C700D8FC00 /* SpendWise.app */;
@@ -378,6 +399,7 @@
 				BFFB01CB2AE8654600C63C1C /* XCRemoteSwiftPackageReference "SwiftUIFontIcon" */,
 				BFFB01D02AE874C000C63C1C /* XCRemoteSwiftPackageReference "swift-collections" */,
 				BFFB01DB2AE878B000C63C1C /* XCRemoteSwiftPackageReference "ChartView" */,
+				BFCD8AAD2B2AA83400F38E21 /* XCRemoteSwiftPackageReference "UIOnboarding" */,
 			);
 			productRefGroup = 465E904B2AC8F5C700D8FC00 /* Products */;
 			projectDirPath = "";
@@ -410,6 +432,7 @@
 				4643A5F62B1681F900AEE50B /* ReportView.swift in Sources */,
 				94417C1E2B1E5B1C00161022 /* ThemeManagers.swift in Sources */,
 				94607D0E2B0D1A26001DE99D /* TaxCalculatorResult.swift in Sources */,
+				BFCD8AA82B2A2D4500F38E21 /* PushNotificationViewModel.swift in Sources */,
 				460F2C682AE462EE00D9778A /* CategoryViewModel.swift in Sources */,
 				BFFB01DD2AE87AB000C63C1C /* RecentExpenseList.swift in Sources */,
 				46CA60CD2B168DBA00FE3CE3 /* ReportSummaryView.swift in Sources */,
@@ -417,10 +440,12 @@
 				94417C212B1E671700161022 /* FullButton.swift in Sources */,
 				BF091E4F2AFAB24600F35139 /* NavigationBar.swift in Sources */,
 				94417C162B1CBE5200161022 /* Theme.swift in Sources */,
+				BFCD8AB12B2AA87500F38E21 /* OnboardingView.swift in Sources */,
 				94417C232B1E699000161022 /* PlainButton.swift in Sources */,
 				465E90502AC8F5C700D8FC00 /* ContentView.swift in Sources */,
 				467ABAC92AF83317009CDCC1 /* DeleteUserView.swift in Sources */,
 				BFFB01CF2AE867AC00C63C1C /* PreviewData.swift in Sources */,
+				BFCD8AAC2B2AA23400F38E21 /* OnboardingManager.swift in Sources */,
 				BFFB01C52AE863AF00C63C1C /* Extension.swift in Sources */,
 				BF091E492AFA9D7500F35139 /* AnimatedBlobUiView.swift in Sources */,
 				465E904E2AC8F5C700D8FC00 /* SpendWiseApp.swift in Sources */,
@@ -450,12 +475,14 @@
 				94417C122B1CA28000161022 /* EditUserSheet.swift in Sources */,
 				94417C182B1CBE9400161022 /* EditThemeView.swift in Sources */,
 				BF091E572AFAD36A00F35139 /* Modifiers.swift in Sources */,
+				BFCD8AB32B2AA93B00F38E21 /* UIOnboardingHelper.swift in Sources */,
 				94417C0E2B1C9DCC00161022 /* UserViewModel.swift in Sources */,
 				9437B1CB2AF583C6003ED68B /* EditCategorySheet.swift in Sources */,
 				460F2C5E2AE45BD000D9778A /* Category.swift in Sources */,
 				460F2C642AE4600700D9778A /* ExpenseStore.swift in Sources */,
 				BF091E452AF872DB00F35139 /* Home.swift in Sources */,
 				BF091E3B2AF864EE00F35139 /* TabBar.swift in Sources */,
+				BFCD8AA62B2A226700F38E21 /* NotificationSheet.swift in Sources */,
 				94607D162B0D484D001DE99D /* Province.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -587,11 +614,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SpendWise/SpendWiseDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SpendWise/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 32DPBGD7XT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -618,11 +646,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SpendWise/SpendWise.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SpendWise/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8498H6NMQX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -668,6 +697,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		BFCD8AAD2B2AA83400F38E21 /* XCRemoteSwiftPackageReference "UIOnboarding" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lascic/UIOnboarding.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.3;
+			};
+		};
 		BFFB01CB2AE8654600C63C1C /* XCRemoteSwiftPackageReference "SwiftUIFontIcon" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/huybuidac/SwiftUIFontIcon";
@@ -695,6 +732,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BFCD8AAE2B2AA83400F38E21 /* UIOnboarding */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BFCD8AAD2B2AA83400F38E21 /* XCRemoteSwiftPackageReference "UIOnboarding" */;
+			productName = UIOnboarding;
+		};
+		BFCD8AB42B2AB6A000F38E21 /* UIOnboarding */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BFCD8AAD2B2AA83400F38E21 /* XCRemoteSwiftPackageReference "UIOnboarding" */;
+			productName = UIOnboarding;
+		};
 		BFFB01CC2AE8654600C63C1C /* SwiftUIFontIcon */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BFFB01CB2AE8654600C63C1C /* XCRemoteSwiftPackageReference "SwiftUIFontIcon" */;

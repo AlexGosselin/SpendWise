@@ -25,3 +25,11 @@ struct OutlineModifier: ViewModifier {
         )
     }
 }
+
+class AppState: ObservableObject {
+    @Published var resetFlag = false
+
+    func toggleReset() {
+        resetFlag.toggle()
+    }
+}
