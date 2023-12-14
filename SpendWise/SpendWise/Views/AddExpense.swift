@@ -86,6 +86,9 @@ struct AddExpense: View {
                             .multilineTextAlignment(.trailing)
                             .offset(x: animateTitle ? -1 : 1)
                             .animation(.interpolatingSpring(stiffness: 3000, damping: 10, initialVelocity: 100), value: animateTitle)
+                            .onChange(of: expense.title) {
+                                expense.title = String(expense.title.prefix(20))
+                            }
                     }
                     .padding()
                     
@@ -98,6 +101,9 @@ struct AddExpense: View {
                             .multilineTextAlignment(.trailing)
                             .offset(x: animateAmount ? -1 : 1)
                             .animation(.interpolatingSpring(stiffness: 3000, damping: 10, initialVelocity: 100), value: animateAmount)
+                            .onChange(of: amountString) {
+                                amountString = String(amountString.prefix(11))
+                            }
                     }
                     .padding()
                     
@@ -163,6 +169,9 @@ struct AddExpense: View {
                             .multilineTextAlignment(.trailing)
                             .offset(x: animateMerchant ? -1 : 1)
                             .animation(.interpolatingSpring(stiffness: 3000, damping: 10, initialVelocity: 100), value: animateMerchant)
+                            .onChange(of: expense.merchant) {
+                                expense.merchant = String(expense.merchant.prefix(20))
+                            }
                     }
                     .padding()
                     
@@ -172,6 +181,9 @@ struct AddExpense: View {
                         TextField("i.e. Scotiabank", text: $expense.instituition)
                             .focused($institutionFocused)
                             .multilineTextAlignment(.trailing)
+                            .onChange(of: expense.instituition) {
+                                expense.instituition = String(expense.instituition.prefix(20))
+                            }
 //                            .offset(x: animateTitle ? -1 : 1)
 //                            .animation(.interpolatingSpring(stiffness: 3000, damping: 10, initialVelocity: 100), value: animateTitle)
                     }
@@ -183,6 +195,9 @@ struct AddExpense: View {
                         TextField("Enter Account", text: $expense.account)
                             .focused($accountFocused)
                             .multilineTextAlignment(.trailing)
+                            .onChange(of: expense.account) {
+                                expense.account = String(expense.account.prefix(20))
+                            }
 //                            .offset(x: animateTitle ? -1 : 1)
 //                            .animation(.interpolatingSpring(stiffness: 3000, damping: 10, initialVelocity: 100), value: animateTitle)
                     }

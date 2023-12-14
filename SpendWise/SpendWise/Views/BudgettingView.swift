@@ -140,7 +140,7 @@ struct BudgettingView: View {
                             .focused($institutionFocused)
                             .multilineTextAlignment(.center)
                             .keyboardType(.numberPad)
-                            .onChange(of: $budgetString) { _ in
+                            .onChange(of: budgetString) {
                                 budgetString = String(budgetString.prefix(12))
                             }
                         
