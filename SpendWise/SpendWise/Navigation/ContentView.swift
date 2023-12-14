@@ -12,8 +12,10 @@ import SwiftUIFontIcon
 struct ContentView: View {
     
     @AppStorage("selectedTab") var selectedTab: Tab = .home
+    @StateObject private var appState = AppState()
     
     var body: some View {
+        if OnboardingManager.shared.hasLaunched {
         NavigationView {
             ZStack {
                 Group {
@@ -36,6 +38,16 @@ struct ContentView: View {
             }
             .dynamicTypeSize(.large ... .xxLarge)
             
+        }
+            
+        } else {
+            OnboardingView()
+
+            // Update the hasLaunched flag after onboarding
+            Button("Continue") {
+                OnboardingManager.shared.setHasLaunched()
+                appState.toggleReset()
+            }
         }
     }
 }

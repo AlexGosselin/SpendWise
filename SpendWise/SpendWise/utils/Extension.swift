@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import UIOnboarding
 
 extension Color {
     static let background2 = Color("Background")
@@ -61,4 +62,27 @@ extension DateComponents : Comparable {
     }
     
     
+}
+
+extension UIOnboardingViewConfiguration {
+    // UIOnboardingViewController init
+    static func setUp() -> UIOnboardingViewConfiguration {
+        return .init(appIcon: UIOnboardingHelper.setUpIcon(),
+                     firstTitleLine: UIOnboardingHelper.setUpFirstTitleLine(),
+                     secondTitleLine: UIOnboardingHelper.setUpSecondTitleLine(),
+                     features: UIOnboardingHelper.setUpFeatures(),
+                     textViewConfiguration: UIOnboardingHelper.setUpNotice(),
+                     buttonConfiguration: UIOnboardingHelper.setUpButton())
+    }
+}
+
+enum AppIconSet: String {
+    case primary = "PrimaryAppIcon"
+    case alternate = "AlternateAppIcon"
+}
+
+extension Bundle {
+    var appIconName: String? {
+        return infoDictionary?["CFBundlePrimaryIcon"] as? String
+    }
 }
