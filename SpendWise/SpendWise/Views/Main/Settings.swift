@@ -91,25 +91,20 @@ struct SettingsView: View {
                             NavigationLink(destination: DeleteUserDataView(), label: { EmptyView()})
                         )
                     
-                        .sheet(isPresented: $isShowTaxCalculator, content: {
-                            TaxCalculatorSheet(isShowTaxCalculator: $isShowTaxCalculator, isNavigateTaxCalculatorResult: $isNavigateTaxCalculatorResult)
-                                .presentationDragIndicator(.visible)
-                                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                .presentationDetents([ .fraction(0.5)])
-                                .padding()
-                        }).background(
-                            NavigationLink("", destination: TaxCalculatorResult(), isActive: $isNavigateTaxCalculatorResult)
-                        )
-                        .sheet(isPresented: $isShowPushNotification, content: {
-                            NotificationSheet()
-                                .padding()
-                                .navigationTitle("Push Notification")
-                        }).background()
                         
                     
                 }
                 .listStyle(.insetGrouped)
                 .navigationTitle("Settings")
+                .sheet(isPresented: $isShowTaxCalculator, content: {
+                    TaxCalculatorSheet(isShowTaxCalculator: $isShowTaxCalculator, isNavigateTaxCalculatorResult: $isNavigateTaxCalculatorResult)
+                        .presentationDragIndicator(.visible)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .presentationDetents([ .fraction(0.5)])
+                        .padding()
+                }).background(
+                    NavigationLink("", destination: TaxCalculatorResult(), isActive: $isNavigateTaxCalculatorResult)
+                )
             }
         }
     }
